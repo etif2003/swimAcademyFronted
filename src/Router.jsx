@@ -1,5 +1,6 @@
 import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router";
+import RegisterForm from "./components/RegisterForm";
 
 
 export const Router = () => {
@@ -7,6 +8,10 @@ export const Router = () => {
     {
       path: "/",
       Component: App,
+    },
+    {
+      path: "/register",
+      Component: RegisterForm,
     },
   ]);
 
