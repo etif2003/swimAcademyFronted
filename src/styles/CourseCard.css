@@ -87,7 +87,7 @@
   color: #06b6d4;
 }
 
-.course-instructor {
+.course-target-audience {
   font-size: 14px;
   color: #6b7280;
   margin-bottom: 12px;
@@ -138,4 +138,35 @@
   font-size: 14px;
   font-weight: 500;
   color: #06b6d4;
+}
+
+/*LEVEL-COLOR*/
+.course-level {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.course-level {
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(2px);
+}
+
+.level-beginner {
+  background: #E6F7F1;
+  color: #1FA37C;
+}
+
+.level-advanced {
+  background: #FFF4E5;
+  color: #D97706;
+}
+
+.level-professional {
+  background: #E8F1FF;
+  color: #2563EB;
 }
