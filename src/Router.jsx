@@ -2,6 +2,8 @@ import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import RegisterForm from "./components/RegisterForm";
 import LoginForm from "./components/LoginForm";
+import CoursesPage from "./pages/CoursesPage";
+import InstructorCard from "./components/Instructors/InstructorCard";
 
 
 export const Router = () => {
@@ -11,12 +13,16 @@ export const Router = () => {
       Component: App,
     },
     {
-      path: "/register",
+      path: "/auth?mode=signup",//"/register",
       Component: RegisterForm,
     },
-      {
-      path: "/login",
+    {
+      path: "/auth",// "/login",
       Component: LoginForm,
+    },
+    {
+      path: "/courses",
+      Component: CoursesPage,
     },
   ]);
 
