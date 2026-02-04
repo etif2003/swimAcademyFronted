@@ -7,6 +7,28 @@ import {
 } from "lucide-react";
 import "../../styles/CourseCard.css";
 
+const TARGET_AUDIENCE_MAP = {
+  Children: "ילדים",
+  Teens: "נוער",
+  Adults: "מבוגרים",
+  Seniors: "גיל הזהב",
+};
+
+const LEVEL_MAP = {
+  Beginner: {
+    label: "מתחילים",
+    className: "level-beginner",
+  },
+  Advanced: {
+    label: "מתקדמים",
+    className: "level-advanced",
+  },
+  Professional: {
+    label: "מקצועי",
+    className: "level-professional",
+  },
+};
+
 const CourseCard = ({ course }) => {
   return (
     <Link
@@ -21,9 +43,9 @@ const CourseCard = ({ course }) => {
         />
 
         {/* Level */}
-        {course.level && (
-          <div className="course-level">
-            {course.level}
+        {course.level && LEVEL_MAP[course.level] && (
+          <div className={`course-level ${LEVEL_MAP[course.level].className}`}>
+            {LEVEL_MAP[course.level].label}
           </div>
         )}
       </div>
@@ -36,9 +58,9 @@ const CourseCard = ({ course }) => {
         </h3>
 
         {/* Target audience */}
-        {course.targetAudience && (
-          <p className="course-instructor">
-            מיועד ל{course.targetAudience}
+        {course.targetAudience && TARGET_AUDIENCE_MAP[course.targetAudience] && (
+          <p className="course-target-audience">
+            מיועד ל{TARGET_AUDIENCE_MAP[course.targetAudience]}
           </p>
         )}
 
@@ -64,6 +86,7 @@ const CourseCard = ({ course }) => {
               עד {course.maxParticipants} משתתפים
             </div>
           )}
+
         </div>
 
         {/* Footer */}
