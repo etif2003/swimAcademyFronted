@@ -8,7 +8,7 @@ const navLinks = [
   { href: "/schools", label: "בתי ספר" },
 ];
 
-export function Header() {
+export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 

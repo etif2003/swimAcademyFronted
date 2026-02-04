@@ -17,7 +17,7 @@ export default function Footer() {
           <div className="footer-brand">
             <div className="footer-logo">
               <div className="logo-icon">
-                <Waves size={24} />
+                <Waves size={20} />
               </div>
               <span className="logo-text">שחייה פלוס</span>
             </div>
@@ -68,7 +68,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="footer-bottom">
-          <span>© 2024 שחייה פלוס. כל הזכויות שמורות.</span>
+          <span>© 2026 SWIMMY . כל הזכויות שמורות.</span>
           <span>נבנה באהבה לקהילת השחייה בישראל 💙</span>
         </div>
       </div>

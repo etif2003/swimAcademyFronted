@@ -3,7 +3,6 @@
   /* padding: 2rem; */
   text-align: -webkit-center;
   width: 100%;
-
 }
 
 .logo {
@@ -76,7 +75,6 @@
   /* margin מהצדדים */
 }
 
-
 /* Logo */
 .logo {
   display: flex;
@@ -100,7 +98,7 @@
 .logo-text {
   font-weight: bold;
   font-size: 1.25rem;
-  color: #111;
+  color: #4fc3f7;
 }
 
 /* Desktop Nav */
@@ -203,7 +201,7 @@
 }
 
 /* Responsive */
-@media(min-width: 768px) {
+@media (min-width: 768px) {
   .nav-desktop {
     display: flex;
   }
@@ -217,7 +215,6 @@
     display: none;
   }
 }
-
 
 .footer {
   background-color: #0f4c6b;
@@ -254,12 +251,13 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
+  margin-top: 12px;
 }
 
 .logo-icon {
-  width: 40px;
-  height: 40px;
+  width: 34px;
+  height: 34px;
   background: rgba(255, 255, 255, 0.15);
   border-radius: 12px;
   display: flex;
@@ -274,9 +272,11 @@
 
 .footer-description {
   font-size: 14px;
+  font-weight: 500;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.75);
   margin-bottom: 24px;
+  text-align: start;
 }
 
 /* Social */
@@ -303,6 +303,7 @@
 
 /* Titles */
 .footer-title {
+  display: flex;
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 16px;
@@ -316,6 +317,7 @@
 }
 
 .footer-links li {
+  display: flex;
   margin-bottom: 12px;
 }
 
@@ -362,4 +364,31 @@
     flex-direction: row;
     justify-content: space-between;
   }
+}
+
+.auth-tabs {
+  display: flex;
+  background: #f2f5f6;
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 24px;
+  margin-top: 70px;
+  max-width: 440px;
+}
+
+.auth-tab {
+  flex: 1;
+  text-align: center;
+  padding: 10px 0;
+  border-radius: 10px;
+  font-weight: 500;
+  color: #555;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.auth-tab.active {
+  background: white;
+  color: #000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
