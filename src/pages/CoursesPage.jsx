@@ -1,6 +1,7 @@
 import { useState } from "react";
 import CourseCard from "../components/courses/CourseCard";
-import "../styles/CoursesPage.css";
+// import "../styles/CoursesPage.css";
+import "../styles/ListingPage.css";
 import FilterDropdown from "../components/FilterDropdown.jsx";
 import CardsGrid from "../components/CardsGrid";
 
@@ -198,18 +199,93 @@ export default function CoursesPage() {
         return matchLevel && matchAudience && matchCategory && matchSearch;
     });
 
-    return (
-        <div className="courses-page">
+    // return (
+    //     <div className="courses-page">
 
+    //         {/* HERO */}
+    //         <section className="courses-hero">
+    //             <h1>גלו את הקורסים שלנו</h1>
+    //             <p>מגוון רחב של קורסי שחייה לכל הגילאים והרמות</p>
+    //         </section>
+
+    //         {/* FILTERS */}
+    //         <section className="courses-filters">
+
+    //             <FilterDropdown
+    //                 label="כל הרמות"
+    //                 options={LEVEL_OPTIONS}
+    //                 value={level}
+    //                 isOpen={openFilter === "level"}
+    //                 onToggle={() =>
+    //                     setOpenFilter(openFilter === "level" ? null : "level")
+    //                 }
+    //                 onChange={setLevel}
+    //             />
+
+    //             <FilterDropdown
+    //                 label="כל הקהלים"
+    //                 options={AUDIENCE_OPTIONS}
+    //                 value={audience}
+    //                 isOpen={openFilter === "audience"}
+    //                 onToggle={() =>
+    //                     setOpenFilter(openFilter === "audience" ? null : "audience")
+    //                 }
+    //                 onChange={setAudience}
+    //             />
+
+    //             <FilterDropdown
+    //                 label="כל הקטגוריות"
+    //                 options={CATEGORY_OPTIONS}
+    //                 value={category}
+    //                 isOpen={openFilter === "category"}
+    //                 onToggle={() =>
+    //                     setOpenFilter(openFilter === "category" ? null : "category")
+    //                 }
+    //                 onChange={setCategory}
+    //             />
+
+    //             <input
+    //                 type="text"
+    //                 placeholder="חיפוש קורסים..."
+    //                 value={search}
+    //                 onChange={(e) => setSearch(e.target.value)}
+    //                 onFocus={() => setOpenFilter(null)} // סוגר פילטרים
+    //             />
+
+    //         </section>
+
+
+    //         {/* COURSES GRID */}
+    //         <section className="courses-grid-wrapper">
+    //             <div className="container">
+    //                 <CardsGrid
+    //                     items={filteredCourses}
+    //                     renderItem={(course) => (
+    //                         <CourseCard key={course._id} course={course} />
+    //                     )}
+    //                 />
+    //             </div>
+    //         </section>
+
+    //     </div>
+    // );
+    return (
+        <div className="listing-page">
             {/* HERO */}
-            <section className="courses-hero">
+            <section
+                className="listing-hero"
+                style={{
+                    backgroundImage:
+                        "url(https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80)",
+                    color: "white",
+                }}
+            >
                 <h1>גלו את הקורסים שלנו</h1>
                 <p>מגוון רחב של קורסי שחייה לכל הגילאים והרמות</p>
             </section>
 
             {/* FILTERS */}
-            <section className="courses-filters">
-
+            <section className="listing-filters">
                 <FilterDropdown
                     label="כל הרמות"
                     options={LEVEL_OPTIONS}
@@ -248,24 +324,20 @@ export default function CoursesPage() {
                     placeholder="חיפוש קורסים..."
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    onFocus={() => setOpenFilter(null)} // סוגר פילטרים
+                    onFocus={() => setOpenFilter(null)}
                 />
-
             </section>
 
-
-            {/* COURSES GRID */}
-            <section className="courses-grid-wrapper">
-                <div className="container">
-                    <CardsGrid
-                        items={filteredCourses}
-                        renderItem={(course) => (
-                            <CourseCard key={course._id} course={course} />
-                        )}
-                    />
-                </div>
+            {/* GRID */}
+            <section className="listing-grid">
+                <CardsGrid
+                    items={filteredCourses}
+                    renderItem={(course) => (
+                        <CourseCard key={course._id} course={course} />
+                    )}
+                />
             </section>
-
         </div>
     );
+
 }
