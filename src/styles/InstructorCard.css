@@ -1,84 +1,103 @@
+/* ===== Card ===== */
+
 .instructor-card {
-  background: #ffffff;
-  border-radius: 18px;
-  border: 1px solid #e5e7eb;
-  padding: 16px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+    background: #ffffff;
+    border-radius: 18px;
+    border: 1px solid #e5e7eb;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .instructor-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
 }
 
-/* ===== Top section ===== */
+/* ===== TOP ===== */
 
 .instructor-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  direction: rtl;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Header: image right, info left */
+.instructor-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    direction: rtl;
 }
 
 .instructor-avatar {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-left: 12px;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 4px solid hsl(199 94% 78% / 0.8);
 }
 
 /* Info column */
-
 .instructor-info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: start;
 }
 
 .instructor-name {
-  font-size: 18px;
-  font-weight: 700;
-  color: #111827;
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
 }
 
 .instructor-location {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 13px;
-  color: #6b7280;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    color: #6b7280;
 }
 
 .instructor-experience {
-  font-size: 13px;
-  color: #6b7280;
+    font-size: 13px;
+    color: #06b6d4;
 }
 
-/* Rating */
+/* ===== Rating ===== */
 
 .instructor-rating {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 14px;
-  color: #06b6d4; /* כחול עדין */
-  margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    color: #06b6d4;
+    justify-content: end;
+    padding-right: 6px;
+    /* כחול עדין */
 }
 
 /* ===== Footer ===== */
 
 .instructor-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 16px;
-  padding-top: 12px;
-  border-top: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid #e5e7eb;
 }
 
+/* Price */
+
 .instructor-price {
+  display: flex;
+  flex-direction: row-reverse; /* הופך את הסדר */
+  align-items: baseline;
+  gap: 4px;
+
   font-size: 20px;
   font-weight: 700;
   color: #06b6d4;
@@ -90,19 +109,27 @@
   color: #6b7280;
 }
 
-/* CTA button */
 
+/* CTA Button */
 .instructor-cta {
-  background: #06b6d4;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 999px;
-  font-size: 14px;
-  text-decoration: none;
-  box-shadow: 0 4px 10px rgba(6, 182, 212, 0.35);
-  transition: background 0.2s ease, box-shadow 0.2s ease;
+    background: #ffffff;
+    color: #06b6d4;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid #06b6d4;
+    box-shadow: 0 4px 10px rgba(6, 182, 212, 0.25);
+    transition: box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .instructor-cta:hover {
-  box-shadow: 0 6px 16px rgba(6, 182, 212, 0.45);
+    background: #06b6d4;
+    color: #ffffff;
+    box-shadow: 0 6px 16px rgba(6, 182, 212, 0.4);
+}
+
+h3.instructor-name {
+    margin: 0px;
 }
