@@ -1,6 +1,8 @@
 import { Layout } from "../layout/Layout";
 import "./App.css";
+import CardsGrid from "./components/CardsGrid";
 import CourseCard from "./components/courses/CourseCard";
+import InstructorCard from "./components/Instructors/InstructorCard";
 
 function App() {
   // const mockCourses = [
@@ -10,7 +12,7 @@ function App() {
   //     price: 150,
   //     level: "Beginner",
   //     targetAudience: "Children",
-  //     image: "https://images.unsplash.com/photo-1518611012118-f0c5bde76d15",
+  //     image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
   //     maxParticipants: 6,
   //     sessionsCount: 8,
   //     location: {
@@ -32,6 +34,33 @@ function App() {
   //   },
   // ];
 
+  const mockInstructors = [
+    {
+      _id: "i1",
+      fullName: "יוסי אברהם",
+      workArea: "חיפה",
+      experienceYears: 12,
+      hourlyRate: 250,
+      image: "https://randomuser.me/api/portraits/men/54.jpg",
+      rating: 4.6,
+      available: true,
+      status: "Active",
+    },
+    {
+      _id: "i2",
+      fullName: "דני כהן",
+      workArea: "תל אביב",
+      experienceYears: 15,
+      hourlyRate: 180,
+      image: "https://randomuser.me/api/portraits/men/32.jpg",
+      rating: 4.9,
+      available: true,
+      status: "Active",
+    },
+  ];
+
+
+
   return (
     <>
       <Layout>
@@ -42,6 +71,21 @@ function App() {
             <CourseCard key={course._id} course={course} />
           ))}
         </div> */}
+        {/* <div className="grid">
+          {mockCourses.map((course) => (
+            <InstructorCard key={course._id} course={course} />
+          ))}
+        </div> */}
+        {/* <CardsGrid
+          items={mockInstructors}
+          emptyText="לא נמצאו מדריכים"
+          renderItem={(instructor) => (
+            <InstructorCard
+              key={instructor._id}
+              instructor={instructor}
+            />
+          )}
+        /> */}
       </Layout>
     </>
   );
