@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import RegisterForm from "./components/RegisterForm";
 import LoginForm from "./components/LoginForm";
 import CoursesPage from "./pages/CoursesPage";
-import InstructorCard from "./components/Instructors/InstructorCard";
+// import InstructorCard from "./components/Instructors/InstructorCard";
 
 
 export const Router = () => {
