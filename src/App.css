@@ -1,8 +1,8 @@
 #root {
   margin: 0 auto;
-  padding: 2rem;
-text-align: -webkit-center;
-    width: 100%;
+  /* padding: 2rem; */
+  text-align: -webkit-center;
+  width: 100%;
 
 }
 
@@ -12,9 +12,11 @@ text-align: -webkit-center;
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -23,6 +25,7 @@ text-align: -webkit-center;
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -66,6 +69,14 @@ text-align: -webkit-center;
   padding: 0 16px;
 }
 
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: 32px;
+  /* margin מהצדדים */
+}
+
+
 /* Logo */
 .logo {
   display: flex;
@@ -73,6 +84,7 @@ text-align: -webkit-center;
   gap: 8px;
   text-decoration: none;
 }
+
 .logo-icon {
   width: 40px;
   height: 40px;
@@ -84,6 +96,7 @@ text-align: -webkit-center;
   color: white;
   font-size: 20px;
 }
+
 .logo-text {
   font-weight: bold;
   font-size: 1.25rem;
@@ -95,15 +108,18 @@ text-align: -webkit-center;
   display: none;
   gap: 24px;
 }
+
 .nav-link {
   text-decoration: none;
   color: #666;
   font-weight: 500;
   transition: color 0.2s;
 }
+
 .nav-link:hover {
   color: #111;
 }
+
 .nav-link.active {
   color: #0288d1;
   border-bottom: 2px solid #0288d1;
@@ -114,6 +130,7 @@ text-align: -webkit-center;
   display: none;
   gap: 8px;
 }
+
 .btn {
   padding: 6px 12px;
   border-radius: 6px;
@@ -122,16 +139,19 @@ text-align: -webkit-center;
   text-align: center;
   cursor: pointer;
 }
+
 .btn-ghost {
   background: none;
   border: 1px solid #ccc;
   color: #111;
 }
+
 .btn-water {
   background: #4fc3f7;
   color: white;
   border: none;
 }
+
 .btn-outline {
   background: none;
   border: 1px solid #ccc;
@@ -155,6 +175,7 @@ text-align: -webkit-center;
   background: white;
   border-top: 1px solid #ddd;
 }
+
 .nav-link-mobile {
   padding: 8px 12px;
   margin: 2px 0;
@@ -162,9 +183,11 @@ text-align: -webkit-center;
   color: #666;
   border-radius: 6px;
 }
+
 .nav-link-mobile:hover {
   background: #f0f0f0;
 }
+
 .nav-link-mobile.active {
   background: #0288d1;
   color: white;
@@ -184,9 +207,11 @@ text-align: -webkit-center;
   .nav-desktop {
     display: flex;
   }
+
   .actions-desktop {
     display: flex;
   }
+
   .mobile-menu-btn,
   .nav-mobile {
     display: none;
