@@ -2,7 +2,7 @@ import { Layout } from "../layout/Layout";
 import "./App.css";
 import CardsGrid from "./components/CardsGrid";
 import CourseCard from "./components/courses/CourseCard";
-import InstructorCard from "./components/Instructors/InstructorCard";
+// import InstructorCard from "./components/Instructors/InstructorCard";
 
 function App() {
   // const mockCourses = [
