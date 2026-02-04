@@ -1,0 +1,48 @@
+.filter-dropdown {
+  position: relative;
+  direction: rtl;
+}
+
+.filter-button {
+  height: 42px;
+  padding: 0 18px;
+  border-radius: 10px;
+  border: 1px solid #E5E7EB;
+  background: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.filter-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: white;
+  border-radius: 12px;
+  min-width: 180px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  padding: 6px;
+  z-index: 20;
+}
+
+.filter-item {
+  padding: 10px 14px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.filter-item:hover {
+  background: #F1F5F9;
+}
+
+.filter-item.active {
+  background: #0EA5E9;
+  color: white;
+}
