@@ -3,6 +3,7 @@ import "./App.css";
 import CardsGrid from "./components/CardsGrid";
 import CourseCard from "./components/courses/CourseCard";
 import InstructorCard from "./components/Instructors/InstructorCard";
+import Home from "./pages/Home";
 
 function App() {
   // const mockCourses = [
@@ -65,17 +66,8 @@ function App() {
     <>
       <Layout>
         <div>hello world!</div>
-        <home/>
-        {/* <div className="grid">
-          {mockCourses.map((course) => (
-            <CourseCard key={course._id} course={course} />
-          ))}
-        </div> */}
-        {/* <div className="grid">
-          {mockCourses.map((course) => (
-            <InstructorCard key={course._id} course={course} />
-          ))}
-        </div> */}
+        <Home/>
+       
         <CardsGrid
           items={mockInstructors}
           emptyText="לא נמצאו מדריכים"
