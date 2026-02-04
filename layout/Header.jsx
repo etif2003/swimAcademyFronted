@@ -15,11 +15,15 @@ export function Header() {
   return (
     <header className="header">
       <div className="header-container">
-        {/* Logo */}
-        <Link to="/" className="logo">
-          <div className="logo-icon">🌊</div>
-          <span className="logo-text">שחייה פלוס</span>
-        </Link>
+        {/* Desktop Actions */}
+        <div className="actions-desktop">
+          <Link to="/auth" className="btn btn-ghost">
+            התחברות
+          </Link>
+          <Link to="/auth?mode=signup" className="btn btn-water">
+            הרשמה
+          </Link>
+        </div>
 
         {/* Desktop Nav */}
         <nav className="nav-desktop">
@@ -36,15 +40,11 @@ export function Header() {
           ))}
         </nav>
 
-        {/* Desktop Actions */}
-        <div className="actions-desktop">
-          <Link to="/auth" className="btn btn-ghost">
-            התחברות
-          </Link>
-          <Link to="/auth?mode=signup" className="btn btn-water">
-            הרשמה
-          </Link>
-        </div>
+        {/* Logo */}
+        <Link to="/" className="logo">
+          {/* <div className="logo-icon">🌊</div> */}
+          <span className="logo-text">SWIMMY </span>
+        </Link>
 
         {/* Mobile Menu Button */}
         <button className="mobile-menu-btn" onClick={() => setIsOpen(!isOpen)}>
