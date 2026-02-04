@@ -1,0 +1,109 @@
+/* =========================
+   PAGE BASE
+========================= */
+.courses-page {
+    direction: rtl;
+    background: #F8FAFC;
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont;
+}
+
+/* =========================
+   HERO
+========================= */
+.courses-hero {
+    width: 100%;
+    height: 280px;
+    background-image: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80");
+    background-size: cover;
+    background-position: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 24px;
+
+}
+
+.courses-hero h1 {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.courses-hero p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+/* =========================
+   FILTERS
+========================= */
+.courses-filters {
+    max-width: 1200px;
+    margin: -36px auto 48px;
+    padding: 16px 20px;
+    background: #ffffff;
+    border-radius: 20px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+.courses-filters select,
+.courses-filters input {
+    height: 44px;
+    padding: 0 18px;
+    border-radius: 10px;
+    border: 1px solid #E5E7EB;
+    font-size: 14px;
+    outline: none;
+    background: #fff;
+    min-width: 160px;
+}
+
+.courses-filters input {
+    flex: 1;
+}
+
+/* =========================
+   GRID
+========================= */
+.courses-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 32px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+    .courses-hero {
+        height: 220px;
+    }
+
+    .courses-hero h1 {
+        font-size: 28px;
+    }
+
+    .courses-hero p {
+        font-size: 16px;
+    }
+
+    .courses-filters {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .courses-filters select,
+    .courses-filters input {
+        width: 100%;
+    }
+}
