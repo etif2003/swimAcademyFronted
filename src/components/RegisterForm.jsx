@@ -3,9 +3,19 @@ import { Link } from "react-router-dom";
 import "../styles/RegisterForm.css";
 import { GraduationCap, Users, School } from "lucide-react";
 import { register } from "../api/auth";
+import { useSearchParams } from "react-router-dom";
 
 const RegisterForm = () => {
-  const [role, setRole] = useState("student");
+  const [searchParams] = useSearchParams();
+  const roleFromUrl = searchParams.get("role"); // instructor | school | null
+
+  const [role, setRole] = useState(
+    roleFromUrl === "instructor"
+      ? "instructor"
+      : roleFromUrl === "school"
+        ? "school"
+        : "student",
+  );
 
   const [formData, setFormData] = useState({
     fullName: "",

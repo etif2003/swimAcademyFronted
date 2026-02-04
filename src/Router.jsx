@@ -1,10 +1,7 @@
 import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router";
-import RegisterForm from "./components/RegisterForm";
-import LoginForm from "./components/LoginForm";
+import AuthPage from "./pages/AuthPage";
 import CoursesPage from "./pages/CoursesPage";
-// import InstructorCard from "./components/Instructors/InstructorCard";
-
 
 export const Router = () => {
   const router = createBrowserRouter([
@@ -13,12 +10,8 @@ export const Router = () => {
       Component: App,
     },
     {
-      path: "/auth?mode=signup",//"/register",
-      Component: RegisterForm,
-    },
-    {
-      path: "/auth",// "/login",
-      Component: LoginForm,
+      path: "/auth",
+      Component: AuthPage,
     },
     {
       path: "/courses",
