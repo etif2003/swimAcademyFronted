@@ -1,6 +1,8 @@
 .hero {
   position: relative;
   min-height: 100vh;
+  padding-bottom: 120px;
+  padding-top: 90px;
   background-size: cover;
   background-position: center;
   display: flex;

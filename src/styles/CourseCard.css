@@ -1,5 +1,4 @@
 .course-card {
-  display: block;
   background: #ffffff;
   border-radius: 18px;
   overflow: hidden;
@@ -8,6 +7,10 @@
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   text-decoration: none;
   color: inherit;
+   height: 100%;
+    display: flex;
+  flex-direction: column;
+ 
 }
 
 .course-card:hover {
@@ -74,6 +77,9 @@
   padding: 16px;
   direction: rtl;
   text-align: right;
+    display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .course-title {
@@ -117,6 +123,8 @@
   align-items: center;
   padding-top: 12px;
   border-top: 1px solid #e5e7eb;
+    margin-top: auto; /*  דוחף לתחתית */
+
 }
 
 .course-price {

@@ -68,7 +68,7 @@ function App() {
         <div>hello world!</div>
         <Home/>
        
-        <CardsGrid
+        {/* <CardsGrid
           items={mockInstructors}
           emptyText="לא נמצאו מדריכים"
           renderItem={(instructor) => (
@@ -77,7 +77,7 @@ function App() {
               instructor={instructor}
             />
           )}
-        />
+        /> */}
       </Layout>
     </>
   );
