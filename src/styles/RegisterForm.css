@@ -40,6 +40,8 @@
   cursor: pointer;
   text-align: center;
   transition: all 0.2s ease;
+  outline: none;
+
 }
 
 .role-card span {
@@ -62,6 +64,12 @@
 
 .role-card.active .role-icon {
   color: #06b6d4;
+}
+
+.role-card:focus,
+.role-card:focus-visible {
+  outline: none;
+  box-shadow: none;
 }
 
 .form {
@@ -101,7 +109,7 @@
 .submit-button {
   margin-top: 8px;
   padding: 12px;
-  background: #2563eb;
+  background: #18BFDC;
   color: white;
   border: none;
   border-radius: 8px;
@@ -110,7 +118,7 @@
 }
 
 .submit-button:hover {
-  background: #1e40af;
+  background: #069eb9;
 }
 
 .terms {
@@ -123,3 +131,4 @@
   color: #2563eb;
   text-decoration: none;
 }
+

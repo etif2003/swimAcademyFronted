@@ -150,6 +150,10 @@
   border: none;
 }
 
+.btn-water:hover {
+  color: #111;
+}
+
 .btn-outline {
   background: none;
   border: 1px solid #ccc;

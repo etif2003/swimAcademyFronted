@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/RegisterForm.css";
-import { GraduationCap, Users, School } from "lucide-react";
+import { GraduationCap, Users, School, ArrowLeft } from "lucide-react";
 import { register } from "../api/auth";
 import { useSearchParams } from "react-router-dom";
 

@@ -52,7 +52,7 @@
 .submit-button {
   margin-top: 8px;
   padding: 12px;
-  background: #2563eb;
+  background: #18BFDC;
   color: white;
   border: none;
   border-radius: 8px;
@@ -61,7 +61,7 @@
 }
 
 .submit-button:hover {
-  background: #1e40af;
+  background: #069eb9;
 }
 
 .switch {
@@ -124,6 +124,10 @@
   gap: 8px;
    width: 100%;
   padding: 6px 44px;
+}
+
+.submit-button.primary:hover{
+  background: #069eb9;
 }
 
 .login-arrow {
