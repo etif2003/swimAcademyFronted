@@ -1,30 +1,42 @@
-import App from "./App";
-import { createBrowserRouter, RouterProvider } from "react-router";
-import RegisterForm from "./components/RegisterForm";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Layout from "./layout/Layout";
 import AuthPage from "./pages/AuthPage";
-
-import LoginForm from "./components/LoginForm";
 import CoursesPage from "./pages/CoursesPage";
 import InstructorPage from "./pages/InstructorPage";
+import SchoolPage from "./pages/SchoolPage";
+
+import App from "./App";
 
 
 export const Router = () => {
   const router = createBrowserRouter([
-    {
-      path: "/",
-      Component: App,
-    },
+    // עמוד התחברות – בלי Layout
     {
       path: "/auth",
-      Component: AuthPage,
+      element: <AuthPage />,
     },
+
+    // כל שאר האתר – עם Layout
     {
-      path: "/courses",
-      Component: CoursesPage,
-    },
-       {
-      path: "/instructors",
-      Component: InstructorPage,
+      element: <Layout />,
+      children: [
+        {
+          path: "/",
+          element: <App />,
+        },
+        {
+          path: "/courses",
+          element: <CoursesPage />,
+        },
+        {
+          path: "/instructors",
+          element: <InstructorPage />,
+        },
+        {
+          path: "/schools",
+          element: <SchoolPage />,
+        },
+      ],
     },
   ]);
 
