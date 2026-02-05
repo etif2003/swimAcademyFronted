@@ -124,12 +124,12 @@
   justify-content: center;
   gap: 8px;
    width: 100%;
-  padding: 12px 44px;
+  padding: 6px 44px;
 }
 
-.arrow-icon {
-  width: 18px;
-  height: 18px;
+.login-arrow {
+      padding-top: 8px;
+
 }
 * {
   box-sizing: border-box;
