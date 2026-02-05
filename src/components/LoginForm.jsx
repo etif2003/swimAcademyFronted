@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/LoginForm.css";
 import { login } from "../api/auth";
-import { Mail, Lock, ArrowRight, ArrowLeft } from "lucide-react";
+import { Mail, Lock, ArrowLeft } from "lucide-react";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -56,7 +56,7 @@ const LoginForm = () => {
       // שמירת טוקן
       localStorage.setItem("token", data.token);
 
-      // ניווט לדף הבית (או לפי role בהמשך)
+      // ניווט לדף הבית (בעתיד לפי role)
       navigate("/");
     } catch (error) {
       setErrors({ general: error.message });
@@ -82,32 +82,11 @@ const LoginForm = () => {
             />
             <Mail className="input-icon" />
           </div>
-          {errors.email && <span className="error-text">{errors.email}</span>}
-        </div>
-        {/* אימייל */}
-        <div className={`field icon-field ${errors.email ? "error" : ""}`}>
-          <label>אימייל</label>
-          <div className="input-wrapper">
-            <input
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="email@example.com"
-            />
-            <Mail className="input-icon" />
-          </div>
-          {errors.email && <span className="error-text">{errors.email}</span>}
+          {errors.email && (
+            <span className="error-text">{errors.email}</span>
+          )}
         </div>
 
-        {/* סיסמה */}
-        <div className={`field icon-field ${errors.password ? "error" : ""}`}>
-          <div className="password-header">
-            <label>סיסמה</label>
-            <Link to="/forgot-password" className="forgot-link">
-              שכחתי סיסמה
-            </Link>
-          </div>
         {/* סיסמה */}
         <div className={`field icon-field ${errors.password ? "error" : ""}`}>
           <div className="password-header">
@@ -127,30 +106,12 @@ const LoginForm = () => {
             />
             <Lock className="input-icon" />
           </div>
-          <div className="input-wrapper">
-            <input
-              name="password"
-              type="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="••••••••"
-            />
-            <Lock className="input-icon" />
-          </div>
 
           {errors.password && (
             <span className="error-text">{errors.password}</span>
           )}
         </div>
-          {errors.password && (
-            <span className="error-text">{errors.password}</span>
-          )}
-        </div>
 
-        {/* שגיאה כללית */}
-        {errors.general && (
-          <div className="error-text center">{errors.general}</div>
-        )}
         {/* שגיאה כללית */}
         {errors.general && (
           <div className="error-text center">{errors.general}</div>
