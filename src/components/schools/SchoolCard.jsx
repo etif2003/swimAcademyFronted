@@ -1,13 +1,10 @@
 import { Link } from "react-router-dom";
-import { MapPin, ArrowLeft } from "lucide-react";
+import { MapPin } from "lucide-react";
 import "../../styles/SchoolCard.css";
 
 const SchoolCard = ({ school }) => {
   return (
-    <Link
-      to={`/school/${school._id}`}
-      className="school-card"
-    >
+    <Link to={`/school/${school._id}`} className="school-card">
       {/* Image */}
       <div className="school-card-image">
         <img
@@ -38,11 +35,10 @@ const SchoolCard = ({ school }) => {
           </p>
         )}
 
-        {/* Footer */}
+        {/* CTA */}
         <div className="school-footer">
-          <span className="school-link">
-            לצפייה בבית הספר
-            <ArrowLeft size={16} />
+          <span className="school-cta">
+            צפייה בבית הספר
           </span>
         </div>
       </div>

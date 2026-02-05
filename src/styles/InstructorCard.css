@@ -68,6 +68,10 @@
   color: #06b6d4;
 }
 
+.instructor-card:hover .instructor-name {
+    color: #06b6d4;
+}
+
 /* ===== Rating ===== */
 
 .instructor-rating {
