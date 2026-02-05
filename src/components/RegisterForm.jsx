@@ -1,20 +1,21 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import "../styles/RegisterForm.css";
-import { GraduationCap, Users, School, ArrowLeft } from "lucide-react";
+import { GraduationCap, Users, School } from "lucide-react";
 import { register } from "../api/auth";
-import { useSearchParams } from "react-router-dom";
 
 const RegisterForm = () => {
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+
   const roleFromUrl = searchParams.get("role"); // instructor | school | null
 
   const [role, setRole] = useState(
     roleFromUrl === "instructor"
       ? "instructor"
       : roleFromUrl === "school"
-        ? "school"
-        : "student",
+      ? "school"
+      : "student"
   );
 
   const [formData, setFormData] = useState({
@@ -34,7 +35,6 @@ const RegisterForm = () => {
       [name]: value,
     }));
 
-    // ניקוי שגיאה בזמן הקלדה
     if (errors[name]) {
       setErrors((prev) => ({
         ...prev,
@@ -83,21 +83,26 @@ const RegisterForm = () => {
         role === "student"
           ? "Student"
           : role === "instructor"
-            ? "Instructor"
-            : "School",
+          ? "Instructor"
+          : "School",
     };
 
     try {
       const data = await register(payload);
-      console.log("SUCCESS:", data);
 
-      // כאן בהמשך:
-      // localStorage.setItem("token", data.token);
-      // navigate("/");
+      // 🔐 שמירת התחברות
+      localStorage.setItem("token", data.token);
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          id: data._id,
+          fullName: data.fullName,
+          role: data.role,
+        })
+      );
+
+      navigate("/");
     } catch (error) {
-      console.error(error.message);
-
-      // שגיאה כללית (לדוגמה: אימייל קיים)
       setErrors((prev) => ({
         ...prev,
         general: error.message,
@@ -168,7 +173,9 @@ const RegisterForm = () => {
             onChange={handleChange}
             placeholder="email@example.com"
           />
-          {errors.email && <span className="error-text">{errors.email}</span>}
+          {errors.email && (
+            <span className="error-text">{errors.email}</span>
+          )}
         </div>
 
         <div className={`field ${errors.phone ? "error" : ""}`}>
@@ -179,7 +186,9 @@ const RegisterForm = () => {
             onChange={handleChange}
             placeholder="0500000000"
           />
-          {errors.phone && <span className="error-text">{errors.phone}</span>}
+          {errors.phone && (
+            <span className="error-text">{errors.phone}</span>
+          )}
         </div>
 
         <div className={`field ${errors.password ? "error" : ""}`}>
@@ -195,20 +204,20 @@ const RegisterForm = () => {
             <span className="error-text">{errors.password}</span>
           )}
         </div>
-        {/* שגיאה כללית מהשרת */}
+
         {errors.general && (
           <div className="error-text" style={{ textAlign: "center" }}>
             {errors.general}
           </div>
         )}
+
         <button type="submit" className="submit-button">
           יצירת חשבון
         </button>
 
         <p className="terms">
           בהרשמה אתם מסכימים ל<Link to="/terms"> תנאי השימוש </Link>
-          ול
-          <Link to="/privacy"> מדיניות הפרטיות </Link>
+          ול<Link to="/privacy"> מדיניות הפרטיות </Link>
         </p>
       </form>
     </div>

@@ -56,6 +56,16 @@ const LoginForm = () => {
       // שמירת טוקן
       localStorage.setItem("token", data.token);
 
+      // שמירת משתמש
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          id: data._id,
+          fullName: data.fullName,
+          role: data.role,
+        }),
+      );
+
       // ניווט לדף הבית (בעתיד לפי role)
       navigate("/");
     } catch (error) {
@@ -82,9 +92,7 @@ const LoginForm = () => {
             />
             <Mail className="input-icon" />
           </div>
-          {errors.email && (
-            <span className="error-text">{errors.email}</span>
-          )}
+          {errors.email && <span className="error-text">{errors.email}</span>}
         </div>
 
         {/* סיסמה */}
