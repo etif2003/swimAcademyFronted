@@ -1,0 +1,42 @@
+.back-to-home {
+  position: inherit;
+  top: 24px;
+  right: 24px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 14px;
+  font-weight: 500;
+  color: #0ea5b7;
+
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 8px 14px;
+  border-radius: 999px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  z-index: 5;
+}
+
+
+.back-to-home:hover {
+    background: #ffffff;
+    color: #0891b2;
+}
+
+/* מובייל */
+@media (max-width: 768px) {
+
+    .back-to-home {
+        width: 36px;
+        height: 36px;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .back-to-home-text {
+        display: none;
+    }
+}

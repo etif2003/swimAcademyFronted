@@ -6,6 +6,15 @@
     background: #ffffff;
 }
 
+.auth-page {
+  position: relative;
+}
+
+.back-to-home {
+  right: calc(50% - 24px);
+  transform: translateX(100%);
+}
+
 /* ===== SIDES ===== */
 .auth-side {
     display: flex;
@@ -64,7 +73,10 @@
 .auth-form-wrapper {
     width: 100%;
     max-width: 420px;
+    position: relative;
+
 }
+
 
 /* ===== MOBILE ===== */
 @media (max-width: 900px) {

@@ -6,6 +6,7 @@ import AuthFormWrapper from "../components/auth/AuthFormWrapper";
 import AuthTabs from "../components/auth/AuthTabs";
 import RegisterForm from "../components/RegisterForm";
 import LoginForm from "../components/LoginForm";
+import BackToHome from "../components/auth/BackToHome";
 
 const AuthPage = () => {
   const [searchParams] = useSearchParams();
@@ -16,6 +17,7 @@ const AuthPage = () => {
       left={<AuthSideInfo />}
       right={
         <AuthFormWrapper>
+          <BackToHome />
           <AuthTabs />
           {mode === "signup" ? <RegisterForm /> : <LoginForm />}
         </AuthFormWrapper>
