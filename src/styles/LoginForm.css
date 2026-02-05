@@ -32,7 +32,7 @@
   margin-bottom: 4px;
 }
 
-.field input {
+.login-container .field input {
   border-radius: 6px;
   border: 1px solid #d1d5db;
   text-align: right;
