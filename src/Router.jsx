@@ -1,9 +1,10 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./layout/Layout";
 import AuthPage from "./pages/AuthPage";
-import Home from "./pages/Home";
 import CoursesPage from "./pages/CoursesPage";
 import InstructorPage from "./pages/InstructorPage";
+import SchoolPage from "./pages/SchoolPage";
+
 import App from "./App";
 
 
@@ -30,6 +31,10 @@ export const Router = () => {
         {
           path: "/instructors",
           element: <InstructorPage />,
+        },
+        {
+          path: "/schools",
+          element: <SchoolPage />,
         },
       ],
     },

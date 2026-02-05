@@ -1,0 +1,90 @@
+.school-card {
+  display: block;
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.school-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== Image ===== */
+
+.school-card-image {
+  height: 190px;
+  overflow: hidden;
+}
+
+.school-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.school-card:hover .school-card-image img {
+  transform: scale(1.05);
+}
+
+/* ===== Content ===== */
+
+.school-card-content {
+  padding: 16px;
+  direction: rtl;
+  text-align: right;
+}
+
+.school-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #111827;
+}
+
+.school-card:hover .school-title {
+  color: #06b6d4;
+}
+
+.school-location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.school-description {
+  font-size: 14px;
+  color: #4b5563;
+  line-height: 1.5;
+  margin-bottom: 14px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ===== Footer ===== */
+
+.school-footer {
+  padding-top: 12px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.school-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #06b6d4;
+}

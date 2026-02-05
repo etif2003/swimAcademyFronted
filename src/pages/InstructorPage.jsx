@@ -4,7 +4,6 @@ import "../styles/ListingPage.css";
 import FilterDropdown from "../components/FilterDropdown.jsx";
 import CardsGrid from "../components/CardsGrid";
 
-
 const mockInstructors = [
     {
         _id: "i1",
@@ -28,15 +27,80 @@ const mockInstructors = [
         available: true,
         status: "Active",
     },
+    {
+        _id: "i3",
+        fullName: "מיכל לוי",
+        workArea: "רמת גן",
+        experienceYears: 10,
+        hourlyRate: 200,
+        image: "https://randomuser.me/api/portraits/women/44.jpg",
+        rating: 4.8,
+        available: true,
+        status: "Active",
+    },
+    {
+        _id: "i4",
+        fullName: "שרון אמיר",
+        workArea: "חיפה",
+        experienceYears: 8,
+        hourlyRate: 170,
+        image: "https://randomuser.me/api/portraits/women/65.jpg",
+        rating: 4.5,
+        available: true,
+        status: "Active",
+    },
+    {
+        _id: "i5",
+        fullName: "אלון פרץ",
+        workArea: "פתח תקוה",
+        experienceYears: 18,
+        hourlyRate: 280,
+        image: "https://randomuser.me/api/portraits/men/76.jpg",
+        rating: 4.9,
+        available: false,
+        status: "Inactive",
+    },
+    {
+        _id: "i6",
+        fullName: "נועה בן דוד",
+        workArea: "ירושלים",
+        experienceYears: 6,
+        hourlyRate: 160,
+        image: "https://randomuser.me/api/portraits/women/21.jpg",
+        rating: 4.4,
+        available: true,
+        status: "Active",
+    },
+    {
+        _id: "i7",
+        fullName: "איתי רוזן",
+        workArea: "כפר סבא",
+        experienceYears: 9,
+        hourlyRate: 190,
+        image: "https://randomuser.me/api/portraits/men/18.jpg",
+        rating: 4.7,
+        available: true,
+        status: "Active",
+    },
 ];
 
-const WORKAREA_OPTIONS = [
-    { value: "", label: "כל האזורים" },
-    { value: "תל אביב", label: "תל אביב" },
-    { value: "פתח תקוה", label: "פתח תקוה" },
+const getAreaOptionsFromInstructors = (instructors) => {
+    const workAreas = instructors
+        .map((instructors) => instructors.workArea)
+        .filter(Boolean); // מסיר undefined / null
 
-];
+    const uniqueWorkAreas = Array.from(new Set(workAreas));
 
+    return [
+        { value: "", label: "כל האזורים" },
+        ...uniqueWorkAreas.map((workArea) => ({
+            value: workArea,
+            label: workArea,
+        })),
+    ];
+};
+
+const WORKAREA_OPTIONS = getAreaOptionsFromInstructors(mockInstructors);
 
 export default function InstructorPage() {
     const [workArea, setWorkArea] = useState("");
