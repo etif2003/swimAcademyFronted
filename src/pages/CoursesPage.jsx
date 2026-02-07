@@ -4,340 +4,346 @@ import CourseCard from "../components/courses/CourseCard";
 import "../styles/ListingPage.css";
 import FilterDropdown from "../components/FilterDropdown.jsx";
 import CardsGrid from "../components/CardsGrid";
+import { useCourses } from "../hooks/useCourses.js";
 
 const mockCourses = [
-    {
-        _id: "1",
-        title: "שחייה למתחילים – ילדים",
-        description: "קורס חווייתי ללימוד יסודות השחייה לילדים בגילאי 5–8.",
-        price: 150,
-        category: "Learning",
-        targetAudience: "Children",
-        level: "Beginner",
-        image:
-            "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+  {
+    _id: "1",
+    title: "שחייה למתחילים – ילדים",
+    description: "קורס חווייתי ללימוד יסודות השחייה לילדים בגילאי 5–8.",
+    price: 150,
+    category: "Learning",
+    targetAudience: "Children",
+    level: "Beginner",
+    image:
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
 
-        maxParticipants: 6,
-        currentParticipants: 4,
+    maxParticipants: 6,
+    currentParticipants: 4,
 
-        status: "Active",
+    status: "Active",
 
-        durationWeeks: 8,
-        sessionsCount: 8,
+    durationWeeks: 8,
+    sessionsCount: 8,
 
-        location: {
-            poolName: "בריכת גורדון",
-            city: "תל אביב",
-        },
-
-        createdBy: "64f000000000000000000001",
-        createdByModel: "School",
+    location: {
+      poolName: "בריכת גורדון",
+      city: "תל אביב",
     },
 
-    {
-        _id: "2",
-        title: "שחייה טיפולית למבוגרים",
-        description:
-            "שחייה טיפולית מותאמת לשיקום, חיזוק שרירים ושיפור תנועתיות.",
-        price: 180,
-        category: "Therapy",
-        targetAudience: "Adults",
-        level: "Advanced",
-        image:
-            "https://images.unsplash.com/photo-1502904550040-7534597429ae?auto=format&fit=crop&w=800&q=80",
+    createdBy: "64f000000000000000000001",
+    createdByModel: "School",
+  },
 
-        maxParticipants: 4,
-        currentParticipants: 3,
+  {
+    _id: "2",
+    title: "שחייה טיפולית למבוגרים",
+    description: "שחייה טיפולית מותאמת לשיקום, חיזוק שרירים ושיפור תנועתיות.",
+    price: 180,
+    category: "Therapy",
+    targetAudience: "Adults",
+    level: "Advanced",
+    image:
+      "https://images.unsplash.com/photo-1502904550040-7534597429ae?auto=format&fit=crop&w=800&q=80",
 
-        status: "Active",
+    maxParticipants: 4,
+    currentParticipants: 3,
 
-        durationWeeks: 10,
-        sessionsCount: 10,
+    status: "Active",
 
-        location: {
-            poolName: "מרכז הספורט רמת גן",
-            city: "רמת גן",
-        },
+    durationWeeks: 10,
+    sessionsCount: 10,
 
-        createdBy: "64f000000000000000000002",
-        createdByModel: "Instructor",
+    location: {
+      poolName: "מרכז הספורט רמת גן",
+      city: "רמת גן",
     },
 
-    {
-        _id: "3",
-        title: "אימון שחייה תחרותית לנוער",
-        description:
-            "אימונים מתקדמים לשיפור טכניקה, מהירות וסיבולת לקראת תחרויות.",
-        price: 220,
-        category: "Training",
-        targetAudience: "Teens",
-        level: "Professional",
-        image:
-            "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=800&q=80",
+    createdBy: "64f000000000000000000002",
+    createdByModel: "Instructor",
+  },
 
-        maxParticipants: 8,
-        currentParticipants: 6,
+  {
+    _id: "3",
+    title: "אימון שחייה תחרותית לנוער",
+    description: "אימונים מתקדמים לשיפור טכניקה, מהירות וסיבולת לקראת תחרויות.",
+    price: 220,
+    category: "Training",
+    targetAudience: "Teens",
+    level: "Professional",
+    image:
+      "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=800&q=80",
 
-        status: "Active",
+    maxParticipants: 8,
+    currentParticipants: 6,
 
-        durationWeeks: 12,
-        sessionsCount: 24,
+    status: "Active",
 
-        location: {
-            poolName: "בריכת וינגייט",
-            city: "נתניה",
-        },
+    durationWeeks: 12,
+    sessionsCount: 24,
 
-        createdBy: "64f000000000000000000003",
-        createdByModel: "School",
+    location: {
+      poolName: "בריכת וינגייט",
+      city: "נתניה",
     },
 
-    {
-        _id: "4",
-        title: "שחייה לגיל הזהב",
-        description:
-            "קורס מותאם לגיל השלישי לשיפור סיבולת לב-ריאה ותנועתיות.",
-        price: 130,
-        category: "Therapy",
-        targetAudience: "Seniors",
-        level: "Beginner",
-        image:
-            "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80",
+    createdBy: "64f000000000000000000003",
+    createdByModel: "School",
+  },
 
-        maxParticipants: 10,
-        currentParticipants: 7,
+  {
+    _id: "4",
+    title: "שחייה לגיל הזהב",
+    description: "קורס מותאם לגיל השלישי לשיפור סיבולת לב-ריאה ותנועתיות.",
+    price: 130,
+    category: "Therapy",
+    targetAudience: "Seniors",
+    level: "Beginner",
+    image:
+      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80",
 
-        status: "Active",
+    maxParticipants: 10,
+    currentParticipants: 7,
 
-        durationWeeks: 6,
-        sessionsCount: 6,
+    status: "Active",
 
-        location: {
-            poolName: "בריכת העיר",
-            city: "חיפה",
-        },
+    durationWeeks: 6,
+    sessionsCount: 6,
 
-        createdBy: "64f000000000000000000004",
-        createdByModel: "Instructor",
+    location: {
+      poolName: "בריכת העיר",
+      city: "חיפה",
     },
 
-    {
-        _id: "5",
-        title: "קורס מאמנים לשחייה",
-        description:
-            "הכשרה מקצועית למאמני שחייה – תיאוריה, טכניקה וניהול קבוצות.",
-        price: 350,
-        category: "Training",
-        targetAudience: "Adults",
-        level: "Professional",
-        image:
-            "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
+    createdBy: "64f000000000000000000004",
+    createdByModel: "Instructor",
+  },
 
-        maxParticipants: 12,
-        currentParticipants: 5,
+  {
+    _id: "5",
+    title: "קורס מאמנים לשחייה",
+    description: "הכשרה מקצועית למאמני שחייה – תיאוריה, טכניקה וניהול קבוצות.",
+    price: 350,
+    category: "Training",
+    targetAudience: "Adults",
+    level: "Professional",
+    image:
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
 
-        status: "Draft",
+    maxParticipants: 12,
+    currentParticipants: 5,
 
-        durationWeeks: 16,
-        sessionsCount: 32,
+    status: "Draft",
 
-        location: {
-            poolName: "מכון וינגייט",
-            city: "נתניה",
-        },
+    durationWeeks: 16,
+    sessionsCount: 32,
 
-        createdBy: "64f000000000000000000005",
-        createdByModel: "School",
+    location: {
+      poolName: "מכון וינגייט",
+      city: "נתניה",
     },
+
+    createdBy: "64f000000000000000000005",
+    createdByModel: "School",
+  },
 ];
 
 const LEVEL_OPTIONS = [
-    { value: "", label: "כל הרמות" },
-    { value: "Beginner", label: "מתחילים" },
-    { value: "Advanced", label: "מתקדמים" },
-    { value: "Professional", label: "מקצועי" },
+  { value: "", label: "כל הרמות" },
+  { value: "Beginner", label: "מתחילים" },
+  { value: "Advanced", label: "מתקדמים" },
+  { value: "Professional", label: "מקצועי" },
 ];
 
 const AUDIENCE_OPTIONS = [
-    { value: "", label: "כל הקהלים" },
-    { value: "Children", label: "ילדים" },
-    { value: "Teens", label: "נוער" },
-    { value: "Adults", label: "מבוגרים" },
-    { value: "Seniors", label: "גיל הזהב" },
+  { value: "", label: "כל הקהלים" },
+  { value: "Children", label: "ילדים" },
+  { value: "Teens", label: "נוער" },
+  { value: "Adults", label: "מבוגרים" },
+  { value: "Seniors", label: "גיל הזהב" },
 ];
 
 const CATEGORY_OPTIONS = [
-    { value: "", label: "כל הקטגוריות" },
-    { value: "Learning", label: "למידה" },
-    { value: "Training", label: "הכשרה" },
-    { value: "Therapy", label: "טיפולי" },
-
+  { value: "", label: "כל הקטגוריות" },
+  { value: "Learning", label: "למידה" },
+  { value: "Training", label: "הכשרה" },
+  { value: "Therapy", label: "טיפולי" },
 ];
 
-
 export default function CoursesPage() {
-    const [level, setLevel] = useState("");
-    const [audience, setAudience] = useState("");
-    const [category, setCategory] = useState("");
-    const [search, setSearch] = useState("");
-    const [openFilter, setOpenFilter] = useState(null);
+  const [level, setLevel] = useState("");
+  const [audience, setAudience] = useState("");
+  const [category, setCategory] = useState("");
+  const [search, setSearch] = useState("");
+  const [openFilter, setOpenFilter] = useState(null);
 
-    const filteredCourses = mockCourses.filter(course => {
-        const matchLevel =
-            !level || course.level === level;
+  // const filteredCourses = mockCourses.filter(course => {
+  //     const matchLevel =
+  //         !level || course.level === level;
 
-        const matchAudience =
-            !audience || course.targetAudience === audience;
+  //     const matchAudience =
+  //         !audience || course.targetAudience === audience;
 
-        const matchCategory =
-            !category || course.category === category;
+  //     const matchCategory =
+  //         !category || course.category === category;
 
-        const matchSearch =
-            course.title.toLowerCase().includes(search.toLowerCase());
+  //     const matchSearch =
+  //         course.title.toLowerCase().includes(search.toLowerCase());
 
+  //     return matchLevel && matchAudience && matchCategory && matchSearch;
+  // });
 
-        return matchLevel && matchAudience && matchCategory && matchSearch;
-    });
+  //     <div className="courses-page">
 
-    // return (
-    //     <div className="courses-page">
+  //         {/* HERO */}
+  //         <section className="courses-hero">
+  //             <h1>גלו את הקורסים שלנו</h1>
+  //             <p>מגוון רחב של קורסי שחייה לכל הגילאים והרמות</p>
+  //         </section>
 
-    //         {/* HERO */}
-    //         <section className="courses-hero">
-    //             <h1>גלו את הקורסים שלנו</h1>
-    //             <p>מגוון רחב של קורסי שחייה לכל הגילאים והרמות</p>
-    //         </section>
+  //         {/* FILTERS */}
+  //         <section className="courses-filters">
 
-    //         {/* FILTERS */}
-    //         <section className="courses-filters">
+  //             <FilterDropdown
+  //                 label="כל הרמות"
+  //                 options={LEVEL_OPTIONS}
+  //                 value={level}
+  //                 isOpen={openFilter === "level"}
+  //                 onToggle={() =>
+  //                     setOpenFilter(openFilter === "level" ? null : "level")
+  //                 }
+  //                 onChange={setLevel}
+  //             />
 
-    //             <FilterDropdown
-    //                 label="כל הרמות"
-    //                 options={LEVEL_OPTIONS}
-    //                 value={level}
-    //                 isOpen={openFilter === "level"}
-    //                 onToggle={() =>
-    //                     setOpenFilter(openFilter === "level" ? null : "level")
-    //                 }
-    //                 onChange={setLevel}
-    //             />
+  //             <FilterDropdown
+  //                 label="כל הקהלים"
+  //                 options={AUDIENCE_OPTIONS}
+  //                 value={audience}
+  //                 isOpen={openFilter === "audience"}
+  //                 onToggle={() =>
+  //                     setOpenFilter(openFilter === "audience" ? null : "audience")
+  //                 }
+  //                 onChange={setAudience}
+  //             />
 
-    //             <FilterDropdown
-    //                 label="כל הקהלים"
-    //                 options={AUDIENCE_OPTIONS}
-    //                 value={audience}
-    //                 isOpen={openFilter === "audience"}
-    //                 onToggle={() =>
-    //                     setOpenFilter(openFilter === "audience" ? null : "audience")
-    //                 }
-    //                 onChange={setAudience}
-    //             />
+  //             <FilterDropdown
+  //                 label="כל הקטגוריות"
+  //                 options={CATEGORY_OPTIONS}
+  //                 value={category}
+  //                 isOpen={openFilter === "category"}
+  //                 onToggle={() =>
+  //                     setOpenFilter(openFilter === "category" ? null : "category")
+  //                 }
+  //                 onChange={setCategory}
+  //             />
 
-    //             <FilterDropdown
-    //                 label="כל הקטגוריות"
-    //                 options={CATEGORY_OPTIONS}
-    //                 value={category}
-    //                 isOpen={openFilter === "category"}
-    //                 onToggle={() =>
-    //                     setOpenFilter(openFilter === "category" ? null : "category")
-    //                 }
-    //                 onChange={setCategory}
-    //             />
+  //             <input
+  //                 type="text"
+  //                 placeholder="חיפוש קורסים..."
+  //                 value={search}
+  //                 onChange={(e) => setSearch(e.target.value)}
+  //                 onFocus={() => setOpenFilter(null)} // סוגר פילטרים
+  //             />
 
-    //             <input
-    //                 type="text"
-    //                 placeholder="חיפוש קורסים..."
-    //                 value={search}
-    //                 onChange={(e) => setSearch(e.target.value)}
-    //                 onFocus={() => setOpenFilter(null)} // סוגר פילטרים
-    //             />
+  //         </section>
 
-    //         </section>
+  //         {/* COURSES GRID */}
+  //         <section className="courses-grid-wrapper">
+  //             <div className="container">
+  //                 <CardsGrid
+  //                     items={filteredCourses}
+  //                     renderItem={(course) => (
+  //                         <CourseCard key={course._id} course={course} />
+  //                     )}
+  //                 />
+  //             </div>
+  //         </section>
 
+  //     </div>
+  // );
 
-    //         {/* COURSES GRID */}
-    //         <section className="courses-grid-wrapper">
-    //             <div className="container">
-    //                 <CardsGrid
-    //                     items={filteredCourses}
-    //                     renderItem={(course) => (
-    //                         <CourseCard key={course._id} course={course} />
-    //                     )}
-    //                 />
-    //             </div>
-    //         </section>
+  const {
+    data: courses = [],
+    isLoading,
+    isError,
+  } = useCourses({
+    level,
+    audience,
+    category,
+    search,
+  });
 
-    //     </div>
-    // );
-    return (
-        <div className="listing-page">
-            {/* HERO */}
-            <section
-                className="listing-hero"
-                style={{
-                    backgroundImage:
-                        "url(https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80)",
-                    color: "white",
-                }}
-            >
-                <h1>גלו את הקורסים שלנו</h1>
-                <p>מגוון רחב של קורסי שחייה לכל הגילאים והרמות</p>
-            </section>
+  if (isLoading) return <div>...טוען קורסים</div>;
+  if (isError) return <div>שגיאה בטעינת קורסים</div>;
 
-            {/* FILTERS */}
-            <section className="listing-filters">
-                <FilterDropdown
-                    label="כל הרמות"
-                    options={LEVEL_OPTIONS}
-                    value={level}
-                    isOpen={openFilter === "level"}
-                    onToggle={() =>
-                        setOpenFilter(openFilter === "level" ? null : "level")
-                    }
-                    onChange={setLevel}
-                />
+  return (
+    <div className="listing-page">
+      {/* HERO */}
+      <section
+        className="listing-hero"
+        style={{
+          backgroundImage:
+            "url(https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80)",
+          color: "white",
+        }}
+      >
+        <h1>גלו את הקורסים שלנו</h1>
+        <p>מגוון רחב של קורסי שחייה לכל הגילאים והרמות</p>
+      </section>
 
-                <FilterDropdown
-                    label="כל הקהלים"
-                    options={AUDIENCE_OPTIONS}
-                    value={audience}
-                    isOpen={openFilter === "audience"}
-                    onToggle={() =>
-                        setOpenFilter(openFilter === "audience" ? null : "audience")
-                    }
-                    onChange={setAudience}
-                />
+      {/* FILTERS */}
+      <section className="listing-filters">
+        <FilterDropdown
+          label="כל הרמות"
+          options={LEVEL_OPTIONS}
+          value={level}
+          isOpen={openFilter === "level"}
+          onToggle={() =>
+            setOpenFilter(openFilter === "level" ? null : "level")
+          }
+          onChange={setLevel}
+        />
 
-                <FilterDropdown
-                    label="כל הקטגוריות"
-                    options={CATEGORY_OPTIONS}
-                    value={category}
-                    isOpen={openFilter === "category"}
-                    onToggle={() =>
-                        setOpenFilter(openFilter === "category" ? null : "category")
-                    }
-                    onChange={setCategory}
-                />
+        <FilterDropdown
+          label="כל הקהלים"
+          options={AUDIENCE_OPTIONS}
+          value={audience}
+          isOpen={openFilter === "audience"}
+          onToggle={() =>
+            setOpenFilter(openFilter === "audience" ? null : "audience")
+          }
+          onChange={setAudience}
+        />
 
-                <input
-                    type="text"
-                    placeholder="חיפוש קורסים..."
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    onFocus={() => setOpenFilter(null)}
-                />
-            </section>
+        <FilterDropdown
+          label="כל הקטגוריות"
+          options={CATEGORY_OPTIONS}
+          value={category}
+          isOpen={openFilter === "category"}
+          onToggle={() =>
+            setOpenFilter(openFilter === "category" ? null : "category")
+          }
+          onChange={setCategory}
+        />
 
-            {/* GRID */}
-            <section className="listing-grid">
-                <CardsGrid
-                    items={filteredCourses}
-                    renderItem={(course) => (
-                        <CourseCard key={course._id} course={course} />
-                    )}
-                />
-            </section>
-        </div>
-    );
+        <input
+          type="text"
+          placeholder="חיפוש קורסים..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          onFocus={() => setOpenFilter(null)}
+        />
+      </section>
 
+      {/* GRID */}
+      <section className="listing-grid">
+        <CardsGrid
+          items={courses}
+          renderItem={(course) => (
+            <CourseCard key={course._id} course={course} />
+          )}
+        />
+      </section>
+    </div>
+  );
 }
