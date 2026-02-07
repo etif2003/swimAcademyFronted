@@ -34,8 +34,8 @@ const InstructorCard = ({ instructor }) => {
         {/* RATING */}
         {instructor.rating > 0 && (
           <div className="instructor-rating">
-            {instructor.rating.toFixed(1)}
             <Star size={14} />
+            {instructor.rating.toFixed(1)}
           </div>
         )}
       </div>
@@ -47,8 +47,7 @@ const InstructorCard = ({ instructor }) => {
         </Link>
 
         <div className="instructor-price">
-          <span> / שיעור </span>
-          ₪{instructor.hourlyRate}
+          <span> / שיעור </span>₪{instructor.hourlyRate}
         </div>
       </div>
     </div>
