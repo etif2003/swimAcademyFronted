@@ -1,7 +1,13 @@
+import { useState } from "react";
+import DashboardTabs from "../DashboardTabs";
+import { DASHBOARD_TABS_BY_ROLE } from "../dashboardTabs.config";
 import InstructorProfileCard from "./InstructorProfileCard";
 
 export default function InstructorDashboard() {
-  // mock data – יוחלף ב-API
+  const [activeTab, setActiveTab] = useState("profile");
+
+  const tabs = DASHBOARD_TABS_BY_ROLE.instructor;
+
   const instructor = {
     fullName: "אורי לוי",
     phone: "050-1234567",
@@ -15,8 +21,28 @@ export default function InstructorDashboard() {
   };
 
   return (
-    <section>
-      <InstructorProfileCard instructor={instructor} />
-    </section>
+    <>
+      <DashboardTabs
+        tabs={tabs}
+        activeTab={activeTab}
+        onChange={setActiveTab}
+      />
+
+      {activeTab === "profile" && (
+        <InstructorProfileCard instructor={instructor} />
+      )}
+
+      {activeTab === "courses" && (
+        <div className="profile-card">
+          הקורסים של המדריך
+        </div>
+      )}
+
+      {activeTab === "settings" && (
+        <div className="profile-card">
+          הגדרות חשבון
+        </div>
+      )}
+    </>
   );
 }

@@ -4,6 +4,7 @@ import SchoolDashboard from "./school/SchoolDashboard";
 import StudentDashboard from "./student/StudentDashboard";
 
 export default function ProfileRouter({ role }) {
+
   switch (role) {
     case "Instructor":
       return <InstructorDashboard />;

@@ -4,7 +4,7 @@ import ProfileRouter from "../components/dashboard/ProfileRouter";
 export default function ProfilePage() {
   // זמני – עד חיבור API
   const mockUser = {
-    role: "Instructor", // שנה ל-School / Student כדי לבדוק
+    role: "Student", // שנה ל-School / Student כדי לבדוק
   };
 
   return (

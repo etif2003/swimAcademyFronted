@@ -4,7 +4,7 @@ export default function DashboardLayout({ children }) {
   return (
     <div className="dashboard">
       <header className="dashboard-header">
-        <h1>האזור האישי</h1>
+        <h1>האזור האישי שלי</h1>
       </header>
 
       <main className="dashboard-content">

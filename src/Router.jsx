@@ -6,13 +6,10 @@ import InstructorPage from "./pages/InstructorPage";
 import SchoolPage from "./pages/SchoolPage";
 import SingleSchoolPage from "./pages/SingleSchoolPage";
 
-
 import App from "./App";
 import ProfilePage from "./pages/ProfilePage";
 
-
 export const Router = () => {
-
   const router = createBrowserRouter([
     // עמוד התחברות – בלי Layout
     {
@@ -40,15 +37,15 @@ export const Router = () => {
           path: "/schools",
           element: <SchoolPage />,
         },
-<<<<<<< HEAD
-          {
+
+        {
           path: "/dashboard",
           element: <ProfilePage />,
-=======
-               {
+        },
+
+        {
           path: "/school/:id",
           element: <SingleSchoolPage />,
->>>>>>> 2869dc01f84e226f110f765fdbf328c799735e15
         },
       ],
     },
