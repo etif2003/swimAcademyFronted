@@ -4,6 +4,8 @@ import AuthPage from "./pages/AuthPage";
 import CoursesPage from "./pages/CoursesPage";
 import InstructorPage from "./pages/InstructorPage";
 import SchoolPage from "./pages/SchoolPage";
+import SingleSchoolPage from "./pages/SingleSchoolPage";
+
 
 import App from "./App";
 import ProfilePage from "./pages/ProfilePage";

@@ -5,7 +5,9 @@
     direction: rtl;
     background: #F8FAFC;
     min-height: 100vh;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont;
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+    /* font-family: system-ui, -apple-system, BlinkMacSystemFont; */
 }
 
 /* =========================
