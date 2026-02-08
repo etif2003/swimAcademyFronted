@@ -6,6 +6,7 @@ import InstructorPage from "./pages/InstructorPage";
 import SchoolPage from "./pages/SchoolPage";
 
 import App from "./App";
+import ProfilePage from "./pages/ProfilePage";
 
 
 export const Router = () => {
@@ -36,6 +37,10 @@ export const Router = () => {
         {
           path: "/schools",
           element: <SchoolPage />,
+        },
+          {
+          path: "/dashboard",
+          element: <ProfilePage />,
         },
       ],
     },
