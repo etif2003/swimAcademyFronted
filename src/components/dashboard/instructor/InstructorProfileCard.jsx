@@ -1,9 +1,20 @@
 import { useState, useRef } from "react";
 import "../../../styles/InstructorProfile.css";
 import { AREAS } from "../../../constants/areas";
+import DashboardTabs from "../DashboardTabs";
+import { User, BookOpen, Settings, Users, Plus, Edit2, Award } from "lucide-react";
+
 
 export default function InstructorProfileCard({ instructor }) {
   const fileInputRef = useRef(null);
+
+  const [activeTab, setActiveTab] = useState("profile");
+const tabs = [
+  { key: "profile", label: "פרופיל מדריך", icon: <User size={16} /> },
+  { key: "courses", label: "הקורסים שלי", icon: <BookOpen size={16} /> },
+  { key: "settings", label: "הגדרות", icon: <Settings size={16} /> },
+];
+
 
   // placeholder פשוט
   const [imagePreview, setImagePreview] = useState(
@@ -29,12 +40,11 @@ export default function InstructorProfileCard({ instructor }) {
     setForm({ ...form, [key]: value });
   };
 
-  // פתיחת בוחר קבצים
+  // תמונה
   const openFilePicker = () => {
     fileInputRef.current.click();
   };
 
-  // בחירת תמונה + preview
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -63,133 +73,171 @@ export default function InstructorProfileCard({ instructor }) {
   };
 
   return (
-    <div className="profile-wrapper">
-      <div className="profile-card">
-        {/* HEADER */}
-        <div className="profile-header">
-          <div className="avatar-wrapper">
-            <img src={imagePreview} alt="תמונת פרופיל" />
+    <>
+      {/* TABS */}
+      <DashboardTabs
+        tabs={tabs}
+        activeTab={activeTab}
+        onChange={setActiveTab}
+      />
 
-            <button
-              type="button"
-              className="edit-avatar"
-              onClick={openFilePicker}
-            >
-              ✎
-            </button>
+      <div className="profile-wrapper">
+        {/* PROFILE TAB */}
+        {activeTab === "profile" && (
+          <div className="profile-card">
+            {/* HEADER */}
+            <div className="profile-header">
+              <div className="avatar-wrapper">
+                <img src={imagePreview} alt="תמונת פרופיל" />
 
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-              style={{ display: "none" }}
-            />
-          </div>
-
-          <div className="profile-info">
-            <h2>{form.fullName}</h2>
-            <span className="subtitle">מדריך מוסמך</span>
-          </div>
-        </div>
-
-        {/* FORM */}
-        <div className="profile-form-grid">
-          <Field label="שם מלא">
-            <input
-              value={form.fullName}
-              onChange={(e) =>
-                update("fullName", e.target.value)
-              }
-            />
-          </Field>
-
-          <Field label="טלפון">
-            <input
-              value={form.phone}
-              onChange={(e) =>
-                update("phone", e.target.value)
-              }
-            />
-          </Field>
-
-          <Field label="אזור">
-            <select
-              value={form.workArea}
-              onChange={(e) =>
-                update("workArea", e.target.value)
-              }
-            >
-              <option value="">בחר אזור</option>
-              {AREAS.map((area) => (
-                <option key={area} value={area}>
-                  {area}
-                </option>
-              ))}
-            </select>
-          </Field>
-
-          <Field label="שנות ניסיון">
-            <input
-              type="number"
-              value={form.experienceYears}
-              onChange={(e) =>
-                update("experienceYears", e.target.value)
-              }
-            />
-          </Field>
-
-          <Field label="מחיר לשעה (₪)">
-            <input
-              type="number"
-              value={form.hourlyRate}
-              onChange={(e) =>
-                update("hourlyRate", e.target.value)
-              }
-            />
-          </Field>
-        </div>
-
-        {/* CERTIFICATES */}
-        <div className="profile-certificates">
-          <span className="section-title">תעודות והסמכות</span>
-
-          <div className="cert-list">
-            {certificates.map((c, i) => (
-              <span key={i} className="cert-chip">
-                {c}
                 <button
-                  className="remove-cert"
-                  onClick={() => removeCertificate(i)}
+                  type="button"
+                  className="edit-avatar"
+                  onClick={openFilePicker}
                 >
-                  ×
+                   <Edit2 size={16} />
+
                 </button>
+
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  style={{ display: "none" }}
+                />
+              </div>
+
+              <div className="profile-info">
+                <h2>{form.fullName}</h2>
+<span className="subtitle certified">
+  
+  מדריך מוסמך
+  <Award size={14} />
+</span>
+
+              </div>
+            </div>
+
+            {/* FORM */}
+            <div className="profile-form-grid">
+              <Field label="שם מלא">
+                <input
+                  value={form.fullName}
+                  onChange={(e) =>
+                    update("fullName", e.target.value)
+                  }
+                />
+              </Field>
+
+              <Field label="טלפון">
+                <input
+                  value={form.phone}
+                  onChange={(e) =>
+                    update("phone", e.target.value)
+                  }
+                />
+              </Field>
+
+              <Field label="אזור">
+                <select
+                  value={form.workArea}
+                  onChange={(e) =>
+                    update("workArea", e.target.value)
+                  }
+                >
+                  <option value="">בחר אזור</option>
+                  {AREAS.map((area) => (
+                    <option key={area} value={area}>
+                      {area}
+                    </option>
+                  ))}
+                </select>
+              </Field>
+
+              <Field label="שנות ניסיון">
+                <input
+                  type="number"
+                  value={form.experienceYears}
+                  onChange={(e) =>
+                    update("experienceYears", e.target.value)
+                  }
+                />
+              </Field>
+
+              <Field label="מחיר לשעה (₪)">
+                <input
+                  type="number"
+                  value={form.hourlyRate}
+                  onChange={(e) =>
+                    update("hourlyRate", e.target.value)
+                  }
+                />
+              </Field>
+            </div>
+
+            {/* CERTIFICATES */}
+            <div className="profile-certificates">
+              <span className="section-title">
+                תעודות והסמכות
               </span>
-            ))}
-          </div>
 
-          <div className="cert-add">
-            <input
-              placeholder="הוסף תעודה"
-              value={newCert}
-              onChange={(e) =>
-                setNewCert(e.target.value)
-              }
-            />
-            <button onClick={addCertificate}>
-              הוסף
-            </button>
-          </div>
-        </div>
+              <div className="cert-list">
+                {certificates.map((c, i) => (
+                  <span key={i} className="cert-chip">
+                    {c}
+                    <button
+                      className="remove-cert"
+                      onClick={() =>
+                        removeCertificate(i)
+                      }
+                    >
+                      ×
+                    </button>
+                  </span>
+                ))}
+              </div>
 
-        {/* ACTION */}
-        <div className="profile-actions">
-          <button className="save-btn">
-            שמירת שינויים
-          </button>
-        </div>
+              <div className="cert-add">
+                <input
+                  placeholder="הוסף תעודה"
+                  value={newCert}
+                  onChange={(e) =>
+                    setNewCert(e.target.value)
+                  }
+                />
+                <button onClick={addCertificate}>
+                  הוסף
+                </button>
+              </div>
+            </div>
+
+            {/* ACTION */}
+            <div className="profile-actions">
+              <button className="save-btn">
+                שמירת שינויים
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* COURSES TAB */}
+        {activeTab === "courses" && (
+          <div className="profile-card">
+            <h3>הקורסים שלי</h3>
+            <p>כאן יוצגו הקורסים של המדריך</p>
+          </div>
+        )}
+
+        {/* SETTINGS TAB */}
+        {activeTab === "settings" && (
+          <div className="profile-card">
+            <h3>הגדרות</h3>
+            <p>כאן יהיו הגדרות חשבון</p>
+          </div>
+        )}
       </div>
-    </div>
+    </>
   );
 }
 

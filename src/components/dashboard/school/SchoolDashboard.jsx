@@ -1,3 +1,4 @@
+// components/dashboard/school/SchoolDashboard.jsx
 export default function SchoolDashboard() {
   return (
     <section>

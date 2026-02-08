@@ -4,7 +4,6 @@
   display: flex;
   justify-content: center;
   padding: 32px;
-  background: #f6f9fc; /* 👈 רקע אפור בהיר */
 }
 
 /* CARD */
@@ -13,11 +12,23 @@
   border-radius: 18px;
   padding: 32px;
 
-  width: 100%;
+  width: 75%;
   max-width: 180vh;
 
   border: 1px solid #e6eaf0;       /* 👈 הבורדר */
   box-shadow: 0 8px 24px rgba(0,0,0,0.04); /* 👈 צל עדין */
+}
+.subtitle.certified {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  color: #6b7280; /* אפור עדין */
+  font-size: 14px;
+}
+
+.subtitle.certified svg {
+  display: block;
 }
 
 
@@ -58,15 +69,21 @@
   position: absolute;
   bottom: 0;
   right: 0;
+
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  border: none;
-  background: #12b5d0;
-  color: #fff;
-  cursor: pointer;
-  font-size: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;              /* 👈 חשוב */
 }
+.edit-avatar svg {
+  display: block;          /* 👈 מבטל inline behavior */
+}
+
 
 /* FORM GRID */
 .profile-form-grid {
@@ -145,7 +162,9 @@
 /* ACTIONS */
 .profile-actions {
   margin-top: 32px;
+  padding-top: 25px;
   text-align: right;
+   border-top: 1px solid #e5e7eb;
 }
 
 .save-btn {

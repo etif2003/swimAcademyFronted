@@ -1,0 +1,62 @@
+/* ===== TABS CONTAINER ===== */
+.tabs-wrapper {
+  direction: rtl;
+  display: inline-flex;
+  gap: 4px;
+height: 35px;
+  background-color: #f1f4f6;
+  padding: 6px;
+  border-radius: 10px;
+width: 71%;
+    max-width: 180vh;
+}
+
+/* ===== TAB BUTTON ===== */
+.tab-btn {
+  background: transparent;
+  border: none;              /* 👈 אין בורדר */
+  outline: none;             /* 👈 אין outline */
+  box-shadow: none;          /* 👈 אין שחור בלחיצה */
+
+  color: #4b5563;
+  padding: 8px 14px;
+  border-radius: 7px;
+
+  font-size: 14px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+/* ===== REMOVE BLACK OUTLINE ON CLICK ===== */
+.tab-btn:focus,
+.tab-btn:active {
+  outline: none;
+  box-shadow: none;
+}
+
+/* ===== ICON ===== */
+.tab-icon {
+  font-size: 16px;
+  line-height: 1;
+  display: flex;
+    padding-top: 4px;
+}
+
+/* ===== ACTIVE TAB ===== */
+.tab-btn.active {
+  background-color: #ffffff;
+  color: #111827;
+  font-weight: 600;
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== HOVER ===== */
+.tab-btn:not(.active):hover {
+  background-color: rgba(255, 255, 255, 0.6);
+}
