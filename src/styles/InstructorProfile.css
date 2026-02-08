@@ -1,0 +1,208 @@
+/* WRAPPER – RTL + CENTER */
+.profile-wrapper {
+  direction: rtl;
+  display: flex;
+  justify-content: center;
+  padding: 32px;
+  background: #f6f9fc; /* 👈 רקע אפור בהיר */
+}
+
+/* CARD */
+.profile-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 32px;
+
+  width: 100%;
+  max-width: 180vh;
+
+  border: 1px solid #e6eaf0;       /* 👈 הבורדר */
+  box-shadow: 0 8px 24px rgba(0,0,0,0.04); /* 👈 צל עדין */
+}
+
+
+/* HEADER */
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 32px;
+  gap: 30px;
+}
+
+.profile-info h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.subtitle {
+  display: block;
+  margin-top: 4px;
+  font-size: 14px;
+  color: #777;
+}
+
+/* AVATAR */
+.avatar-wrapper {
+  position: relative;
+}
+
+.avatar-wrapper img {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.edit-avatar {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: #12b5d0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* FORM GRID */
+.profile-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 32px;
+}
+
+.field.full {
+  grid-column: span 2;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: #555;
+  text-align: right;
+}
+.field input,
+.field select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+
+  background-color: #f9fafb;   /* 👈 אפור מאוד בהיר */
+  border: 1px solid #e5e7eb;   /* 👈 בורדר עדין */
+
+  font-size: 14px;
+  text-align: right;
+  color: #111827;
+
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.field input:focus,
+.field select:focus,
+.cert-add input:focus {
+    
+  outline: none;
+  background-color: #ffffff;     /* נהיה לבן בפוקוס */
+  border-color: #12b5d0;         /* צבע המותג */
+}
+
+
+/* CERTIFICATES */
+.profile-certificates {
+  margin-top: 28px;
+      display: flex;
+    flex-direction: column;
+}
+
+.section-title {
+    font-size: 17px;
+  display: flex;
+  font-weight: 700;
+  margin-bottom: 20px;
+  margin-right: 5px;
+  margin-top: 60px;
+}
+
+.cert-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cert-chip {
+  background: #e7f7fb;
+  color: #0a7a8c;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+}
+
+/* ACTIONS */
+.profile-actions {
+  margin-top: 32px;
+  text-align: right;
+}
+
+.save-btn {
+  background: #12b5d0;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 12px;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+}
+.cert-chip {
+  background: #e7f7fb;
+  color: #0a7a8c;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.remove-cert {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  color: #0a7a8c;
+}
+
+.cert-add {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+  width: 50%;
+}
+
+.cert-add input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #f9fafb;   /* 👈 אפור מאוד בהיר */
+  border: 1px solid #e5e7eb;   /* 👈 בורדר עדין */
+
+  font-size: 14px;
+  text-align: right;
+  color: #111827;
+
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.cert-add button {
+  background: #12b5d0;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0 16px;
+  cursor: pointer;
+}
