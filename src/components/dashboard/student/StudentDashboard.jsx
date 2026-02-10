@@ -2,6 +2,7 @@ import { useState } from "react";
 import DashboardTabs from "../DashboardTabs";
 import { DASHBOARD_TABS_BY_ROLE } from "../dashboardTabs.config";
 import StudentProfileCard from "./StudentProfileCard";
+import ChangePassword from "../ChangePassword";
 
 export default function StudentDashboard() {
   const [activeTab, setActiveTab] = useState("profile");
@@ -35,11 +36,10 @@ export default function StudentDashboard() {
         </div>
       )}
 
-      {activeTab === "settings" && (
-        <div className="profile-card">
-          הגדרות חשבון
-        </div>
-      )}
+        {activeTab === "settings" && (
+                  <ChangePassword/>       
+              
+            )}
     </>
   );
 }

@@ -1,0 +1,158 @@
+/* container כללי של עמוד ההגדרות */
+.settings-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 50px;
+  margin-top: 62px;
+  margin-bottom: 30px;
+  width: 120vh;
+  max-width: 180vh;
+
+  border: 1px solid #e6eaf0; /* 👈 הבורדר */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04); /* 👈 צל עדין */
+  text-align: right;
+  direction: rtl;
+}
+
+/* כותרת */
+.settings-card h2 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #0f172a;
+}
+
+/* טופס */
+.settings-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* קבוצה של label + input */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 14px;
+  color: #475569;
+}
+
+/* שדות קלט */
+.form-group input {
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  font-size: 14px;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.form-group input::placeholder {
+  color: #94a3b8;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+}
+
+/* הודעות */
+.error-text {
+  color: #dc2626;
+  font-size: 14px;
+}
+
+.success-text {
+  color: #16a34a;
+  font-size: 14px;
+}
+
+/* כפתור עדכון */
+.settings-card button[type="submit"] {
+  align-self: flex-start;
+  height: 42px;
+  padding: 0 22px;
+  border-radius: 10px;
+  border: none;
+  background: #12b5d0;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    opacity 0.2s;
+}
+
+.settings-card button[type="submit"]:hover {
+  background: #12b5d0;
+}
+
+.settings-card button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* קו הפרדה (אם תרצי כמו בתמונה) */
+.settings-divider {
+  margin: 28px 0;
+  height: 1px;
+  background: #e5e7eb;
+}
+
+/* כפתור התנתקות */
+.logout-button {
+  align-self: flex-end;
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 10px;
+  border: none;
+  background: #ef4444;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.logout-button:hover {
+  background: #dc2626;
+}
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+
+  background-color: #f9fafb; /* 👈 אפור מאוד בהיר */
+  border: 1px solid #e5e7eb; /* 👈 בורדר עדין */
+
+  font-size: 14px;
+  text-align: right;
+  color: #111827;
+
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+}
+
+.form-group input:focus {
+  outline: none;
+  background-color: #ffffff; /* נהיה לבן בפוקוס */
+  border-color: #12b5d0; /* צבע המותג */
+}
+/* שורה של 2 שדות */
+.password-row {
+  display: flex;
+  gap: 20px;
+}
+
+/* כל שדה תופס חצי */
+.password-row .form-group {
+  flex: 1;
+}

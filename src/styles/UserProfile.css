@@ -11,8 +11,9 @@
   background: #ffffff;
   border-radius: 18px;
   padding: 32px;
-
-  width: 75%;
+margin-top: 30px;
+margin-bottom: 30px;
+  width: 120vh;
   max-width: 180vh;
 
   border: 1px solid #e6eaf0;       /* 👈 הבורדר */

@@ -3,6 +3,7 @@ import DashboardTabs from "../DashboardTabs";
 import { DASHBOARD_TABS_BY_ROLE } from "../dashboardTabs.config";
 
 import SchoolProfileCard from "./SchoolProfileCard";
+import ChangePassword from "../ChangePassword";
 
 export default function SchoolDashboard() {
   const [activeTab, setActiveTab] = useState("profile");
@@ -50,11 +51,10 @@ export default function SchoolDashboard() {
         </div>
       )}
 
-      {activeTab === "settings" && (
-        <div className="profile-card">
-          הגדרות בית ספר
-        </div>
-      )}
+       {activeTab === "settings" && (
+                 <ChangePassword/>       
+             
+           )}
     </>
   );
 }
