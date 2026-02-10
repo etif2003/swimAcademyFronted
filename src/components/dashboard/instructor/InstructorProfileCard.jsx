@@ -1,31 +1,87 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import "../../../styles/UserProfile.css";
+import "../../../styles/validations-errors.css";
+import "../../../styles/success.css";
+
+
 import { AREAS } from "../../../constants/areas";
 import { Edit2, Award } from "lucide-react";
+import {
+  fetchInstructorByUser,
+  createInstructor,
+  updateInstructor,
+} from "../../../api/instructors-functions";
+import { useAuth } from "../../../context/AuthContext";
+import { validateInstructorForm } from "../../../utils/validators/validateInstructorForm";
 
-export default function InstructorProfileCard({ instructor }) {
+export default function InstructorProfileCard() {
+  const { user } = useAuth();
+  const userId = user?.id;
+
   const fileInputRef = useRef(null);
 
+  const [instructor, setInstructor] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [errors, setErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState("");
+
   const [imagePreview, setImagePreview] = useState(
-    instructor.image ||
-      "https://ui-avatars.com/api/?name=Instructor&background=0BBBD6&color=fff&size=200",
+    "https://ui-avatars.com/api/?name=Instructor&background=0BBBD6&color=fff&size=200",
   );
 
-  const [certificates, setCertificates] = useState(
-    instructor.certificates || []
-  );
+  const [certificates, setCertificates] = useState([]);
   const [newCert, setNewCert] = useState("");
 
   const [form, setForm] = useState({
-    fullName: instructor.fullName || "",
-    phone: instructor.phone || "",
-    workArea: instructor.workArea || "",
-    experienceYears: instructor.experienceYears || "",
-    hourlyRate: instructor.hourlyRate || "",
+    fullName: "",
+    phone: "",
+    workArea: "",
+    experienceYears: "",
+    hourlyRate: "",
   });
 
+  /* ===== LOAD INSTRUCTOR ===== */
+  useEffect(() => {
+    if (!userId) {
+      setLoading(false);
+      return;
+    }
+
+    const loadInstructor = async () => {
+      try {
+        const data = await fetchInstructorByUser(userId);
+
+        if (data) {
+          setInstructor(data);
+          setForm({
+            fullName: data.fullName || "",
+            phone: data.phone || "",
+            workArea: data.workArea || "",
+            experienceYears: data.experienceYears ?? "",
+            hourlyRate: data.hourlyRate ?? "",
+          });
+          setCertificates(data.certificates || []);
+          if (data.image) setImagePreview(data.image);
+        } else {
+          setInstructor(null); // יצירה ראשונה
+        }
+      } catch (err) {
+        console.error("Failed to load instructor:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadInstructor();
+  }, [userId]);
+
+  /* ===== FORM UPDATE ===== */
   const update = (key, value) => {
-    setForm({ ...form, [key]: value });
+    setForm((prev) => ({ ...prev, [key]: value }));
+    setErrors((prev) => ({ ...prev, [key]: undefined }));
+     if (successMessage) {
+    setSuccessMessage("");
+  }
   };
 
   /* ===== Image Upload ===== */
@@ -50,13 +106,52 @@ export default function InstructorProfileCard({ instructor }) {
   /* ===== Certificates ===== */
   const addCertificate = () => {
     if (!newCert.trim()) return;
-    setCertificates([...certificates, newCert.trim()]);
+    setCertificates((prev) => [...prev, newCert.trim()]);
     setNewCert("");
   };
 
   const removeCertificate = (index) => {
-    setCertificates(certificates.filter((_, i) => i !== index));
+    setCertificates((prev) => prev.filter((_, i) => i !== index));
   };
+
+  /* ===== SAVE ===== */
+  const handleSave = async () => {
+    const validationErrors = validateInstructorForm(form);
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    setErrors({});
+
+    const payload = {
+      ...form,
+      certificates,
+      image: imagePreview,
+      userId,
+      status: "Active",
+    };
+
+    try {
+      if (!instructor) {
+        const created = await createInstructor(payload);
+        setInstructor(created);
+      } else {
+        const updated = await updateInstructor(instructor._id, payload);
+        setInstructor(updated);
+      }
+
+      setSuccessMessage("הפרופיל נשמר בהצלחה 🎉");
+    } catch (err) {
+      alert(err.message || "שגיאה בשמירת הפרופיל");
+    }
+  };
+
+  /* ===== RENDER ===== */
+  if (loading) {
+    return <p>טוען פרופיל...</p>;
+  }
 
   return (
     <div className="profile-wrapper">
@@ -85,10 +180,9 @@ export default function InstructorProfileCard({ instructor }) {
           </div>
 
           <div className="profile-info">
-            <h2>{form.fullName}</h2>
+            <h2>{form.fullName || "שם המדריך"}</h2>
             <span className="subtitle certified">
-              מדריך מוסמך
-              <Award size={14} />
+              מדריך מוסמך <Award size={14} />
             </span>
           </div>
         </div>
@@ -98,27 +192,27 @@ export default function InstructorProfileCard({ instructor }) {
           <Field label="שם מלא">
             <input
               value={form.fullName}
-              onChange={(e) =>
-                update("fullName", e.target.value)
-              }
+              onChange={(e) => update("fullName", e.target.value)}
             />
+            {errors.fullName && (
+              <span className="field-error">{errors.fullName}</span>
+            )}
           </Field>
 
           <Field label="טלפון">
             <input
               value={form.phone}
-              onChange={(e) =>
-                update("phone", e.target.value)
-              }
+              onChange={(e) => update("phone", e.target.value)}
             />
+            {errors.phone && (
+              <span className="field-error">{errors.phone}</span>
+            )}
           </Field>
 
           <Field label="אזור">
             <select
               value={form.workArea}
-              onChange={(e) =>
-                update("workArea", e.target.value)
-              }
+              onChange={(e) => update("workArea", e.target.value)}
             >
               <option value="">בחר אזור</option>
               {AREAS.map((area) => (
@@ -127,34 +221,37 @@ export default function InstructorProfileCard({ instructor }) {
                 </option>
               ))}
             </select>
+            {errors.workArea && (
+              <span className="field-error">{errors.workArea}</span>
+            )}
           </Field>
 
           <Field label="שנות ניסיון">
             <input
               type="number"
               value={form.experienceYears}
-              onChange={(e) =>
-                update("experienceYears", e.target.value)
-              }
+              onChange={(e) => update("experienceYears", e.target.value)}
             />
+            {errors.experienceYears && (
+              <span className="field-error">{errors.experienceYears}</span>
+            )}
           </Field>
 
           <Field label="מחיר לשעה (₪)">
             <input
               type="number"
               value={form.hourlyRate}
-              onChange={(e) =>
-                update("hourlyRate", e.target.value)
-              }
+              onChange={(e) => update("hourlyRate", e.target.value)}
             />
+            {errors.hourlyRate && (
+              <span className="field-error">{errors.hourlyRate}</span>
+            )}
           </Field>
         </div>
 
         {/* CERTIFICATES */}
         <div className="profile-certificates">
-          <span className="section-title">
-            תעודות והסמכות
-          </span>
+          <span className="section-title">תעודות והסמכות</span>
 
           <div className="cert-list">
             {certificates.map((c, i) => (
@@ -174,21 +271,20 @@ export default function InstructorProfileCard({ instructor }) {
             <input
               placeholder="הוסף תעודה"
               value={newCert}
-              onChange={(e) =>
-                setNewCert(e.target.value)
-              }
+              onChange={(e) => setNewCert(e.target.value)}
             />
-            <button onClick={addCertificate}>
-              הוסף
-            </button>
+            <button onClick={addCertificate}>הוסף</button>
           </div>
         </div>
 
         {/* ACTION */}
         <div className="profile-actions">
-          <button className="save-btn">
-            שמירת שינויים
+          <button className="save-btn" onClick={handleSave}>
+            {instructor ? "שמירת שינויים" : "יצירת פרופיל"}
           </button>
+          {successMessage && (
+            <div className="success-message">{successMessage}</div>
+          )}
         </div>
       </div>
     </div>

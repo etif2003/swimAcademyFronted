@@ -5,3 +5,6 @@ export const AREAS = [
   "שרון",
   "ירושלים",
 ];
+
+
+

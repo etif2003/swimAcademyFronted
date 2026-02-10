@@ -1,0 +1,39 @@
+/* ===== Validation Errors ===== */
+
+.field-error {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #d64545;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1.3;
+}
+
+.field-error::before {
+  content: "⚠";
+  font-size: 13px;
+}
+
+/* highlight input/select with error */
+.field input.error,
+.field select.error {
+  border-color: #d64545;
+  background-color: #fff6f6;
+}
+
+/* smooth appearance */
+.field-error {
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

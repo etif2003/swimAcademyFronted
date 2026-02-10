@@ -1,0 +1,32 @@
+/* ===== Success Message ===== */
+
+.success-message {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background-color: #e9f8f0;
+  color: #1e7f4f;
+  border: 1px solid #b7ebcd;
+  border-radius: 8px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: successFadeIn 0.25s ease-out;
+}
+
+.success-message::before {
+  content: "✔";
+  font-size: 16px;
+}
+
+/* animation */
+@keyframes successFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
