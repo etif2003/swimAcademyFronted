@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import SinglePageSummary from "../components/SinglePage/SinglePageSummary";
-import ContactCard from "../components/SinglePage/ContactCard";
+import SchoolContactActionCard from "../components/schools/SchoolContactActionCard";
+
 import SinglePageHero from "../components/SinglePage/SinglePageHero";
 import "../styles/SingleSchoolPage.css";
 import { SchoolNavSection } from "../components/schools/SchoolNavSection";
@@ -127,7 +128,7 @@ const mockSchools = [
     },
 ];
 
-export default function SinglePageSchool() {
+export default function SingleSchoolPage() {
     const { id } = useParams();
 
     const school = mockSchools.find((s) => s._id === id);
@@ -153,6 +154,7 @@ export default function SinglePageSchool() {
                         {/* RIGHT */}
                         <section className="singleSchoolBody">
                             <SinglePageSummary
+                                type={"School"}
                                 name={school.name}
                                 logo={school.logo}
                                 description={school.description}
@@ -181,7 +183,7 @@ export default function SinglePageSchool() {
 
                         {/* LEFT */}
                         <div className="singleSchoolSide">
-                            <ContactCard
+                            <SchoolContactActionCard
                                 contactName={school.contactName}
                                 phone={school.contactPhone}
                                 email={school.contactEmail}

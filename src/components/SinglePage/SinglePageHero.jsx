@@ -10,7 +10,7 @@ export default function SinglePageHero({ image, backTo, backText }) {
     <section
       className="singleHero"
       style={{ backgroundImage: `url(${image || fallback})` }}
-      aria-label="School hero"
+      aria-label="Singel page hero"
     >
       <div className="singleHero__overlay" />
       <div className="singleHero__inner">

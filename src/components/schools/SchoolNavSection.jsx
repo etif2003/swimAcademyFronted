@@ -19,11 +19,9 @@ export function SchoolNavSection({
 
   return (
     <Link className="singleSchoolNavCard" to={to}>
-      <>
         {Icon}
         {Text}
         {Arrow}
-      </>
     </Link>
   );
 }

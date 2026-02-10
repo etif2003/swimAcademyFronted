@@ -8,6 +8,7 @@ import SingleSchoolPage from "./pages/SingleSchoolPage";
 
 import App from "./App";
 import ProfilePage from "./pages/ProfilePage";
+import SingleInstructorPage from "./pages/SingleInstructorPage";
 
 export const Router = () => {
   const router = createBrowserRouter([
@@ -46,6 +47,11 @@ export const Router = () => {
         {
           path: "/school/:id",
           element: <SingleSchoolPage />,
+        },
+
+        {
+          path: "/instructor/:id",
+          element: <SingleInstructorPage />,
         },
       ],
     },

@@ -1,21 +1,21 @@
-.singleSchoolPage {
+.singleInstructorPage {
   background: #fff;
   color: #0f172a;
 }
 
 /* חשוב: זה מה שמקבע את התוכן לרוחב כמו בתמונה */
-.singleSchoolContainer {
+.singleInstructorContainer {
   max-width: 1120px;
   margin: 0 auto;
   padding: 0 18px;
 }
 
-.singleSchoolMain {
+.singleInstructorMain {
   padding: 65px 0 60px;
 }
 
 /* זה החלק הכי קריטי: שתי עמודות, כמו בדוגמה */
-.singleSchoolGrid {
+.singleInstructorGrid {
   display: grid;
   grid-template-columns: 1fr 420px;
   /* שמאל: כרטיס קשר, ימין: תוכן */
@@ -23,24 +23,24 @@
   align-items: start;
 }
 
-.singleSchoolSide {
+.singleInstructorSide {
   padding-top: 6px;
   /* דוחף את הכרטיס מעט למטה כמו בדוגמה */
 }
 
-.singleSchoolBody {
+.singleInstructorBody {
   padding-top: 2px;
 }
 
 /* שני כרטיסי הניווט */
-.singleSchoolNavRow {
+.singleInstructorNavRow {
   margin-top: 22px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
 }
 
-.singleSchoolNavCard {
+.singleInstructorNavCard {
   background: #fff;
   border: 1px solid #e6eef6;
   border-radius: 18px;
@@ -55,29 +55,29 @@
   box-shadow: 0 10px 24px rgba(2, 18, 40, 0.05);
 }
 
-.singleSchoolNavCard:hover {
+.singleInstructorNavCard:hover {
   border-color: #cfe7ef;
   transform: translateY(-1px);
   transition: 160ms ease;
 }
 
-.singleSchoolNavArrow {
+.singleInstructorNavArrow {
   color: #94a3b8;
   font-size: 23px;
 }
 
-.singleSchoolNavText {
+.singleInstructorNavText {
   flex: 1;
 }
 
 
-.singleSchoolNavSub {
+.singleInstructorNavSub {
   margin-top: 4px;
   color: #64748b;
   font-size: 13px;
 }
 
-.singleSchoolNavIcon {
+.singleInstructorNavIcon {
   width: 42px;
   height: 42px;
   border-radius: 14px;
@@ -92,11 +92,11 @@
 
 /* רספונסיביות */
 @media (max-width: 980px) {
-  .singleSchoolGrid {
+  .singleInstructorGrid {
     grid-template-columns: 1fr;
   }
 
-  .singleSchoolNavRow {
+  .singleInstructorNavRow {
     grid-template-columns: 1fr;
   }
 
