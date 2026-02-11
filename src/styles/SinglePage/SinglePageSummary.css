@@ -23,9 +23,8 @@
     margin-top: 10px;
     display: flex;
     align-items: center;
-    gap: 10px;
-    color: #4FC3F7;
-
+    gap: 7px;
+    padding-right: 2px;
 }
 
 .singlePageSummary__address {

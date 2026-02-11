@@ -63,6 +63,7 @@
     margin-top: 14px;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     color: #0f172a;
     text-decoration: none;

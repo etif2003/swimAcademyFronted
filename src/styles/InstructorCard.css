@@ -11,6 +11,13 @@
     box-shadow 0.25s ease;
 }
 
+.instructor-card {
+  display: block;          /* קריטי */
+  text-decoration: none;   /* מוריד underline */
+  color: inherit;          /* שומר צבע טקסט */
+}
+
+
 .instructor-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);

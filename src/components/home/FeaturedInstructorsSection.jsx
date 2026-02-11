@@ -4,59 +4,124 @@ import InstructorCard from "../Instructors/InstructorCard";
 import "../../styles/FeaturedSection.css"; // 👈 אותו CSS!
 import { ArrowLeft } from "lucide-react";
 
-const mockInstructors = [
+export const mockInstructors = [
   {
     _id: "i1",
+    user: "u1",
     fullName: "יוסי אברהם",
-    location: "חיפה",
+    phone: "0501234567",
     experienceYears: 12,
+    certificates: [
+      "מדריך שחייה מוסמך",
+      "הצלה ראשונה בבריכה",
+    ],
+    workArea: "פתח תקוה",
     hourlyRate: 250,
     image: "https://randomuser.me/api/portraits/men/54.jpg",
-    rating: 4.9,
-    studentsCount: 180,
+    rating: 4.6,
+    available: true,
+    status: "Active",
   },
   {
     _id: "i2",
+    user: "u2",
     fullName: "דני כהן",
-    location: "תל אביב",
+    phone: "0529876543",
     experienceYears: 15,
-    hourlyRate: 200,
+    certificates: [
+      "מדריך שחייה מוסמך",
+      "מדריך ילדים",
+    ],
+    workArea: "תל אביב",
+    hourlyRate: 180,
     image: "https://randomuser.me/api/portraits/men/32.jpg",
-    rating: 4.8,
-    studentsCount: 240,
+    rating: 4.9,
+    available: true,
+    status: "Active",
   },
   {
     _id: "i3",
-    fullName: "רותי שמש",
-    location: "רמת גן",
-    experienceYears: 18,
-    hourlyRate: 260,
-    image: "https://randomuser.me/api/portraits/women/68.jpg",
-    rating: 5.0,
-    studentsCount: 310,
+    user: "u3",
+    fullName: "מיכל לוי",
+    phone: "0542223344",
+    experienceYears: 10,
+    certificates: [
+      "מדריכת שחייה מוסמכת",
+      "שחייה טיפולית",
+    ],
+    workArea: "רמת גן",
+    hourlyRate: 200,
+    image: "https://randomuser.me/api/portraits/women/44.jpg",
+    rating: 4.8,
+    available: true,
+    status: "Active",
   },
   {
     _id: "i4",
-    fullName: "מיכל לוי",
-    location: "הרצליה",
-    experienceYears: 9,
-    hourlyRate: 220,
-    image: "https://randomuser.me/api/portraits/women/45.jpg",
-    rating: 4.7,
-    studentsCount: 130,
+    user: "u4",
+    fullName: "שרון אמיר",
+    phone: "0537654321",
+    experienceYears: 8,
+    certificates: [
+      "מדריכת ילדים",
+    ],
+    workArea: "חיפה",
+    hourlyRate: 170,
+    image: "https://randomuser.me/api/portraits/women/65.jpg",
+    rating: 4.5,
+    available: true,
+    status: "Active",
   },
   {
     _id: "i5",
-    fullName: "אורי לוי",
-    location: "נתניה",
-    experienceYears: 7,
-    hourlyRate: 180,
-    image: "https://randomuser.me/api/portraits/men/71.jpg",
-    rating: 4.6,
-    studentsCount: 95,
+    user: "u5",
+    fullName: "אלון פרץ",
+    phone: "0509988776",
+    experienceYears: 18,
+    certificates: [
+      "מדריך בכיר",
+      "מדריך תחרותי",
+    ],
+    workArea: "פתח תקוה",
+    hourlyRate: 280,
+    image: "https://randomuser.me/api/portraits/men/76.jpg",
+    rating: 4.9,
+    available: false,
+    status: "Inactive",
+  },
+  {
+    _id: "i6",
+    user: "u6",
+    fullName: "נועה בן דוד",
+    phone: "0551239876",
+    experienceYears: 6,
+    certificates: [
+      "מדריכת מתחילים",
+    ],
+    workArea: "ירושלים",
+    hourlyRate: 160,
+    image: "https://randomuser.me/api/portraits/women/21.jpg",
+    rating: 4.4,
+    available: true,
+    status: "Active",
+  },
+  {
+    _id: "i7",
+    user: "u7",
+    fullName: "איתי רוזן",
+    phone: "0523332211",
+    experienceYears: 9,
+    certificates: [
+      "מדריך שחייה",
+    ],
+    workArea: "כפר סבא",
+    hourlyRate: 190,
+    image: "https://randomuser.me/api/portraits/men/18.jpg",
+    rating: 4.7,
+    available: true,
+    status: "Active",
   },
 ];
-
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -77,7 +142,7 @@ const itemVariants = {
 export function FeaturedInstructorsSection() {
   const popularInstructors = [...mockInstructors]
     .sort((a, b) => b.studentsCount - a.studentsCount)
-    .slice(0, 5);
+    .slice(0, 4);
 
   return (
     <section className="featured featured-light-blue">

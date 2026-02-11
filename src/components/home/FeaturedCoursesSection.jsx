@@ -92,7 +92,7 @@ const itemVariants = {
 export function FeaturedCoursesSection() {
   const popularCourses = [...mockCourses]
     .sort((a, b) => b.registrationsCount - a.registrationsCount)
-    .slice(0, 5);
+    .slice(0, 4);
 
   return (
     <section className="featured">

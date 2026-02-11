@@ -11,7 +11,7 @@
 }
 
 .singleInstructorMain {
-  padding: 65px 0 60px;
+  padding: 45px 0 60px;
 }
 
 /* זה החלק הכי קריטי: שתי עמודות, כמו בדוגמה */
@@ -94,10 +94,15 @@
 @media (max-width: 980px) {
   .singleInstructorGrid {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .singleInstructorNavRow {
     grid-template-columns: 1fr;
+  }
+
+  .singleInstructorMain {
+    padding: 30px 0 40px;
   }
 
 }

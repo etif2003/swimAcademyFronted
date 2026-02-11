@@ -11,3 +11,9 @@
   color: #64748B;
   font-size: 16px;
 }
+
+@media (max-width: 768px) {
+  .cards-grid {
+    gap: 15px;
+  }
+}

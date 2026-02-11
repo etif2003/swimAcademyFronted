@@ -5,6 +5,9 @@ import SinglePageHero from "../components/SinglePage/SinglePageHero";
 import "../styles/singleInstructorPage.css";
 import InstructorInfoListCard from "../components/Instructors/InstructorInfoListCard";
 
+import { MapPin, Clock } from "lucide-react";
+
+
 export const mockInstructors = [
     {
         _id: "i1",
@@ -141,7 +144,25 @@ export default function SingleInstructorPage() {
 
     return (
         <div className="singleInstructorPage" dir="rtl">
-            <SinglePageHero image={instructor.image} backText="חזרה למדריכים" backTo="/Instructors" />
+            <SinglePageHero image={instructor.image} backText="חזרה למדריכים" backTo="/instructors" variant="brand">
+                <div className="heroProfile">
+                    <div className="heroProfile__imageWrapper">
+                        <img
+                            src={instructor.image}
+                            alt={instructor.fullName}
+                            className="heroProfile__image"
+                        />
+                        <div className="heroProfile__badge"></div>
+                    </div>
+                    <div className="heroProfile__text">
+                        <h1>{instructor.fullName}</h1>
+                        <div className="heroProfile__meta">
+                            <span><MapPin size={20} />{instructor.workArea}</span>
+                            <span><Clock size={20} />{instructor.experienceYears} שנות ניסיון</span>
+                        </div>
+                    </div>
+                </div>
+            </SinglePageHero>
 
             <main className="singleInstructorMain">
                 <div className="singleInstructorContainer">

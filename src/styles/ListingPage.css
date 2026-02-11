@@ -70,6 +70,7 @@
   flex: 1;
 }
 
+
 /* =========================
    GRID
 ========================= */
@@ -101,10 +102,15 @@
   .listing-filters {
     flex-direction: column;
     gap: 10px;
+    margin-right: 16px;
+    margin-left: 16px;
+    margin-bottom: 22px;
   }
 
   .listing-filters select,
   .listing-filters input {
     width: 100%;
+    padding: 6px 18px;
   }
+
 }
