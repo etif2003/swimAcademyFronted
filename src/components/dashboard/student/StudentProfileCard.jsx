@@ -1,23 +1,67 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import "../../../styles/UserProfile.css";
+import "../../../styles/validations-errors.css";
+import "../../../styles/success.css";
+
 import { Edit2 } from "lucide-react";
 
-export default function StudentProfileCard({ student }) {
+import {
+  fetchMyProfile,
+  updateMyProfile,
+} from "../../../api/students-functions";
+
+import { validateStudentForm } from "../../../utils/validators/validateStudentForm";
+
+export default function StudentProfileCard() {
   const fileInputRef = useRef(null);
 
+  const [loading, setLoading] = useState(true);
+  const [errors, setErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState("");
+
   const [imagePreview, setImagePreview] = useState(
-    student.image ||
-      "https://via.placeholder.com/200x200.png?text=Profile"
+    "https://ui-avatars.com/api/?name=Student&background=0BBBD6&color=fff&size=200"
   );
 
   const [form, setForm] = useState({
-    fullName: student.fullName || "",
-    email: student.email || "",
-    phone: student.phone || "",
+    fullName: "",
+    email: "",
+    phone: "",
+    image: "",
   });
 
+  /* ===== LOAD PROFILE (תמיד קיים) ===== */
+  useEffect(() => {
+    const loadProfile = async () => {
+      try {
+        const data = await fetchMyProfile();
+
+        setForm({
+          fullName: data.fullName || "",
+          email: data.email || "",
+          phone: data.phone || "",
+          image: data.image || "",
+        });
+
+        if (data.image) setImagePreview(data.image);
+      } catch (err) {
+        console.error("Failed to load profile:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadProfile();
+  }, []);
+
+  /* ===== UPDATE FORM ===== */
   const update = (key, value) => {
-    setForm({ ...form, [key]: value });
+    setForm((prev) => ({ ...prev, [key]: value }));
+    setErrors((prev) => ({ ...prev, [key]: undefined }));
+
+    if (successMessage) {
+      setSuccessMessage("");
+    }
   };
 
   /* ===== Image Upload ===== */
@@ -35,9 +79,39 @@ export default function StudentProfileCard({ student }) {
     }
 
     const reader = new FileReader();
-    reader.onloadend = () => setImagePreview(reader.result);
+    reader.onloadend = () => {
+      setImagePreview(reader.result);
+      update("image", reader.result);
+    };
     reader.readAsDataURL(file);
   };
+
+  /* ===== SAVE ===== */
+  const handleSave = async () => {
+    const validationErrors = validateStudentForm(form);
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    setErrors({});
+
+    try {
+      await updateMyProfile({
+        fullName: form.fullName,
+        email: form.email,
+        phone: form.phone,
+        image: form.image,
+      });
+
+      setSuccessMessage("הפרופיל עודכן בהצלחה 🎉");
+    } catch (err) {
+      alert(err.message || "שגיאה בעדכון הפרופיל");
+    }
+  };
+
+  if (loading) return <p>טוען פרופיל...</p>;
 
   return (
     <div className="profile-wrapper">
@@ -66,7 +140,7 @@ export default function StudentProfileCard({ student }) {
           </div>
 
           <div className="profile-info">
-            <h2>{form.fullName}</h2>
+            <h2>{form.fullName || "סטודנט"}</h2>
             <span className="subtitle">משתמש רגיל</span>
           </div>
         </div>
@@ -75,38 +149,48 @@ export default function StudentProfileCard({ student }) {
         <div className="profile-form-grid">
           <Field label="שם מלא">
             <input
+              className={errors.fullName ? "error" : ""}
               value={form.fullName}
-              onChange={(e) =>
-                update("fullName", e.target.value)
-              }
+              onChange={(e) => update("fullName", e.target.value)}
             />
+            {errors.fullName && (
+              <span className="field-error">{errors.fullName}</span>
+            )}
           </Field>
 
           <Field label="אימייל">
             <input
               type="email"
+              className={errors.email ? "error" : ""}
               value={form.email}
-              onChange={(e) =>
-                update("email", e.target.value)
-              }
+              onChange={(e) => update("email", e.target.value)}
             />
+            {errors.email && (
+              <span className="field-error">{errors.email}</span>
+            )}
           </Field>
 
           <Field label="טלפון">
             <input
+              className={errors.phone ? "error" : ""}
               value={form.phone}
-              onChange={(e) =>
-                update("phone", e.target.value)
-              }
+              onChange={(e) => update("phone", e.target.value)}
             />
+            {errors.phone && (
+              <span className="field-error">{errors.phone}</span>
+            )}
           </Field>
         </div>
 
         {/* ACTION */}
         <div className="profile-actions">
-          <button className="save-btn">
+          <button className="save-btn" onClick={handleSave}>
             שמירת שינויים
           </button>
+
+          {successMessage && (
+            <div className="success-message">{successMessage}</div>
+          )}
         </div>
       </div>
     </div>
