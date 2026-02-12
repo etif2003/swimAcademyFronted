@@ -11,8 +11,11 @@ import {
 } from "../../../api/students-functions";
 
 import { validateStudentForm } from "../../../utils/validators/validateStudentForm";
+import { useNavigate } from "react-router";
 
 export default function StudentProfileCard() {
+  const navigate = useNavigate();
+  console.log("הגעתי לקומפוננטה");
   const fileInputRef = useRef(null);
 
   const [loading, setLoading] = useState(true);
@@ -20,7 +23,7 @@ export default function StudentProfileCard() {
   const [successMessage, setSuccessMessage] = useState("");
 
   const [imagePreview, setImagePreview] = useState(
-    "https://ui-avatars.com/api/?name=Student&background=0BBBD6&color=fff&size=200"
+    "https://ui-avatars.com/api/?name=Student&background=0BBBD6&color=fff&size=200",
   );
 
   const [form, setForm] = useState({
@@ -32,6 +35,7 @@ export default function StudentProfileCard() {
 
   /* ===== LOAD PROFILE (תמיד קיים) ===== */
   useEffect(() => {
+    console.log("LOAD PROFILE");
     const loadProfile = async () => {
       try {
         const data = await fetchMyProfile();
@@ -46,8 +50,7 @@ export default function StudentProfileCard() {
         if (data.image) setImagePreview(data.image);
       } catch (err) {
         console.error("Failed to load profile:", err);
-        navigate("/login");
-
+        navigate("/auth");
       } finally {
         setLoading(false);
       }
@@ -109,7 +112,7 @@ export default function StudentProfileCard() {
 
       setSuccessMessage("הפרופיל עודכן בהצלחה 🎉");
     } catch (err) {
-      alert(err.message || "שגיאה בעדכון הפרופיל");
+      alert("עליך להתחבר מחדש למערכת");
     }
   };
 

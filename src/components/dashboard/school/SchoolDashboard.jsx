@@ -36,7 +36,7 @@ export default function SchoolDashboard() {
 
       {/* CONTENT */}
       {activeTab === "profile" && (
-        <SchoolProfileCard school={school} />
+        <SchoolProfileCard /*school={school}*/ />
       )}
 
       {activeTab === "courses" && (

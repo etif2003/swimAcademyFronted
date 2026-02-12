@@ -14,6 +14,8 @@ export const fetchMyProfile = async () => {
     },
   });
 
+
+  console.log(response)
   if (response.status === 401) {
     localStorage.removeItem("token");
     throw new Error("Session expired");

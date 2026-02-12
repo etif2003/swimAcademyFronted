@@ -23,6 +23,12 @@ export default function Header() {
     navigate("/auth");
   };
 
+   const handleDashboard = () => {
+    setIsOpen(false);
+    navigate("/dashboard");
+  };
+
+
   return (
     <header className="header">
       <div className="header-container">
@@ -32,6 +38,9 @@ export default function Header() {
             <div className="user-actions">
               <button className="btn btn-ghost" onClick={handleLogout}>
                 התנתקות
+              </button>
+              <button className="btn btn-dashboard" onClick={handleDashboard}>
+                אזור אישי
               </button>
               <span className="welcome-text">
                 שלום, <strong>{user.fullName}</strong>

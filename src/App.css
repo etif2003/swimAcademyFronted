@@ -144,6 +144,12 @@
   color: #111;
   margin-right: 20px;
 }
+.btn-dashboard {
+  background: #12b5d0;
+  color: white;
+  border: none;
+  margin-right: 20px;
+}
 
 .btn-water {
   background: #4fc3f7;
