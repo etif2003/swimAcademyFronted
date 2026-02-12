@@ -2,7 +2,17 @@ const BASE_URL = "http://localhost:3000/api/schools";
 
 /* ===== GET SCHOOL BY OWNER ===== */
 export const fetchSchoolByOwner = async (userId) => {
-  const response = await fetch(`${BASE_URL}/by-owner/${userId}`);
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    throw new Error("No auth token found");
+  }
+
+  const response = await fetch(`${BASE_URL}/by-owner/${userId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 
   if (response.status === 404) {
     return null; // אין בית ספר – יצירה ראשונה

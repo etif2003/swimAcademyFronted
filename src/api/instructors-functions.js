@@ -1,7 +1,21 @@
 const BASE_URL = "http://localhost:3000/api/instructors";
 
 export const fetchInstructorByUser = async (userId) => {
-  const response = await fetch(`${BASE_URL}/by-user/${userId}`);
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    throw new Error("No auth token found");
+  }
+  const response = await fetch(`${BASE_URL}/by-user/${userId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (response.status === 401) {
+    localStorage.removeItem("token");
+    throw new Error("Session expired");
+  }
 
   if (response.status === 404) {
     return null; // אין פרופיל – פעם ראשונה
@@ -13,7 +27,6 @@ export const fetchInstructorByUser = async (userId) => {
 
   return response.json();
 };
-
 
 export const createInstructor = async (payload) => {
   const response = await fetch(BASE_URL, {
@@ -31,7 +44,6 @@ export const createInstructor = async (payload) => {
 
   return response.json();
 };
-
 
 export const updateInstructor = async (instructorId, payload) => {
   const response = await fetch(`${BASE_URL}/${instructorId}`, {

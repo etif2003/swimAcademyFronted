@@ -9,6 +9,7 @@ import SingleSchoolPage from "./pages/SingleSchoolPage";
 import App from "./App";
 import ProfilePage from "./pages/ProfilePage";
 import SingleInstructorPage from "./pages/SingleInstructorPage";
+import SingleCoursePage from "./pages/SingleCoursePage";
 
 export const Router = () => {
   const router = createBrowserRouter([
@@ -52,6 +53,11 @@ export const Router = () => {
         {
           path: "/instructor/:id",
           element: <SingleInstructorPage />,
+        },
+
+        {
+          path: "/course/:id",
+          element: <SingleCoursePage />,
         },
       ],
     },

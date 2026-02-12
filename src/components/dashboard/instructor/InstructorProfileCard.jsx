@@ -3,7 +3,6 @@ import "../../../styles/UserProfile.css";
 import "../../../styles/validations-errors.css";
 import "../../../styles/success.css";
 
-
 import { AREAS } from "../../../constants/areas";
 import { Edit2, Award } from "lucide-react";
 import {
@@ -13,8 +12,11 @@ import {
 } from "../../../api/instructors-functions";
 import { useAuth } from "../../../context/AuthContext";
 import { validateInstructorForm } from "../../../utils/validators/validateInstructorForm";
+import { useNavigate } from "react-router";
 
 export default function InstructorProfileCard() {
+  const navigate = useNavigate();
+
   const { user } = useAuth();
   const userId = user?.id;
 
@@ -67,6 +69,7 @@ export default function InstructorProfileCard() {
         }
       } catch (err) {
         console.error("Failed to load instructor:", err);
+        navigate("/auth");
       } finally {
         setLoading(false);
       }
@@ -79,9 +82,9 @@ export default function InstructorProfileCard() {
   const update = (key, value) => {
     setForm((prev) => ({ ...prev, [key]: value }));
     setErrors((prev) => ({ ...prev, [key]: undefined }));
-     if (successMessage) {
-    setSuccessMessage("");
-  }
+    if (successMessage) {
+      setSuccessMessage("");
+    }
   };
 
   /* ===== Image Upload ===== */
@@ -150,7 +153,7 @@ export default function InstructorProfileCard() {
 
   /* ===== RENDER ===== */
   if (loading) {
-    return <p>טוען פרופיל...</p>;
+    return <p>...טוען פרופיל</p>;
   }
 
   return (

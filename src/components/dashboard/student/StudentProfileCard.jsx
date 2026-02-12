@@ -15,7 +15,6 @@ import { useNavigate } from "react-router";
 
 export default function StudentProfileCard() {
   const navigate = useNavigate();
-  console.log("הגעתי לקומפוננטה");
   const fileInputRef = useRef(null);
 
   const [loading, setLoading] = useState(true);
@@ -116,7 +115,7 @@ export default function StudentProfileCard() {
     }
   };
 
-  if (loading) return <p>טוען פרופיל...</p>;
+  if (loading) return <p>...טוען פרופיל</p>;
 
   return (
     <div className="profile-wrapper">

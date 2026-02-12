@@ -1,0 +1,127 @@
+/* ===== PAGE WRAPPER ===== */
+
+.singleCoursePage {
+  background: #f8fafc;
+}
+
+/* ===== MAIN ===== */
+
+.singleCourseMain {
+  padding: 60px 0;
+}
+
+.singleCourseContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===== GRID ===== */
+
+.singleCourseGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+@media (max-width: 992px) {
+  .singleCourseGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== BODY ===== */
+
+.singleCourseBody {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* ===== SIDE (PRICE CARD) ===== */
+
+.singleCourseSide {
+  position: sticky;
+  top: 120px;
+}
+
+/* ===== COURSE CREATOR CARD ===== */
+
+.courseSchoolCard {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.courseSchoolCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.06);
+}
+
+.courseSchoolLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* Top row */
+
+.courseSchoolInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #14b8cc;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+/* Bottom row */
+
+.courseSchoolMeta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.courseSchoolMeta img {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  object-fit: cover;
+  background: #f1f5f9;
+}
+
+.courseSchoolMeta strong {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* ===== CATEGORY CHIPS (אם אין כבר עיצוב גלובלי) ===== */
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.category-chip {
+  background: #e0f7fa;
+  color: #0e7490;
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* ===== RESPONSIVE FIXES ===== */
+
+@media (max-width: 992px) {
+  .singleCourseSide {
+    position: static;
+  }
+}
