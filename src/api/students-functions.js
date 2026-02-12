@@ -14,6 +14,11 @@ export const fetchMyProfile = async () => {
     },
   });
 
+  if (response.status === 401) {
+    localStorage.removeItem("token");
+    throw new Error("Session expired");
+  }
+
   if (!response.ok) {
     throw new Error("Failed to fetch user profile");
   }

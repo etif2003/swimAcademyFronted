@@ -46,6 +46,8 @@ export default function StudentProfileCard() {
         if (data.image) setImagePreview(data.image);
       } catch (err) {
         console.error("Failed to load profile:", err);
+        navigate("/login");
+
       } finally {
         setLoading(false);
       }
