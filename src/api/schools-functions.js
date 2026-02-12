@@ -27,10 +27,17 @@ export const fetchSchoolByOwner = async (userId) => {
 
 /* ===== CREATE SCHOOL ===== */
 export const createSchool = async (payload) => {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    throw new Error("No auth token found");
+  }
   const response = await fetch(BASE_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+
     },
     body: JSON.stringify(payload),
   });
@@ -45,10 +52,18 @@ export const createSchool = async (payload) => {
 
 /* ===== UPDATE SCHOOL ===== */
 export const updateSchool = async (schoolId, payload) => {
+    const token = localStorage.getItem("token");
+
+  if (!token) {
+    throw new Error("No auth token found");
+  }
+
   const response = await fetch(`${BASE_URL}/${schoolId}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+
     },
     body: JSON.stringify(payload),
   });

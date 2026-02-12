@@ -3,7 +3,8 @@ import "../../../styles/UserProfile.css";
 import "../../../styles/validations-errors.css";
 import "../../../styles/success.css";
 
-import { Edit2 } from "lucide-react";
+import { Edit2, Trash2 } from "lucide-react";
+import { uploadImage } from "../../../api/upload";
 
 import {
   fetchMyProfile,
@@ -16,14 +17,16 @@ import { useNavigate } from "react-router";
 export default function StudentProfileCard() {
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
+  const [uploadingImage, setUploadingImage] = useState(false);
+
+  const DEFAULT_AVATAR =
+    "https://ui-avatars.com/api/?name=Student&background=0BBBD6&color=fff&size=200";
 
   const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
 
-  const [imagePreview, setImagePreview] = useState(
-    "https://ui-avatars.com/api/?name=Student&background=0BBBD6&color=fff&size=200",
-  );
+  const [imagePreview, setImagePreview] = useState(DEFAULT_AVATAR);
 
   const [form, setForm] = useState({
     fullName: "",
@@ -73,7 +76,7 @@ export default function StudentProfileCard() {
     fileInputRef.current.click();
   };
 
-  const handleImageChange = (e) => {
+  const handleImageChange = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
@@ -82,12 +85,18 @@ export default function StudentProfileCard() {
       return;
     }
 
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setImagePreview(reader.result);
-      update("image", reader.result);
-    };
-    reader.readAsDataURL(file);
+    try {
+      setUploadingImage(true);
+
+      const url = await uploadImage(file);
+
+      setImagePreview(url);
+      update("image", url);
+    } catch (err) {
+      alert(err.message);
+    } finally {
+      setUploadingImage(false);
+    }
   };
 
   /* ===== SAVE ===== */
@@ -125,14 +134,30 @@ export default function StudentProfileCard() {
           <div className="avatar-wrapper">
             <img src={imagePreview} alt="תמונת פרופיל" />
 
+            {/* כפתור עריכה */}
             <button
               type="button"
               className="edit-avatar"
               onClick={openFilePicker}
               aria-label="עריכת תמונת פרופיל"
+              disabled={uploadingImage}
             >
-              <Edit2 size={16} />
+              {uploadingImage ? "..." : <Edit2 size={16} />}
             </button>
+
+            {/* כפתור מחיקה */}
+            {imagePreview !== DEFAULT_AVATAR && (
+              <button
+                type="button"
+                className="delete-avatar"
+                onClick={() => {
+                  setImagePreview(DEFAULT_AVATAR);
+                  update("image", "");
+                }}
+              >
+                <Trash2 size={16} />
+              </button>
+            )}
 
             <input
               ref={fileInputRef}

@@ -2,9 +2,9 @@ import { useState, useRef, useEffect } from "react";
 import "../../../styles/UserProfile.css";
 import "../../../styles/validations-errors.css";
 import "../../../styles/success.css";
-
+import { uploadImage } from "../../../api/upload";
 import { AREAS } from "../../../constants/areas";
-import { Edit2, Award } from "lucide-react";
+import { Edit2, Award, Trash2 } from "lucide-react";
 import {
   fetchInstructorByUser,
   createInstructor,
@@ -26,10 +26,12 @@ export default function InstructorProfileCard() {
   const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
+  const [uploadingLogo, setUploadingLogo] = useState(false);
 
-  const [imagePreview, setImagePreview] = useState(
-    "https://ui-avatars.com/api/?name=Instructor&background=0BBBD6&color=fff&size=200",
-  );
+  const DEFAULT_AVATAR =
+    "https://ui-avatars.com/api/?name=Instructor&background=0BBBD6&color=fff&size=200";
+
+  const [imagePreview, setImagePreview] = useState(DEFAULT_AVATAR);
 
   const [certificates, setCertificates] = useState([]);
   const [newCert, setNewCert] = useState("");
@@ -92,7 +94,7 @@ export default function InstructorProfileCard() {
     fileInputRef.current.click();
   };
 
-  const handleImageChange = (e) => {
+  const handleImageChange = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
@@ -101,9 +103,17 @@ export default function InstructorProfileCard() {
       return;
     }
 
-    const reader = new FileReader();
-    reader.onloadend = () => setImagePreview(reader.result);
-    reader.readAsDataURL(file);
+    try {
+      setUploadingLogo(true);
+
+      const url = await uploadImage(file);
+
+      setImagePreview(url);
+    } catch (err) {
+      alert(err.message);
+    } finally {
+      setUploadingLogo(false);
+    }
   };
 
   /* ===== Certificates ===== */
@@ -169,9 +179,24 @@ export default function InstructorProfileCard() {
               className="edit-avatar"
               onClick={openFilePicker}
               aria-label="עריכת תמונת פרופיל"
+              disabled={uploadingLogo}
             >
-              <Edit2 size={16} />
+              {uploadingLogo ? "..." : <Edit2 size={16} />}
             </button>
+
+            {imagePreview !== DEFAULT_AVATAR && (
+              <button
+                type="button"
+                className="delete-avatar"
+                onClick={() => {
+                  setImagePreview(
+                    "https://ui-avatars.com/api/?name=Instructor&background=0BBBD6&color=fff&size=200",
+                  );
+                }}
+              >
+                <Trash2 size={16} />
+              </button>
+            )}
 
             <input
               ref={fileInputRef}

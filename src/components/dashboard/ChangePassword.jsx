@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "../../styles/settings.css";
+import { changePassword } from "../../api/auth";
+
 
 
 
@@ -10,32 +12,37 @@ export default function ChangePassword() {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    setError("");
-    setMessage("");
+  setError("");
+  setMessage("");
 
-    // ולידציה בסיסית (רק ל־UI)
-    if (newPassword.length < 6) {
-      setError("הסיסמה החדשה חייבת להכיל לפחות 6 תווים");
-      return;
-    }
+  if (newPassword.length < 6) {
+    setError("הסיסמה החדשה חייבת להכיל לפחות 6 תווים");
+    return;
+  }
 
+  try {
     setLoading(true);
 
-    // 🔸 סימולציה של קריאה לשרת
-    setTimeout(() => {
-      setLoading(false);
+    await changePassword({
+      currentPassword,
+      newPassword,
+    });
 
-      // תרחיש הצלחה
-      setMessage("הסיסמה עודכנה בהצלחה");
+    setMessage("הסיסמה עודכנה בהצלחה");
 
-      // איפוס שדות
-      setCurrentPassword("");
-      setNewPassword("");
-    }, 1200);
-  };
+    setCurrentPassword("");
+    setNewPassword("");
+
+  } catch (err) {
+    setError(err.message);
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className="settings-card">

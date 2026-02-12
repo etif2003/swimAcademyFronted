@@ -65,6 +65,10 @@ margin-bottom: 30px;
   border-radius: 50%;
   object-fit: cover;
 }
+.avatar-wrapper.logo{
+  padding: 0.5em;
+
+}
 
 .edit-avatar {
   position: absolute;
@@ -256,4 +260,24 @@ margin-bottom: 30px;
   border-radius: 10px;
   padding: 0 16px;
   cursor: pointer;
+}
+
+.delete-image-btn{
+  margin-bottom: 10px;
+}
+.delete-avatar{
+      padding: 4px;
+    position: absolute;
+    top: 64px;
+    left: -6px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid #fee2e2;
+    color: #dc2626;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }

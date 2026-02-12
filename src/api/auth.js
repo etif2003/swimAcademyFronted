@@ -38,3 +38,28 @@ export const login = async (data) => {
 
   return result;
 };
+
+
+/**
+ * שינוי סיסמה (מחייב התחברות)
+ */
+export const changePassword = async (data) => {
+  const token = localStorage.getItem("token");
+
+  const response = await fetch(`${BASE_URL}/change-password`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  });
+
+  const result = await response.json();
+
+  if (!response.ok) {
+    throw new Error(result.message || "שגיאה בשינוי סיסמה");
+  }
+
+  return result;
+};

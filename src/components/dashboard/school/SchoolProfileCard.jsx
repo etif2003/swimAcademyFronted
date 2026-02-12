@@ -2,20 +2,17 @@ import { useState, useRef, useEffect } from "react";
 import "../../../styles/UserProfile.css";
 import "../../../styles/validations-errors.css";
 import "../../../styles/success.css";
-
 import { AREAS } from "../../../constants/areas";
-import { Edit2 } from "lucide-react";
-
+import { Edit2,Trash2 } from "lucide-react";
 import {
   fetchSchoolByOwner,
   createSchool,
   updateSchool,
 } from "../../../api/schools-functions";
-
 import { useAuth } from "../../../context/AuthContext";
 import { validateSchoolForm } from "../../../utils/validators/validateSchoolForm";
-
 import { useNavigate } from "react-router";
+import { uploadImage } from "../../../api/upload";
 
 export default function SchoolProfileCard() {
   const navigate = useNavigate();
@@ -30,6 +27,8 @@ export default function SchoolProfileCard() {
   const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
+  const [uploadingLogo, setUploadingLogo] = useState(false);
+  const [uploadingImage, setUploadingImage] = useState(false);
 
   const [logoPreview, setLogoPreview] = useState(
     "https://ui-avatars.com/api/?name=School&background=0BBBD6&color=fff&size=200",
@@ -100,39 +99,41 @@ export default function SchoolProfileCard() {
   };
 
   /* ===== LOGO UPLOAD ===== */
-  const handleLogoUpload = (e) => {
+  const handleLogoUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
-    if (!file.type.startsWith("image/")) {
-      alert("נא לבחור קובץ תמונה בלבד");
-      return;
-    }
+    try {
+      setUploadingLogo(true);
 
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setLogoPreview(reader.result);
-      update("logo", reader.result);
-    };
-    reader.readAsDataURL(file);
+      const url = await uploadImage(file);
+
+      update("logo", url);
+      setLogoPreview(url);
+    } catch (err) {
+      alert(err.message);
+    } finally {
+      setUploadingLogo(false);
+    }
   };
 
   /* ===== IMAGE UPLOAD ===== */
-  const handleImageUpload = (e) => {
+  const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
-    if (!file.type.startsWith("image/")) {
-      alert("נא לבחור קובץ תמונה בלבד");
-      return;
-    }
+    try {
+      setUploadingImage(true);
 
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setImagePreview(reader.result);
-      update("image", reader.result);
-    };
-    reader.readAsDataURL(file);
+      const url = await uploadImage(file);
+
+      update("image", url);
+      setImagePreview(url);
+    } catch (err) {
+      alert(err.message);
+    } finally {
+      setUploadingImage(false);
+    }
   };
 
   /* ===== SAVE ===== */
@@ -187,13 +188,28 @@ export default function SchoolProfileCard() {
         <div className="profile-header">
           <div className="avatar-wrapper logo">
             <img src={logoPreview} alt="לוגו בית ספר" />
+            {form.logo && (
+              <button
+                type="button"
+                className="delete-avatar"
+                onClick={() => {
+                  update("logo", "");
+                  setLogoPreview(
+                    "https://ui-avatars.com/api/?name=School&background=0BBBD6&color=fff&size=200",
+                  );
+                }}
+              >
+                <Trash2 size={16} />
+              </button>
+            )}
 
             <button
               type="button"
               className="edit-avatar"
               onClick={() => logoInputRef.current.click()}
+              disabled={uploadingLogo}
             >
-              <Edit2 size={14} />
+              {uploadingLogo ? "..." : <Edit2 size={14} />}
             </button>
 
             <input
@@ -330,14 +346,27 @@ export default function SchoolProfileCard() {
                 }}
               />
             )}
+            {form.image && (
+              <button
+                type="button"
+                className="delete-image-btn"
+                onClick={() => {
+                  update("image", "");
+                  setImagePreview("");
+                }}
+              >
+                הסר תמונה
+              </button>
+            )}
 
             <button
               type="button"
               onClick={() => imageInputRef.current.click()}
               className="save-btn"
               style={{ marginBottom: "10px" }}
+              disabled={uploadingImage}
             >
-              העלאת תמונה
+              {uploadingImage ? "מעלה תמונה..." : "העלאת תמונה"}
             </button>
           </Field>
         </div>
