@@ -1,76 +1,9 @@
-const mockCourses = [
-  {
-    _id: "1",
-    title: "שחייה למתחילים – ילדים",
-    price: 150,
-    level: "Beginner",
-    targetAudience: "Children",
-    image:
-      "https://images.unsplash.com/photo-1530549387789-4c1017266635?w=400&h=300&fit=crop",
-    location: { city: "תל אביב" },
-    sessionsCount: 12,
-    maxParticipants: 6,
-    registrationsCount: 87,
-  },
-  {
-    _id: "2",
-    title: "קורס שחייה למבוגרים",
-    price: 200,
-    level: "Advanced",
-    targetAudience: "Adults",
-    image:
-      "https://images.unsplash.com/photo-1519315901367-f34ff9154487?w=400&h=300&fit=crop",
-    location: { city: "הרצליה" },
-    sessionsCount: 10,
-    maxParticipants: 4,
-    registrationsCount: 124,
-  },
-  {
-    _id: "3",
-    title: "אימון שחייה תחרותית",
-    price: 250,
-    level: "Professional",
-    targetAudience: "Teens",
-    image:
-      "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&h=300&fit=crop",
-    location: { city: "נתניה" },
-    sessionsCount: 16,
-    maxParticipants: 4,
-    registrationsCount: 62,
-  },
-  {
-    _id: "4",
-    title: "שחייה טיפולית",
-    price: 180,
-    level: "Beginner",
-    targetAudience: "Seniors",
-    image:
-      "https://images.unsplash.com/photo-1600965962361-9035dbfd1c50?w=400&h=300&fit=crop",
-    location: { city: "רמת גן" },
-    sessionsCount: 8,
-    maxParticipants: 1,
-    registrationsCount: 98,
-  },
-  {
-    _id: "5",
-    title: "קבוצת אימון נוער",
-    price: 170,
-    level: "Advanced",
-    targetAudience: "Teens",
-    image:
-      "https://images.unsplash.com/photo-1507034589631-9433cc6bc453?w=400&h=300&fit=crop",
-    location: { city: "חיפה" },
-    sessionsCount: 14,
-    maxParticipants: 8,
-    registrationsCount: 140,
-  },
-];
-
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import CourseCard from "../courses/CourseCard";
 import "../../styles/FeaturedSection.css";
 import { ArrowLeft } from "lucide-react";
+import { useCourses } from "../../hooks/useCourses";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -90,8 +23,13 @@ const itemVariants = {
 };
 
 export function FeaturedCoursesSection() {
-  const popularCourses = [...mockCourses]
-    .sort((a, b) => b.registrationsCount - a.registrationsCount)
+  const { data: courses = [], isLoading, isError } = useCourses();
+
+  if (isLoading) return <div>...טוען קורסים</div>;
+  if (isError) return <div>שגיאה בטעינת קורסים</div>;
+
+  const popularCourses = [...courses]
+    .sort((a, b) => b.currentParticipants - a.currentParticipants)
     .slice(0, 4);
 
   return (

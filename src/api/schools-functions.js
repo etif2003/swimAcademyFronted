@@ -1,5 +1,21 @@
 const BASE_URL = "http://localhost:3000/api/schools";
 
+export const handleSchools = async () => {
+  const response = await fetch(BASE_URL);
+  const data = await response.json();
+  return data.map((school) => {
+    return { ...school };
+  });
+};
+
+export const fetchSingleSchool = async (id) => {
+  const response = await fetch(`${BASE_URL}/${id}`);
+
+  if (!response.ok) throw new Error("School not found");
+  return response.json();
+};
+
+
 /* ===== GET SCHOOL BY OWNER ===== */
 export const fetchSchoolByOwner = async (userId) => {
   const token = localStorage.getItem("token");

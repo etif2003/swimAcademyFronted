@@ -109,13 +109,22 @@
   margin-top: 15px;
 }
 
+
 .category-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
   background: #e0f7fa;
   color: #0e7490;
-  padding: 6px 12px;
   border-radius: 50px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
+}
+
+.chip-icon {
+  display: flex;
+  align-items: center;
 }
 
 /* ===== RESPONSIVE FIXES ===== */

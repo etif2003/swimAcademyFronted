@@ -1,5 +1,21 @@
 const BASE_URL = "http://localhost:3000/api/instructors";
 
+export const handleInstructors = async () => {
+  const response = await fetch(BASE_URL);
+  const data = await response.json();
+  return data.map((instructor) => {
+    return { ...instructor };
+  });
+};
+
+export const fetchSingleInstructor = async (id) => {
+  const response = await fetch(`${BASE_URL}/${id}`);
+
+  if (!response.ok) throw new Error("Instructor not found");
+  return response.json();
+};
+
+
 export const fetchInstructorByUser = async (userId) => {
   const token = localStorage.getItem("token");
 
@@ -29,10 +45,17 @@ export const fetchInstructorByUser = async (userId) => {
 };
 
 export const createInstructor = async (payload) => {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    throw new Error("No auth token found");
+  }
+
   const response = await fetch(BASE_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(payload),
   });
@@ -46,10 +69,17 @@ export const createInstructor = async (payload) => {
 };
 
 export const updateInstructor = async (instructorId, payload) => {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    throw new Error("No auth token found");
+  }
+
   const response = await fetch(`${BASE_URL}/${instructorId}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(payload),
   });
