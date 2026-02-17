@@ -4,6 +4,7 @@ import FilterDropdown from "../components/FilterDropdown.jsx";
 import CardsGrid from "../components/CardsGrid.jsx";
 import SchoolCard from "../components/schools/SchoolCard.jsx";
 import { useSchools } from "../hooks/School/useSchools.js";
+import PageState from "../components/PageState.jsx";
 
 const getAreaOptionsFromSchools = (schools) => {
   const areas = schools.map((school) => school.location?.city).filter(Boolean); // מסיר undefined / null
@@ -26,8 +27,8 @@ export default function SchoolPage() {
 
   const { data: schools = [], isLoading, isError } = useSchools();
 
-  if (isLoading) return <div>...טוען בתי ספר</div>;
-  if (isError) return <div>שגיאה בטעינת בתי ספר</div>;
+  if (isLoading) return <PageState kind="schools" state="loading" />;
+  if (isError) return <PageState kind="schools" state="error" onRetry={() => window.location.reload()} />;
 
   const AREA_OPTIONS = getAreaOptionsFromSchools(schools);
 
@@ -77,14 +78,23 @@ export default function SchoolPage() {
       </section>
 
       {/* GRID */}
-      <section className="listing-grid">
-        <CardsGrid
-          items={filteredSchools}
-          renderItem={(school) => (
-            <SchoolCard key={school._id} school={school} />
-          )}
+      {filteredSchools.length === 0 ? (
+        <PageState
+          kind="schools"
+          state="empty"
+          compact
+          title="לא נמצאו בתי ספר"
+          description="נסו לשנות פילטרים או חיפוש."
         />
-      </section>
+      ) : (
+        <section className="listing-grid">
+          <CardsGrid
+            items={filteredSchools}
+            renderItem={(school) => (
+              <SchoolCard key={school._id} school={school} />
+            )}
+          />
+        </section>)}
     </div>
   );
 }
