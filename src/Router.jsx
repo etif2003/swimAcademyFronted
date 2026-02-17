@@ -10,6 +10,9 @@ import App from "./App";
 import ProfilePage from "./pages/ProfilePage";
 import SingleInstructorPage from "./pages/SingleInstructorPage";
 import SingleCoursePage from "./pages/SingleCoursePage";
+import TermsPage from "./pages/legal/TermsPage";
+import PrivacyPage from "./pages/legal/PrivacyPage";
+import AboutPage from "./pages/AboutPage";
 
 export const Router = () => {
   const router = createBrowserRouter([
@@ -58,6 +61,21 @@ export const Router = () => {
         {
           path: "/course/:id",
           element: <SingleCoursePage />,
+        },
+
+        {
+          path: "/about",
+          element: <AboutPage />,
+        },
+
+        {
+          path: "/terms",
+          element: <TermsPage />,
+        },
+
+        {
+          path: "/privacy",
+          element: <PrivacyPage />,
         },
       ],
     },

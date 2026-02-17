@@ -1,0 +1,79 @@
+.legal-page {
+  background: white;
+
+  /* זה מה שחסר לך: הרבה אוויר למעלה */
+  padding: 110px 16px 90px;
+}
+
+.legal-container {
+  width: 100%;
+  max-width: fit-content;
+  margin: 0 auto;
+
+  /* יישור לימין */
+  text-align: right;
+
+  /* פונט כמו האתר (לא להגדיר פונט חדש) */
+  font-family: inherit;
+}
+
+.legal-title {
+  margin: 0 0 42px;
+
+  /* עדיין “כותרת גדולה” אבל לא מוגזמת */
+  font-size: 40px;
+  line-height: 1.1;
+
+  color: #0f172a;
+
+  /* RTL: מיושר לימין */
+  text-align: right;
+}
+
+.legal-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.legal-section-title {
+  margin: 0 0 10px;
+  font-size: 18px;
+  color: #0f172a;
+
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+
+  /* RTL: יישור לימין */
+  justify-content: flex-start;
+}
+
+
+.legal-paragraph {
+  margin: 0;
+  max-width: 640px;
+
+  font-size: 14px;
+  line-height: 2;
+
+  color: rgba(15, 23, 42, 0.62);
+
+  /* RTL: יישור לימין */
+  text-align: right;
+}
+
+.legal-paragraph + .legal-paragraph {
+  margin-top: 5px;
+}
+
+@media (max-width: 640px) {
+  .legal-page {
+    padding: 82px 25px 60px;
+  }
+
+  .legal-title {
+    font-size: 32px;
+    margin-bottom: 32px;
+  }
+}
