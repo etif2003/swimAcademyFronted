@@ -4,6 +4,7 @@ import CourseCard from "../courses/CourseCard";
 import "../../styles/FeaturedSection.css";
 import { ArrowLeft } from "lucide-react";
 import { useCourses } from "../../hooks/useCourses";
+import FeaturedSectionLoader from "./FeaturedSectionLoader";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -25,8 +26,8 @@ const itemVariants = {
 export function FeaturedCoursesSection() {
   const { data: courses = [], isLoading, isError } = useCourses();
 
-  if (isLoading) return <div>...טוען קורסים</div>;
-  if (isError) return <div>שגיאה בטעינת קורסים</div>;
+  // if (isLoading) return <div>...טוען קורסים</div>;
+  // if (isError) return <div>שגיאה בטעינת קורסים</div>;
 
   const popularCourses = [...courses]
     .sort((a, b) => b.currentParticipants - a.currentParticipants)
@@ -57,19 +58,27 @@ export function FeaturedCoursesSection() {
         </motion.div>
 
         {/* Grid */}
-        <motion.div
-          className="featured-grid"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {popularCourses.map((course) => (
-            <motion.div key={course._id} variants={itemVariants}>
-              <CourseCard course={course} />
-            </motion.div>
-          ))}
-        </motion.div>
+        {isLoading ? (
+          <FeaturedSectionLoader count={4} />
+        ) : isError ? (
+          <div style={{ textAlign: "center", padding: "18px 0" }} dir="rtl">
+            <div style={{ marginBottom: 10 }}>שגיאה בטעינת קורסים מומלצים</div>
+            <button onClick={refetch}>נסה שוב</button>
+          </div>
+        ) : (
+          <motion.div
+            className="featured-grid"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {popularCourses.map((course) => (
+              <motion.div key={course._id} variants={itemVariants}>
+                <CourseCard course={course} />
+              </motion.div>
+            ))}
+          </motion.div>)}
       </div>
     </section>
   );
