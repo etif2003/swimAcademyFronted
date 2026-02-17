@@ -4,6 +4,7 @@ import InstructorCard from "../Instructors/InstructorCard";
 import "../../styles/FeaturedSection.css"; // 👈 אותו CSS!
 import { ArrowLeft } from "lucide-react";
 import { useInstructors } from "../../hooks/Instructor/useInstructors";
+import FeaturedSectionLoader from "./FeaturedSectionLoader";
 
 
 const containerVariants = {
@@ -26,8 +27,8 @@ const itemVariants = {
 export function FeaturedInstructorsSection() {
   const { data: instructors = [], isLoading, isError } = useInstructors();
 
-  if (isLoading) return <div>...טוען מדריכים</div>;
-  if (isError) return <div>שגיאה בטעינת מדריכים</div>;
+  // if (isLoading) return <div>...טוען מדריכים</div>;
+  // if (isError) return <div>שגיאה בטעינת מדריכים</div>;
 
   const popularInstructors = [...instructors]
     // .sort((a, b) => b.studentsCount - a.studentsCount)
@@ -36,7 +37,7 @@ export function FeaturedInstructorsSection() {
   return (
     <section className="featured featured-light-blue">
       <div className="featured-container">
-        {/* 🔹 Header – זהה לקורסים */}
+        {/* 🔹 Header*/}
         <motion.div
           className="featured-header"
           initial={{ opacity: 0, y: 20 }}
@@ -57,20 +58,28 @@ export function FeaturedInstructorsSection() {
           </Link>
         </motion.div>
 
-        {/* 🔹 Grid – זהה לקורסים */}
-        <motion.div
-          className="featured-grid"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {popularInstructors.map((instructor) => (
-            <motion.div key={instructor._id} variants={itemVariants}>
-              <InstructorCard instructor={instructor} />
-            </motion.div>
-          ))}
-        </motion.div>
+        {/* 🔹 Grid */}
+        {isLoading ? (
+          <FeaturedSectionLoader count={4} />
+        ) : isError ? (
+          <div style={{ textAlign: "center", padding: "18px 0" }} dir="rtl">
+            <div style={{ marginBottom: 10 }}>שגיאה בטעינת מדריכים מומלצים</div>
+            <button onClick={refetch}>נסה שוב</button>
+          </div>
+        ) : (
+          <motion.div
+            className="featured-grid"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {popularInstructors.map((instructor) => (
+              <motion.div key={instructor._id} variants={itemVariants}>
+                <InstructorCard instructor={instructor} />
+              </motion.div>
+            ))}
+          </motion.div>)}
       </div>
     </section>
   );
