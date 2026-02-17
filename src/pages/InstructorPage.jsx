@@ -4,6 +4,7 @@ import "../styles/ListingPage.css";
 import FilterDropdown from "../components/FilterDropdown.jsx";
 import CardsGrid from "../components/CardsGrid";
 import { useInstructors } from "../hooks/Instructor/useInstructors.js";
+import PageState from "../components/PageState.jsx";
 
 const getAreaOptionsFromInstructors = (instructors) => {
   const workAreas = instructors
@@ -32,8 +33,8 @@ export default function InstructorPage() {
     isError,
   } = useInstructors();
 
-  if (isLoading) return <div>...טוען מדריכים</div>;
-  if (isError) return <div>שגיאה בטעינת מדריכים</div>;
+  if (isLoading) return <PageState kind="instructors" state="loading" />;
+  if (isError) return <PageState kind="instructors" state="error" onRetry={() => window.location.reload()} />;
 
   const WORKAREA_OPTIONS = getAreaOptionsFromInstructors(instructors);
 
@@ -85,14 +86,23 @@ export default function InstructorPage() {
       </section>
 
       {/* GRID */}
-      <section className="listing-grid">
-        <CardsGrid
-          items={filteredInstructors}
-          renderItem={(instructor) => (
-            <InstructorCard key={instructor._id} instructor={instructor} />
-          )}
+      {filteredInstructors.length === 0 ? (
+        <PageState
+          kind="instructors"
+          state="empty"
+          compact
+          title="לא נמצאו מדריכים"
+          description="נסו לשנות פילטרים או חיפוש."
         />
-      </section>
+      ) : (
+        <section className="listing-grid">
+          <CardsGrid
+            items={filteredInstructors}
+            renderItem={(instructor) => (
+              <InstructorCard key={instructor._id} instructor={instructor} />
+            )}
+          />
+        </section>)}
     </div>
   );
 }
