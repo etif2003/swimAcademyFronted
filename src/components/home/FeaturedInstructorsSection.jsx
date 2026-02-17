@@ -25,7 +25,7 @@ const itemVariants = {
 };
 
 export function FeaturedInstructorsSection() {
-  const { data: instructors = [], isLoading, isError } = useInstructors();
+  const { data: instructors = [], isLoading, isError, refetch } = useInstructors();
 
   // if (isLoading) return <div>...טוען מדריכים</div>;
   // if (isError) return <div>שגיאה בטעינת מדריכים</div>;
