@@ -1,0 +1,175 @@
+.page-state {
+    width: 100%;
+    min-height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+}
+
+.page-state--compact {
+    min-height: 160px;
+    padding: 20px 16px;
+}
+
+.page-state__card {
+    width: 100%;
+    max-width: 560px;
+    padding: 30px 20px 40px;
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.page-state__title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.page-state__desc {
+    margin: 6px 0 0;
+    font-size: 14px;
+    color: rgba(15, 23, 42, .65);
+    line-height: 1.5;
+}
+
+.page-state__actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    border: 1px solid rgba(15, 23, 42, .12);
+    border-radius: 10px !important;
+    padding: 10px 14px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: #0f172a;
+    color: #fff;
+    border-color: #0f172a;
+}
+
+.btn-primary:hover {
+    filter: brightness(1.05);
+}
+
+.btn-ghost {
+    background: #fff;
+    color: #0f172a;
+}
+
+.btn-ghost:hover {
+    background: rgba(15, 23, 42, .04);
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+    border: 2px solid rgba(15, 23, 42, .12);
+    border-top-color: #0f172a;
+    animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.state-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 18px;
+    border: 1px solid rgba(15, 23, 42, .08);
+}
+
+.state-icon--error {
+    background: rgba(225, 29, 72, .08);
+    color: rgb(225, 29, 72);
+    border-color: rgba(225, 29, 72, .18);
+}
+
+.state-icon--empty {
+    background: rgba(15, 23, 42, .04);
+    color: rgba(15, 23, 42, .8);
+}
+
+.page-state__skeleton {
+    margin-top: 14px;
+    display: grid;
+    gap: 10px;
+}
+
+.sk-line {
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, .06);
+    position: relative;
+    overflow: hidden;
+}
+
+.sk-line::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 50%;
+    background: rgba(15, 23, 42, .10);
+    animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translateX(-20%);
+        opacity: .55;
+    }
+
+    50% {
+        transform: translateX(80%);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(140%);
+        opacity: .55;
+    }
+}
+
+.w-80 {
+    width: 80%;
+}
+
+.w-70 {
+    width: 70%;
+}
+
+.w-60 {
+    width: 60%;
+}
+
+@media (max-width: 768px) {
+    .page-state__card {
+        width: 100%;
+        max-width: 560px;
+        padding: 70px 20px 30px;
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+}
