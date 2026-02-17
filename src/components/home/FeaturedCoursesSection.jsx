@@ -24,7 +24,7 @@ const itemVariants = {
 };
 
 export function FeaturedCoursesSection() {
-  const { data: courses = [], isLoading, isError } = useCourses();
+  const { data: courses = [], isLoading, isError, refetch } = useCourses();
 
   // if (isLoading) return <div>...טוען קורסים</div>;
   // if (isError) return <div>שגיאה בטעינת קורסים</div>;
