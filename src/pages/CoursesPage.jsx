@@ -5,6 +5,7 @@ import "../styles/ListingPage.css";
 import FilterDropdown from "../components/FilterDropdown.jsx";
 import CardsGrid from "../components/CardsGrid";
 import { useCourses } from "../hooks/useCourses.js";
+import PageState from "../components/PageState.jsx";
 
 const LEVEL_OPTIONS = [
   { value: "", label: "כל הרמות" },
@@ -37,8 +38,8 @@ export default function CoursesPage() {
 
   const { data: courses = [], isLoading, isError } = useCourses();
 
-  if (isLoading) return <div>...טוען קורסים</div>;
-  if (isError) return <div>שגיאה בטעינת קורסים</div>;
+  if (isLoading) return <PageState kind="courses" state="loading" />;
+  if (isError) return <PageState kind="courses" state="error" onRetry={() => window.location.reload()} />;
 
   const filteredCourses = courses.filter((course) => {
     const matchLevel = !level || course.level === level;
@@ -111,14 +112,23 @@ export default function CoursesPage() {
       </section>
 
       {/* GRID */}
-      <section className="listing-grid">
-        <CardsGrid
-          items={filteredCourses}
-          renderItem={(course) => (
-            <CourseCard key={course._id} course={course} />
-          )}
+      {filteredCourses.length === 0 ? (
+        <PageState
+          kind="courses"
+          state="empty"
+          compact
+          title="לא נמצאו קורסים"
+          description="נסו לשנות פילטרים או חיפוש."
         />
-      </section>
+      ) : (
+        <section className="listing-grid">
+          <CardsGrid
+            items={filteredCourses}
+            renderItem={(course) => (
+              <CourseCard key={course._id} course={course} />
+            )}
+          />
+        </section>)}
     </div>
   );
 }
