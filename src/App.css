@@ -87,7 +87,7 @@
   width: 40px;
   height: 40px;
   border-radius: 12px;
-  background: linear-gradient(135deg, #4fc3f7, #0288d1);
+  background: linear-gradient(135deg, #4fc3f7, var(--color-darker-sky-blue));
   display: flex;
   justify-content: center;
   align-items: center;
@@ -98,7 +98,7 @@
 .logo-text {
   font-weight: bold;
   font-size: 1.25rem;
-  color: #4fc3f7;
+  color: var(--color-dark-sky-blue);
 }
 
 /* Desktop Nav */
@@ -119,8 +119,8 @@
 }
 
 .nav-link.active {
-  color: #0288d1;
-  border-bottom: 2px solid #0288d1;
+  color: var(--color-darker-sky-blue);
+  border-bottom: 2px solid var(--color-darker-sky-blue);
 }
 
 /* Desktop Actions */
@@ -152,7 +152,7 @@
 }
 
 .btn-water {
-  background: #4fc3f7;
+  background: var(--color-dark-sky-blue);
   color: white;
   border: none;
 }
@@ -198,7 +198,7 @@
 }
 
 .nav-link-mobile.active {
-  background: #0288d1;
+  background: var(--color-darker-sky-blue);
   color: white;
 }
 
@@ -229,7 +229,7 @@
 
 .footer {
   background-color: #0f4c6b;
-  color: #ffffff;
+  color: white;
   direction: rtl;
 }
 
@@ -339,7 +339,7 @@
 }
 
 .footer-links a:hover {
-  color: #ffffff;
+  color: white;
 }
 
 /* Contact */

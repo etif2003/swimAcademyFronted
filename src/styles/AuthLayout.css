@@ -3,7 +3,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     direction: rtl;
-    background: #ffffff;
+    background: white;
 }
 
 .auth-page {

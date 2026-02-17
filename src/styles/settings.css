@@ -1,6 +1,6 @@
 /* container כללי של עמוד ההגדרות */
 .settings-card {
-  background: #ffffff;
+  background: white;
   border-radius: 18px;
   padding: 50px;
   margin-top: 62px;
@@ -19,7 +19,7 @@
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 24px;
-  color: #0f172a;
+  color: var(--color-like-black);
 }
 
 /* טופס */
@@ -65,7 +65,7 @@
 
 /* הודעות */
 .error-text {
-  color: #dc2626;
+  color: var(--color-like-red);
   font-size: 14px;
 }
 
@@ -82,7 +82,7 @@
   border-radius: 10px;
   border: none;
   background: #12b5d0;
-  color: #ffffff;
+  color: white;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
@@ -115,7 +115,7 @@
   border-radius: 10px;
   border: none;
   background: #ef4444;
-  color: #ffffff;
+  color: white;
   font-size: 14px;
   cursor: pointer;
   transition: background 0.2s;
@@ -143,7 +143,7 @@
 
 .form-group input:focus {
   outline: none;
-  background-color: #ffffff; /* נהיה לבן בפוקוס */
+  background-color: white; /* נהיה לבן בפוקוס */
   border-color: #12b5d0; /* צבע המותג */
 }
 /* שורה של 2 שדות */

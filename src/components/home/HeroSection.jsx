@@ -100,7 +100,7 @@ export function HeroSection() {
         <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
           <path
             d="M0,32 C240,96 480,96 720,64 960,32 1200,0 1440,16 L1440,120 L0,120 Z"
-            fill="#ffffff"
+            fill="white"
           />
         </svg>
       </motion.div>

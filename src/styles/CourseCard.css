@@ -1,5 +1,5 @@
 .course-card {
-  background: #ffffff;
+  background: white;
   border-radius: 18px;
   overflow: hidden;
   border: 1px solid #e5e7eb;
@@ -42,8 +42,8 @@
   position: absolute;
   top: 12px;
   right: 12px;
-  background: #06b6d4;
-  color: #ffffff;
+  background: var(--color-dark-sky-blue);
+  color: white;
   font-size: 12px;
   padding: 4px 10px;
   border-radius: 999px;
@@ -68,7 +68,7 @@
 
 .course-rating span {
   font-size: 12px;
-  color: #6b7280;
+  color: var(--color-gray);
 }
 
 /* ===== Content ===== */
@@ -90,12 +90,12 @@
 }
 
 .course-card:hover .course-title {
-  color: #06b6d4;
+  color: var(--color-dark-sky-blue);
 }
 
 .course-target-audience {
   font-size: 14px;
-  color: #6b7280;
+  color: var(--color-gray);
   margin-bottom: 12px;
 }
 
@@ -105,7 +105,7 @@
   flex-wrap: wrap;
   gap: 10px;
   font-size: 12px;
-  color: #6b7280;
+  color: var(--color-gray);
   margin-bottom: 14px;
 }
 
@@ -130,13 +130,13 @@
 .course-price {
   font-size: 22px;
   font-weight: 700;
-  color: #06b6d4;
+  color: var(--color-dark-sky-blue);
 }
 
 .course-price span {
   font-size: 13px;
   font-weight: 400;
-  color: #6b7280;
+  color: var(--color-gray);
 }
 
 .course-details {
@@ -145,7 +145,7 @@
   gap: 4px;
   font-size: 14px;
   font-weight: 500;
-  color: #06b6d4;
+  color: var(--color-dark-sky-blue);
 }
 
 /*LEVEL-COLOR*/

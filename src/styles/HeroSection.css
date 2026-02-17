@@ -47,7 +47,7 @@ padding-right: 12%;
 }
 
 .hero-title span {
-  color: #7dd3fc;
+  color: var(--color-sky-blue);
 }
 
 .hero-description {
@@ -75,7 +75,7 @@ padding-right: 12%;
 }
 
 .hero-btn.primary {
-  background: linear-gradient(135deg, #22d3ee, #06b6d4);
+  background: linear-gradient(135deg, #22d3ee, var(--color-dark-sky-blue));
   color: #003344;
 }
 
@@ -108,7 +108,7 @@ padding-right: 12%;
 
 .hero-stats strong {
   font-size: 1.8rem;
-  color: #67e8f9;
+  color: var(--color-sky-blue);
 }
 
 .hero-stats span {

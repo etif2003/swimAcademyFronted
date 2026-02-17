@@ -12,7 +12,7 @@
 }
 
 .creator-card:hover {
-  background: #ffffff;
+  background: white;
   box-shadow: 0 8px 30px rgba(0,0,0,0.05);
   transform: translateY(-3px);
 }

@@ -1,5 +1,5 @@
 .infoListCard {
-    background: #ffffff;
+    background: white;
     border-radius: 16px;
     padding: 24px 28px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
@@ -24,7 +24,7 @@
 .infoListCard__title {
     font-size: 18px;
     font-weight: 600;
-    color: #0f172a;
+    color: var(--color-like-black);
     margin: 0;
 }
 

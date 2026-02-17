@@ -1,7 +1,7 @@
 /* ===== Card ===== */
 
 .instructor-card {
-  background: #ffffff;
+  background: white;
   border-radius: 18px;
   border: 1px solid #e5e7eb;
   padding: 16px;
@@ -67,16 +67,16 @@
   align-items: center;
   gap: 4px;
   font-size: 13px;
-  color: #6b7280;
+  color: var(--color-gray);
 }
 
 .instructor-experience {
   font-size: 13px;
-  color: #06b6d4;
+  color: var(--color-dark-sky-blue);
 }
 
 .instructor-card:hover .instructor-name {
-    color: #06b6d4;
+    color: var(--color-dark-sky-blue);
 }
 
 /* ===== Rating ===== */
@@ -86,7 +86,7 @@
   align-items: center;
   gap: 4px;
   font-size: 14px;
-  color: #06b6d4;
+  color: var(--color-dark-sky-blue);
   padding-right: 6px;
   /* כחול עדין */
 }
@@ -113,25 +113,25 @@
 
   font-size: 20px;
   font-weight: 700;
-  color: #06b6d4;
+  color: var(--color-dark-sky-blue);
 }
 
 .instructor-price span {
   font-size: 13px;
   font-weight: 400;
-  color: #6b7280;
+  color: var(--color-gray);
 }
 
 /* CTA Button */
 .instructor-cta {
-  background: #ffffff;
-  color: #06b6d4;
+  background: white;
+  color: var(--color-dark-sky-blue);
   padding: 8px 16px;
   border-radius: 999px;
   font-size: 14px;
   font-weight: 500;
   text-decoration: none;
-  border: 1px solid #06b6d4;
+  border: 1px solid var(--color-dark-sky-blue);
   box-shadow: 0 4px 10px rgba(6, 182, 212, 0.25);
   transition:
     box-shadow 0.2s ease,
@@ -139,8 +139,8 @@
 }
 
 .instructor-cta:hover {
-  background: #06b6d4;
-  color: #ffffff;
+  background: var(--color-dark-sky-blue);
+  color: white;
   box-shadow: 0 6px 16px rgba(6, 182, 212, 0.4);
 }
 

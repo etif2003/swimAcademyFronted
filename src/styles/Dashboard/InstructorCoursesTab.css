@@ -130,7 +130,7 @@
 
 /* ===== States ===== */
 .error-text {
-  color: #e74c3c;
+  color: var(--color-like-red);
   font-size: 14px;
   margin-bottom: 16px;
 }

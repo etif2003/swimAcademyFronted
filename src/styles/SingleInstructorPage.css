@@ -1,6 +1,6 @@
 .singleInstructorPage {
   background: #fff;
-  color: #0f172a;
+  color: var(--color-like-black);
 }
 
 /* חשוב: זה מה שמקבע את התוכן לרוחב כמו בתמונה */
@@ -46,7 +46,7 @@
   border-radius: 18px;
   padding: 16px;
   text-decoration: none;
-  color: #0f172a;
+  color: var(--color-like-black);
 
   display: flex;
   align-items: center;

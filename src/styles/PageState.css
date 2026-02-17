@@ -26,7 +26,7 @@
     margin: 0;
     font-size: 16px;
     font-weight: 700;
-    color: #0f172a;
+    color: var(--color-like-black);
 }
 
 .page-state__desc {
@@ -53,9 +53,9 @@
 }
 
 .btn-primary {
-    background: #0f172a;
+    background: var(--color-like-black);
     color: #fff;
-    border-color: #0f172a;
+    border-color: var(--color-like-black);
 }
 
 .btn-primary:hover {
@@ -64,7 +64,7 @@
 
 .btn-ghost {
     background: #fff;
-    color: #0f172a;
+    color: var(--color-like-black);
 }
 
 .btn-ghost:hover {
@@ -76,7 +76,7 @@
     height: 40px;
     border-radius: 14px;
     border: 2px solid rgba(15, 23, 42, .12);
-    border-top-color: #0f172a;
+    border-top-color: var(--color-like-black);
     animation: spin 0.9s linear infinite;
 }
 

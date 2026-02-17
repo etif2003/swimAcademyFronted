@@ -82,7 +82,7 @@ const LoginForm = () => {
         {/* אימייל */}
         <div className={`field icon-field ${errors.email ? "error" : ""}`}>
           <label>אימייל</label>
-          <div className="input-wrapper">
+          <div className="login-input-wrapper">
             <input
               name="email"
               type="email"
@@ -104,7 +104,7 @@ const LoginForm = () => {
             </Link>
           </div>
 
-          <div className="input-wrapper">
+          <div className="login-input-wrapper">
             <input
               name="password"
               type="password"

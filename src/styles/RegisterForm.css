@@ -12,13 +12,13 @@
 }
 
 .subtitle {
-  color: #6b7280;
+  color: var(--color-gray);
   margin-bottom: 24px;
 }
 
 .label {
   font-size: 14px;
-  color: #6b7280;
+  color: var(--color-gray);
   margin-bottom: 8px;
 }
 
@@ -54,16 +54,16 @@
   width: 32px;
   height: 32px;
   margin: 0 auto;
-  color: #6b7280;
+  color: var(--color-gray);
 }
 
 .role-card.active {
-  border-color: #06b6d4;
+  border-color: var(--color-dark-sky-blue);
   background: #ecfeff;
 }
 
 .role-card.active .role-icon {
-  color: #06b6d4;
+  color: var(--color-dark-sky-blue);
 }
 
 .role-card:focus,
@@ -96,13 +96,13 @@
 }
 
 .field.error input {
-  border-color: #ef4444;
+  border-color: var(--color-like-red);
   background: #fef2f2;
 }
 
 .error-text {
   font-size: 12px;
-  color: #ef4444;
+  color: var(--color-like-red);
   margin-top: 4px;
 }
 
@@ -124,7 +124,7 @@
 .terms {
   font-size: 12px;
   text-align: center;
-  color: #6b7280;
+  color: var(--color-gray);
 }
 
 .terms a {
