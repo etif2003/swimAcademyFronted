@@ -21,22 +21,17 @@ export const fetchSingleCourse = async (id) => {
   return response.json();
 };
 
-export const fetchCoursesByCreator = async (
-  creatorType,
-  creatorId
-) => {
-  const response = await fetch(
-    `${BASE_URL}/by-creator/type/${creatorType}/id/${creatorId}`,
-    {
-      headers: getAuthHeaders(),
-    }
-  );
+export const fetchMyCourses = async () => {
+  const response = await fetch(`${BASE_URL}/my-courses`, {
+    headers: getAuthHeaders(),
+  });
 
   if (!response.ok)
-    throw new Error("Failed to fetch creator courses");
+    throw new Error("Failed to fetch courses");
 
   return response.json();
 };
+
 
 
 export const createCourse = async (courseData) => {

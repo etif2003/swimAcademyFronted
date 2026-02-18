@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "../../../styles/Dashboard/InstructorCoursesTab.css";
-import { fetchCoursesByCreator } from "../../../api/courses-functions";
+import {fetchMyCourses } from "../../../api/courses-functions";
 import CourseModal from "../course/CourseForm/CourseModal";
 
 
@@ -18,13 +18,13 @@ export default function InstructorCoursesTab() {
       setLoading(true);
       setError(null);
 
-      if (!user?._id || !user?.role) {
+      if (!user?.id || !user?.role) {
         throw new Error("משתמש לא מחובר");
       }
 
-      const data = await fetchCoursesByCreator(
+      const data = await fetchMyCourses(
         user.role,
-        user._id
+        user.id
       );
 
       setCourses(data);

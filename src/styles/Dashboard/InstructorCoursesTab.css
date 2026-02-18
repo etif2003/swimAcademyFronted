@@ -1,8 +1,9 @@
 /* ===== Container ===== */
 .instructor-courses-container {
-  padding: 24px;
-  max-width: 1000px;
+  padding-top: 24px;
   margin: 0 auto;
+    width: 120vh;
+    max-width: 180vh;
 }
 
 /* ===== Header ===== */
@@ -10,6 +11,7 @@
   display: flex;
   justify-content: flex-start;
   margin-bottom: 24px;
+
 }
 
 /* Create Button */
