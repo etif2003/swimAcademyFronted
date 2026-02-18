@@ -6,28 +6,31 @@ import FilterDropdown from "../components/FilterDropdown.jsx";
 import CardsGrid from "../components/CardsGrid";
 import { useCourses } from "../hooks/useCourses.js";
 import PageState from "../components/PageState.jsx";
+import { LEVEL_OPTIONS } from "../constants/levels.js";
+import { TARGET_AUDIENCE_OPTIONS } from "../constants/target_audience.js";
+import { CATEGORY_OPTIONS } from "../constants/categories.js";
 
-const LEVEL_OPTIONS = [
-  { value: "All", label: "כל הרמות" },
-  { value: "Beginner", label: "מתחילים" },
-  { value: "Advanced", label: "מתקדמים" },
-  { value: "Professional", label: "מקצועי" },
-];
+// const LEVEL_OPTIONS = [
+//   { value: "All", label: "כל הרמות" },
+//   { value: "Beginner", label: "מתחילים" },
+//   { value: "Advanced", label: "מתקדמים" },
+//   { value: "Professional", label: "מקצועי" },
+// ];
 
-const AUDIENCE_OPTIONS = [
-  { value: "All", label: "כל הקהלים" },
-  { value: "Children", label: "ילדים" },
-  { value: "Teens", label: "נוער" },
-  { value: "Adults", label: "מבוגרים" },
-  { value: "Seniors", label: "גיל הזהב" },
-];
+// const TARGET_AUDIENCE_OPTIONS = [
+//   { value: "All", label: "כל הקהלים" },
+//   { value: "Children", label: "ילדים" },
+//   { value: "Teens", label: "נוער" },
+//   { value: "Adults", label: "מבוגרים" },
+//   { value: "Seniors", label: "גיל הזהב" },
+// ];
 
-const CATEGORY_OPTIONS = [
-  { value: "All", label: "כל הקטגוריות" },
-  { value: "Learning", label: "למידה" },
-  { value: "Training", label: "הכשרה" },
-  { value: "Therapy", label: "טיפולי" },
-];
+// const CATEGORY_OPTIONS = [
+//   { value: "All", label: "כל הקטגוריות" },
+//   { value: "Learning", label: "למידה" },
+//   { value: "Training", label: "הכשרה" },
+//   { value: "Therapy", label: "טיפולי" },
+// ];
 
 export default function CoursesPage() {
   const [level, setLevel] = useState("");
@@ -82,7 +85,7 @@ export default function CoursesPage() {
 
         <FilterDropdown
           label="כל הקהלים"
-          options={AUDIENCE_OPTIONS}
+          options={TARGET_AUDIENCE_OPTIONS}
           value={audience}
           isOpen={openFilter === "audience"}
           onToggle={() =>
