@@ -259,11 +259,11 @@ export default function SchoolProfileCard() {
                 onChange={(e) => update("area", e.target.value)}
               >
                 <option value="">בחר אזור</option>
-                {AREAS.map((area) => (
-                  <option key={area} value={area}>
-                    {area}
-                  </option>
-                ))}
+               {AREAS.map((area) => (
+                <option key={area.value} value={area.value}>
+                  {area.label}
+                </option>
+              ))}
               </select>
               {errors.area && (
                 <span className="field-error">{errors.area}</span>

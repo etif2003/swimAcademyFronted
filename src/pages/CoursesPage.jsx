@@ -8,14 +8,14 @@ import { useCourses } from "../hooks/useCourses.js";
 import PageState from "../components/PageState.jsx";
 
 const LEVEL_OPTIONS = [
-  { value: "", label: "כל הרמות" },
+  { value: "All", label: "כל הרמות" },
   { value: "Beginner", label: "מתחילים" },
   { value: "Advanced", label: "מתקדמים" },
   { value: "Professional", label: "מקצועי" },
 ];
 
 const AUDIENCE_OPTIONS = [
-  { value: "", label: "כל הקהלים" },
+  { value: "All", label: "כל הקהלים" },
   { value: "Children", label: "ילדים" },
   { value: "Teens", label: "נוער" },
   { value: "Adults", label: "מבוגרים" },
@@ -23,7 +23,7 @@ const AUDIENCE_OPTIONS = [
 ];
 
 const CATEGORY_OPTIONS = [
-  { value: "", label: "כל הקטגוריות" },
+  { value: "All", label: "כל הקטגוריות" },
   { value: "Learning", label: "למידה" },
   { value: "Training", label: "הכשרה" },
   { value: "Therapy", label: "טיפולי" },

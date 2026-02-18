@@ -1,7 +1,14 @@
 import { useState, useRef, useEffect } from "react";
 import { ChevronDown, Check } from "lucide-react";
+import "../../../styles/Errors.css";
 
-export default function FormSelect({ label, options, value, onChange }) {
+export default function FormSelect({
+  label,
+  options,
+  value,
+  onChange,
+  error,
+}) {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
 
@@ -16,7 +23,8 @@ export default function FormSelect({ label, options, value, onChange }) {
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    return () =>
+      document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (
@@ -25,7 +33,7 @@ export default function FormSelect({ label, options, value, onChange }) {
 
       <button
         type="button"
-        className="form-select-button"
+        className={`form-select-button ${error ? "input-error" : ""}`}
         onClick={() => setOpen(!open)}
       >
         {selected?.label || "בחר"}
@@ -51,6 +59,8 @@ export default function FormSelect({ label, options, value, onChange }) {
           ))}
         </div>
       )}
+
+      {error && <span className="field-error">{error}</span>}
     </div>
   );
 }

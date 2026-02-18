@@ -2,6 +2,11 @@ import { useState, useEffect } from "react";
 import { useAuth } from "../../../../context/AuthContext";
 import { uploadImage } from "../../../../api/upload";
 import { AREAS } from "../../../../constants/areas";
+import { validateCourseForm } from "../../../../utils/validators/validateCourseForm";
+import { createCourse, updateCourse } from "../../../../api/courses-functions";
+import "../../../../styles/success.css";
+
+
 
 import BaseModal from "../../ModalForm/BaseModal";
 import FormField from "../../ModalForm/FormField";
@@ -33,6 +38,10 @@ export default function CourseModal({ isOpen, onClose, course, onSuccess }) {
 
   const [formData, setFormData] = useState(initialState);
   const [uploadingImage, setUploadingImage] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState("");
+
+
 
   useEffect(() => {
     if (course) {
@@ -47,6 +56,8 @@ export default function CourseModal({ isOpen, onClose, course, onSuccess }) {
     } else {
       setFormData(initialState);
     }
+
+    setErrors({});
   }, [course, isOpen]);
 
   if (!isOpen) return null;
@@ -55,6 +66,7 @@ export default function CourseModal({ isOpen, onClose, course, onSuccess }) {
 
   const update = (key, value) => {
     setFormData((prev) => ({ ...prev, [key]: value }));
+    setErrors((prev) => ({ ...prev, [key]: undefined }));
   };
 
   const updateLocation = (key, value) => {
@@ -65,6 +77,10 @@ export default function CourseModal({ isOpen, onClose, course, onSuccess }) {
         [key]: value,
       },
     }));
+
+    if (key === "city") {
+      setErrors((prev) => ({ ...prev, city: undefined }));
+    }
   };
 
   /* ===== Image Upload ===== */
@@ -87,58 +103,66 @@ export default function CourseModal({ isOpen, onClose, course, onSuccess }) {
   /* ===== Submit ===== */
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const payload = {
-      ...formData,
-      price: Number(formData.price),
-      maxParticipants: formData.maxParticipants
-        ? Number(formData.maxParticipants)
-        : undefined,
-      durationWeeks: formData.durationWeeks
-        ? Number(formData.durationWeeks)
-        : undefined,
-      sessionsCount: formData.sessionsCount
-        ? Number(formData.sessionsCount)
-        : undefined,
-      createdBy: user?.id,
-      createdByModel: user?.role,
-    };
+  const validationErrors = validateCourseForm(formData);
 
-    try {
-      const res = await fetch(
-        isEdit ? `/api/courses/${course._id}` : "/api/courses",
-        {
-          method: isEdit ? "PUT" : "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-          body: JSON.stringify(payload),
-        },
-      );
+  if (Object.keys(validationErrors).length > 0) {
+    setErrors(validationErrors);
+    return;
+  }
 
-      if (!res.ok) throw new Error("שגיאה בשמירה");
+  setErrors({});
 
-      const data = await res.json();
-      onSuccess?.(data);
-      onClose();
-    } catch (err) {
-      alert(err.message);
-    }
+  const payload = {
+    ...formData,
+    price: Number(formData.price),
+    maxParticipants: formData.maxParticipants
+      ? Number(formData.maxParticipants)
+      : undefined,
+    durationWeeks: formData.durationWeeks
+      ? Number(formData.durationWeeks)
+      : undefined,
+    sessionsCount: formData.sessionsCount
+      ? Number(formData.sessionsCount)
+      : undefined,
+    createdBy: user?.id,
+    createdByModel: user?.role,
   };
+
+  try {
+    const data = isEdit
+      ? await updateCourse(course._id, payload)
+      : await createCourse(payload);
+
+        setSuccessMessage(
+    isEdit ? "הקורס עודכן בהצלחה 🎉" : "הקורס נוצר בהצלחה 🎉"
+  );
+
+    onSuccess?.(data);
+  // נסגור את המודל אחרי 1.5 שניות
+  setTimeout(() => {
+    setSuccessMessage("");
+    onClose();
+  }, 1500);
+  } catch (err) {
+    console.error(err);
+    alert(err.message || "שגיאה בשמירה");
+  }
+};
+
 
   /* ===== Options ===== */
 
   const categoryOptions = [
-    { label: "כל הקטגוריות", value: "" },
+    { label: "כל הקטגוריות", value: "All" },
     { label: "למידה", value: "Learning" },
     { label: "הכשרה", value: "Training" },
     { label: "טיפולי", value: "Therapy" },
   ];
 
   const audienceOptions = [
-    { label: "כל הקהלים", value: "" },
+    { label: "כל הקהלים", value: "All" },
     { label: "ילדים", value: "Children" },
     { label: "נוער", value: "Teens" },
     { label: "מבוגרים", value: "Adults" },
@@ -146,16 +170,13 @@ export default function CourseModal({ isOpen, onClose, course, onSuccess }) {
   ];
 
   const levelOptions = [
-    { label: "כל הרמות", value: "" },
+    { label: "כל הרמות", value: "All" },
     { label: "מתחילים", value: "Beginner" },
     { label: "מתקדמים", value: "Advanced" },
     { label: "מקצועי", value: "Professional" },
   ];
 
-  const areaOptions = AREAS.map((area) => ({
-    label: area,
-    value: area,
-  }));
+  const areaOptions = AREAS;
 
   return (
     <BaseModal
@@ -164,31 +185,31 @@ export default function CourseModal({ isOpen, onClose, course, onSuccess }) {
       title={isEdit ? "עריכת קורס" : "יצירת קורס חדש"}
     >
       <form className="form" onSubmit={handleSubmit}>
-        {/* 1. שם הקורס */}
         <div className="form-row single">
           <FormField
             label="שם הקורס"
             value={formData.title}
             onChange={(e) => update("title", e.target.value)}
+            error={errors.title}
           />
         </div>
 
-        {/* 2. תיאור הקורס */}
         <div className="form-row single">
           <FormTextarea
             label="תיאור הקורס"
             value={formData.description}
             onChange={(e) => update("description", e.target.value)}
+            error={errors.description}
           />
         </div>
 
-        {/* 3. קטגוריה | קהל יעד | רמה */}
         <div className="form-row three">
           <FormSelect
             label="קטגוריה"
             options={categoryOptions}
             value={formData.category}
             onChange={(v) => update("category", v)}
+            error={errors.category}
           />
 
           <FormSelect
@@ -196,6 +217,7 @@ export default function CourseModal({ isOpen, onClose, course, onSuccess }) {
             options={audienceOptions}
             value={formData.targetAudience}
             onChange={(v) => update("targetAudience", v)}
+            error={errors.targetAudience}
           />
 
           <FormSelect
@@ -203,22 +225,24 @@ export default function CourseModal({ isOpen, onClose, course, onSuccess }) {
             options={levelOptions}
             value={formData.level}
             onChange={(v) => update("level", v)}
+            error={errors.level}
           />
         </div>
 
-        {/* 4. אזור | עיר | שם בריכה */}
         <div className="form-row three">
           <FormSelect
             label="אזור"
             options={areaOptions}
             value={formData.area}
             onChange={(v) => update("area", v)}
+            error={errors.area}
           />
 
           <FormField
             label="עיר"
             value={formData.location.city}
             onChange={(e) => updateLocation("city", e.target.value)}
+            error={errors.city}
           />
 
           <FormField
@@ -228,13 +252,13 @@ export default function CourseModal({ isOpen, onClose, course, onSuccess }) {
           />
         </div>
 
-        {/* 5. מחיר | מקסימום משתתפים */}
         <div className="form-row two">
           <FormField
             label="מחיר (₪)"
             type="number"
             value={formData.price}
             onChange={(e) => update("price", e.target.value)}
+            error={errors.price}
           />
 
           <FormField
@@ -242,16 +266,17 @@ export default function CourseModal({ isOpen, onClose, course, onSuccess }) {
             type="number"
             value={formData.maxParticipants}
             onChange={(e) => update("maxParticipants", e.target.value)}
+            error={errors.maxParticipants}
           />
         </div>
 
-        {/* 6. משך | מספר מפגשים */}
         <div className="form-row two">
           <FormField
             label="משך (שבועות)"
             type="number"
             value={formData.durationWeeks}
             onChange={(e) => update("durationWeeks", e.target.value)}
+            error={errors.durationWeeks}
           />
 
           <FormField
@@ -259,10 +284,10 @@ export default function CourseModal({ isOpen, onClose, course, onSuccess }) {
             type="number"
             value={formData.sessionsCount}
             onChange={(e) => update("sessionsCount", e.target.value)}
+            error={errors.sessionsCount}
           />
         </div>
 
-        {/* 7. תמונת קורס */}
         <div className="form-row single">
           <FormImageUpload
             label="תמונת קורס"
@@ -273,7 +298,14 @@ export default function CourseModal({ isOpen, onClose, course, onSuccess }) {
           />
         </div>
 
-        {/* 8. ביטול | יצירה */}
+
+        {successMessage && (
+  <div className="success-message">
+    {successMessage}
+  </div>
+)}
+
+
         <div className="form-actions">
           <button type="button" className="btn-secondary" onClick={onClose}>
             ביטול

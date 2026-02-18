@@ -244,8 +244,8 @@ export default function InstructorProfileCard() {
             >
               <option value="">בחר אזור</option>
               {AREAS.map((area) => (
-                <option key={area} value={area}>
-                  {area}
+                <option key={area.value} value={area.value}>
+                  {area.label}
                 </option>
               ))}
             </select>
