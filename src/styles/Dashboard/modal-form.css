@@ -45,7 +45,8 @@
 }
 
 .modal-title {
-  font-size: 22px; /* קטן יותר */
+  font-size: 22px;
+  /* קטן יותר */
   font-weight: 700;
   color: #1f2d3d;
   margin: 0;
@@ -95,7 +96,8 @@
 }
 
 .field label {
-  font-size: 13px; /* קטן יותר */
+  font-size: 13px;
+  /* קטן יותר */
   font-weight: 500;
   margin-bottom: 6px;
   color: #1f2d3d;
@@ -120,9 +122,11 @@
   align-items: center;
   justify-content: space-between;
 
-  direction: rtl; /* חשוב */
-  text-align: right; /* הטקסט לימין */
+  direction: rtl;
+  text-align: right;
   cursor: pointer;
+
+  font-family: inherit;
 }
 
 .field textarea {

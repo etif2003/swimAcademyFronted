@@ -6,12 +6,13 @@ import "../../styles/AboutPage.css";
 export default function AboutMissionSection() {
   return (
     <section className="about-mission" dir="rtl">
-      <div className="about-container about-mission__grid">
+      <div className="about-container">
         <motion.div
-          initial={{ opacity: 0, x: 24 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
+          className="about-mission__content"
         >
           <div className="about-pill">
             <Target size={16} />
@@ -29,22 +30,22 @@ export default function AboutMissionSection() {
             מתלמידים שמחפשים את הקורס המושלם, דרך מדריכים שרוצים להרחיב את פעילותם,
             ועד בתי ספר שמבקשים לנהל את הפעילות שלהם בצורה חכמה ויעילה.
           </p>
-        </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, x: -24 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="about-stats"
-        >
-          {stats.map((s, i) => (
-            <div key={s.label} className="about-stats__row">
-              <div className="about-stats__value">{s.value}</div>
-              <div className="about-stats__label">{s.label}</div>
-              {i < stats.length - 1 ? <div className="about-stats__divider" /> : null}
-            </div>
-          ))}
+          {/* ✅ stats בשורה מתחת למשימה */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: 0.05 }}
+            className="about-stats-inline"
+          >
+            {stats.map((s) => (
+              <div key={s.label} className="about-stats-inline__item">
+                <strong className="about-stats-inline__value">{s.value}</strong>
+                <span className="about-stats-inline__label">{s.label}</span>
+              </div>
+            ))}
+          </motion.div>
         </motion.div>
       </div>
     </section>

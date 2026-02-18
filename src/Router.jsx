@@ -13,6 +13,7 @@ import SingleCoursePage from "./pages/SingleCoursePage";
 import TermsPage from "./pages/legal/TermsPage";
 import PrivacyPage from "./pages/legal/PrivacyPage";
 import AboutPage from "./pages/AboutPage";
+import ContactPage from "./pages/ContactPage";
 
 export const Router = () => {
   const router = createBrowserRouter([
@@ -66,6 +67,11 @@ export const Router = () => {
         {
           path: "/about",
           element: <AboutPage />,
+        },
+
+        {
+          path: "/contact",
+          element: <ContactPage />,
         },
 
         {
