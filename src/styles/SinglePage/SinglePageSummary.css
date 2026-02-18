@@ -10,7 +10,7 @@
     border-radius: 12px;
     object-fit: cover;
     border: 1px solid #e6eef6;
-    background: #fff;
+    background: white;
 }
 
 .singlePageSummary__title {
@@ -27,14 +27,9 @@
     padding-right: 2px;
 }
 
-.singlePageSummary__address {
-    font-size: 14px;
-    color: #64748b;
-}
-
 .singlePageSummary__desc {
     margin-top: 14px;
-    color: #64748b;
+    color: var(--color-gray);
     line-height: 1.8;
     max-width: 760px;
     text-align: justify;
@@ -48,7 +43,7 @@
 }
 
 .category-chip {
-    background-color: #e6f7fb;
+    background-color: var(--color-transparent-light-blue);
     /* תכלת בהיר */
     color: #007c91;
     /* טקסט תואם למיתוג */

@@ -26,7 +26,7 @@
 .auth-side--info {
     background: linear-gradient(135deg,
             #0f5f78,
-            #0ea5b7,
+            var(--color-turquoise-hover),
             #22c1d6);
     color: white;
     padding: 48px;

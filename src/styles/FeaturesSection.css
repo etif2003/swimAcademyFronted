@@ -19,7 +19,7 @@
 .features-badge {
   display: inline-block;
   background: rgba(14, 165, 233, 0.1);
-  color: var(--color-dark-sky-blue);
+  color: var(--color-turquoise);
   padding: 0.4rem 1rem;
   border-radius: 999px;
   font-size: 0.9rem;
@@ -35,13 +35,12 @@
 .feature-text {
   font-size: 0.95rem;
   line-height: 1.6;
-  color: #64748b;
 }
 
 
 .features-subtitle {
   font-size: 1.1rem;
-  color: #475569;
+  color: var(--color-dark-gray);
   max-width: 640px;
   margin: 0 auto;
 }
@@ -77,8 +76,8 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto 1.4rem;
-  background: linear-gradient(135deg, var(--color-dark-sky-blue), var(--color-darker-sky-blue));
-  color: #fff;
+  background: linear-gradient(135deg, var(--color-turquoise), var(--color-darker-sky-blue));
+  color: white;
   box-shadow: 0 16px 30px rgba(2, 132, 199, 0.25);
 }
 
@@ -102,7 +101,7 @@
 .feature-card p {
   font-size: 0.95rem;
   line-height: 1.6;
-  color: #475569;
+  color: var(--color-dark-gray);
 }
 
 @media (max-width: 768px) {

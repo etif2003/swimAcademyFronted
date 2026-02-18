@@ -11,13 +11,13 @@
   background: white;
   border-radius: 18px;
   padding: 32px;
-margin-top: 30px;
-margin-bottom: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
   width: 120vh;
   max-width: 180vh;
 
-  border: 1px solid #e6eaf0;       /* 👈 הבורדר */
-  box-shadow: 0 8px 24px rgba(0,0,0,0.04); /* 👈 צל עדין */
+  border: 1px solid #e6eaf0; /* 👈 הבורדר */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04); /* 👈 צל עדין */
 }
 .subtitle.certified {
   display: inline-flex;
@@ -31,7 +31,6 @@ margin-bottom: 30px;
 .subtitle.certified svg {
   display: block;
 }
-
 
 /* HEADER */
 .profile-header {
@@ -51,7 +50,7 @@ margin-bottom: 30px;
   display: block;
   margin-top: 4px;
   font-size: 14px;
-  color: #777;
+  color: var(--color-gray);
 }
 
 /* AVATAR */
@@ -65,9 +64,8 @@ margin-bottom: 30px;
   border-radius: 50%;
   object-fit: cover;
 }
-.avatar-wrapper.logo{
+.avatar-wrapper.logo {
   padding: 0.5em;
-
 }
 
 .edit-avatar {
@@ -83,12 +81,11 @@ margin-bottom: 30px;
   align-items: center;
   justify-content: center;
 
-  padding: 0;              /* 👈 חשוב */
+  padding: 0; /* 👈 חשוב */
 }
 .edit-avatar svg {
-  display: block;          /* 👈 מבטל inline behavior */
+  display: block; /* 👈 מבטל inline behavior */
 }
-
 
 /* FORM GRID */
 .profile-form-grid {
@@ -98,9 +95,9 @@ margin-bottom: 30px;
 }
 
 .profile-form-image {
-    display: flex;
-    justify-content: center;
-    margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
 }
 
 .field.full {
@@ -111,7 +108,7 @@ margin-bottom: 30px;
   display: block;
   margin-bottom: 6px;
   font-size: 13px;
-  color: #555;
+  color: var(--color-dark-gray);
   text-align: right;
 }
 .field input,
@@ -120,23 +117,24 @@ margin-bottom: 30px;
   padding: 12px;
   border-radius: 10px;
 
-  background-color: #f9fafb;   /* 👈 אפור מאוד בהיר */
-  border: 1px solid #e5e7eb;   /* 👈 בורדר עדין */
+  background-color: #f9fafb; /* 👈 אפור מאוד בהיר */
+  border: 1px solid var(--color-semi-light-gray); /* 👈 בורדר עדין */
 
   font-size: 14px;
   text-align: right;
-  color: #111827;
+  color: var(--color-like-black);
 
-  transition: background-color 0.2s, border-color 0.2s;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
 }
 
 .field input:focus,
 .field select:focus,
 .cert-add input:focus {
-    
   outline: none;
-  background-color: white;     /* נהיה לבן בפוקוס */
-  border-color: #12b5d0;         /* צבע המותג */
+  background-color: white; /* נהיה לבן בפוקוס */
+  border-color: var(--color-turquoise); /* צבע המותג */
 }
 
 .field textarea {
@@ -145,35 +143,36 @@ margin-bottom: 30px;
   border-radius: 10px;
 
   background-color: #f9fafb;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--color-semi-light-gray);
 
   font-size: 14px;
   font-family: inherit;
   text-align: right;
-  color: #111827;
+  color: var(--color-like-black);
 
   resize: vertical;
   min-height: 90px;
 
-  transition: background-color 0.2s, border-color 0.2s;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
 }
 
 .field textarea:focus {
   outline: none;
   background-color: white;
-  border-color: #12b5d0;
+  border-color: var(--color-turquoise);
 }
-
 
 /* CERTIFICATES */
 .profile-certificates {
   margin-top: 28px;
-      display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .section-title {
-    font-size: 17px;
+  font-size: 17px;
   display: flex;
   font-weight: 700;
   margin-bottom: 20px;
@@ -189,7 +188,7 @@ margin-bottom: 30px;
 
 .cert-chip {
   background: #e7f7fb;
-  color: #0a7a8c;
+  color: var(--color-dark-turquoise);
   padding: 6px 14px;
   border-radius: 999px;
   font-size: 13px;
@@ -200,11 +199,11 @@ margin-bottom: 30px;
   margin-top: 32px;
   padding-top: 25px;
   text-align: right;
-   border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--color-semi-light-gray);
 }
 
 .save-btn {
-  background: #12b5d0;
+  background: var(--color-turquoise);
   color: white;
   padding: 12px 30px;
   border-radius: 12px;
@@ -214,7 +213,7 @@ margin-bottom: 30px;
 }
 .cert-chip {
   background: #e7f7fb;
-  color: #0a7a8c;
+  color: var(--color-dark-turquoise);
   padding: 6px 10px;
   border-radius: 999px;
   font-size: 13px;
@@ -243,41 +242,43 @@ margin-bottom: 30px;
   flex: 1;
   padding: 10px;
   border-radius: 10px;
-  background-color: #f9fafb;   /* 👈 אפור מאוד בהיר */
-  border: 1px solid #e5e7eb;   /* 👈 בורדר עדין */
+  background-color: #f9fafb; /* 👈 אפור מאוד בהיר */
+  border: 1px solid var(--color-semi-light-gray); /* 👈 בורדר עדין */
 
   font-size: 14px;
   text-align: right;
-  color: #111827;
+  color: var(--color-like-black);
 
-  transition: background-color 0.2s, border-color 0.2s;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
 }
 
 .cert-add button {
-  background: #12b5d0;
-  color: #fff;
+  background: var(--color-turquoise);
+  color: white;
   border: none;
   border-radius: 10px;
   padding: 0 16px;
   cursor: pointer;
 }
 
-.delete-image-btn{
+.delete-image-btn {
   margin-bottom: 10px;
 }
-.delete-avatar{
-      padding: 4px;
-    position: absolute;
-    top: 64px;
-    left: -6px;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    background: white;
-    border: 2px solid #fee2e2;
-    color: var(--color-like-red);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+.delete-avatar {
+  padding: 4px;
+  position: absolute;
+  top: 64px;
+  left: -6px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #fee2e2;
+  color: var(--color-like-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }

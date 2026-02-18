@@ -3,22 +3,21 @@
   direction: rtl;
   display: inline-flex;
   gap: 4px;
-height: 35px;
-  background-color: #f1f4f6;
+  height: 35px;
+  background-color: var(--color-very-light-gray);
   padding: 6px;
   border-radius: 10px;
-width: 120vh;
-    max-width: 180vh;
+  width: 120vh;
+  max-width: 180vh;
 }
 
 /* ===== TAB BUTTON ===== */
 .tab-btn {
   background: transparent;
-  border: none;              /* 👈 אין בורדר */
-  outline: none;             /* 👈 אין outline */
-  box-shadow: none;          /* 👈 אין שחור בלחיצה */
+  border: none; /* 👈 אין בורדר */
+  outline: none; /* 👈 אין outline */
+  box-shadow: none; /* 👈 אין שחור בלחיצה */
 
-  color: #4b5563;
   padding: 8px 14px;
   border-radius: 7px;
 
@@ -29,7 +28,9 @@ width: 120vh;
   align-items: center;
   gap: 6px;
 
-  transition: background-color 0.2s, box-shadow 0.2s;
+  transition:
+    background-color 0.2s,
+    box-shadow 0.2s;
 }
 
 /* ===== REMOVE BLACK OUTLINE ON CLICK ===== */
@@ -44,15 +45,13 @@ width: 120vh;
   font-size: 16px;
   line-height: 1;
   display: flex;
-    padding-top: 4px;
+  padding-top: 4px;
 }
 
 /* ===== ACTIVE TAB ===== */
 .tab-btn.active {
   background-color: white;
-  color: #111827;
   font-weight: 600;
-
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 

@@ -36,6 +36,7 @@
   border-radius: 6px;
   border: 1px solid #d1d5db;
   text-align: right;
+  padding-right: 40px;
 }
 
 .field.error input {
@@ -52,7 +53,7 @@
 .submit-button {
   margin-top: 8px;
   padding: 12px;
-  background: #18BFDC;
+  background: #18bfdc;
   color: white;
   border: none;
   border-radius: 8px;
@@ -64,16 +65,6 @@
   background: #069eb9;
 }
 
-.switch {
-  font-size: 13px;
-  text-align: center;
-  color: var(--color-gray);
-}
-
-.switch a {
-  color: #2563eb;
-  text-decoration: none;
-}
 .icon-field .login-input-wrapper {
   position: relative;
 }
@@ -92,7 +83,7 @@
   right: 14px;
   top: 50%;
   transform: translateY(-50%);
-  color: #9ca3af;
+  color: var(--color-gray);;
   width: 20px;
   height: 20px;
 }
@@ -106,7 +97,7 @@
 
 .forgot-link {
   font-size: 13px;
-  color: var(--color-dark-sky-blue);
+  color: var(--color-turquoise);
   text-decoration: none;
 }
 
@@ -117,22 +108,21 @@
 /* כפתור ראשי */
 .submit-button.primary {
   margin-top: 12px;
-  background: linear-gradient(90deg, #22c1dc, var(--color-dark-sky-blue));
+  background: linear-gradient(90deg, #22c1dc, var(--color-turquoise));
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-   width: 100%;
+  width: 100%;
   padding: 6px 44px;
 }
 
-.submit-button.primary:hover{
+.submit-button.primary:hover {
   background: #069eb9;
 }
 
 .login-arrow {
-      padding-top: 8px;
-
+  padding-top: 8px;
 }
 * {
   box-sizing: border-box;
@@ -141,5 +131,3 @@
 .form > * {
   width: 100%;
 }
-
-

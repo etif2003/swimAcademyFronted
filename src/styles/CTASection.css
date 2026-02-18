@@ -16,7 +16,7 @@
   background: linear-gradient(
     135deg,
     #0f5f78,
-    #0ea5b7,
+    var(--color-turquoise-hover),
     #22c1d6
   );
   overflow: hidden;
@@ -68,7 +68,7 @@
 /* solid button */
 .cta-btn.solid {
   background: white;
-  color: #0f5f78;
+  color: var(--color-dark-turquoise);
 }
 
 .cta-btn.solid:hover {

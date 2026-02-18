@@ -8,7 +8,7 @@
 */
 
 .about {
-  background: #fff;
+  background: white;
   color: var(--color-like-black);
 }
 
@@ -24,7 +24,7 @@
   position: relative;
   overflow: hidden;
   padding: 92px 0 130px;
-  color: #fff;
+  color: white;
 }
 
 .about-hero__bg {
@@ -33,7 +33,7 @@
   background: linear-gradient(
     105deg,
     #0b6e83 0%,
-    var(--color-dark-sky-blue) 55%,
+    var(--color-turquoise) 55%,
     #22c1dc 100%
   );
 }
@@ -166,7 +166,7 @@
   display: block;
   font-size: 28px;
   line-height: 1;
-  color: var(--color-dark-sky-blue);
+  color: var(--color-turquoise);
   margin-bottom: 6px;
 }
 
@@ -178,7 +178,7 @@
 
 /* ============ VALUES ============ */
 .about-values {
-  background: #fff;
+  background: white;
   padding: 86px 0;
 }
 
@@ -208,7 +208,7 @@
 }
 
 .about-card {
-  background: #fff;
+  background: white;
   border-radius: 22px;
   border: 1px solid rgba(15, 23, 42, 0.10);
   box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
@@ -246,10 +246,10 @@
   border-radius: 18px;
   background: linear-gradient(
     135deg,
-    var(--color-dark-sky-blue),
+    var(--color-turquoise),
     var(--color-darker-sky-blue)
   );
-  color: #fff;
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -288,11 +288,11 @@
   overflow: hidden;
   padding: 56px 20px;
   text-align: center;
-  color: #fff;
+  color: white;
   background: linear-gradient(
     105deg,
     #0b6e83 0%,
-    var(--color-dark-sky-blue) 55%,
+    var(--color-turquoise) 55%,
     #22c1dc 100%
   );
   box-shadow: 0 20px 60px rgba(15, 23, 42, 0.14);

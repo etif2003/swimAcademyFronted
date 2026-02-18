@@ -25,7 +25,7 @@
 .featured-badge {
   display: inline-block;
   background: rgba(14, 165, 233, 0.1);
-  color: var(--color-dark-sky-blue);
+  color: var(--color-turquoise);
   padding: 0.4rem 1rem;
   border-radius: 999px;
   font-size: 0.9rem;
@@ -60,11 +60,11 @@
   gap: 0.3rem;
 
   padding: 0.1rem 0.4rem;
-  border: 2px solid #0f4c75;
+  border: 2px solid var(--color-dark-turquoise);
   border-radius: 13px;
 
   background: white;
-  color: #0f4c75;
+  color: var(--color-dark-turquoise);
   font-size: 1rem;
   font-weight: 500;
   text-decoration: none;
@@ -77,7 +77,7 @@
 }
 
 .view-all-btn:hover {
-  background: #0f4c75;
+  background: var(--color-dark-turquoise);
   color: white;
 }
 

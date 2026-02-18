@@ -54,7 +54,7 @@
 
 .btn-primary {
     background: var(--color-like-black);
-    color: #fff;
+    color: white;
     border-color: var(--color-like-black);
 }
 
@@ -63,7 +63,7 @@
 }
 
 .btn-ghost {
-    background: #fff;
+    background: white;
     color: var(--color-like-black);
 }
 

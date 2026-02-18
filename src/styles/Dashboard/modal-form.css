@@ -48,7 +48,7 @@
   font-size: 22px;
   /* קטן יותר */
   font-weight: 700;
-  color: #1f2d3d;
+  color: var(--color-dark-gray);
   margin: 0;
 }
 
@@ -100,7 +100,7 @@
   /* קטן יותר */
   font-weight: 500;
   margin-bottom: 6px;
-  color: #1f2d3d;
+  color: var(--color-dark-gray);
 }
 
 /* שדות אחידים */
@@ -113,7 +113,7 @@
   padding: 0 12px;
 
   border-radius: 10px;
-  border: 1px solid #dcdcdc;
+  border: 1px solid var(--color-semi-light-gray);
 
   font-size: 14px;
   background: white;
@@ -139,7 +139,7 @@
 .field textarea:focus,
 .form-select-button:focus {
   outline: none;
-  border-color: #2bb3c0;
+  border-color: var(--color-turquoise);
   box-shadow: 0 0 0 2px rgba(43, 179, 192, 0.12);
 }
 
@@ -156,7 +156,7 @@
   right: 0;
   left: 0;
 
-  background: #fff;
+  background: white;
   border-radius: 10px;
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
   margin-top: 4px;
@@ -189,11 +189,11 @@
   gap: 12px;
   margin-top: 8px;
   padding-top: 25px;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--color-semi-light-gray);
 }
 
 .btn-primary {
-  background: var(--color-dark-sky-blue);
+  background: var(--color-turquoise);
   color: white;
   border: none;
   padding: 8px 20px;
@@ -204,8 +204,8 @@
 
 .btn-secondary {
   background: white;
-  border: 1px solid #2bb3c0;
-  color: #2bb3c0;
+  border: 1px solid var(--color-turquoise);
+  color: var(--color-turquoise);
   padding: 8px 20px;
   border-radius: 10px;
   font-size: 14px;
@@ -225,7 +225,7 @@
   align-self: flex-start;
   font-size: 14px;
   font-weight: 500;
-  color: #1f2d3d;
+  color: var(--color-dark-gray);
 }
 
 .image-preview-box {
@@ -263,7 +263,7 @@
 
 /* כפתור העלאה */
 .btn-upload {
-  background: #2bb3c0;
+  background: var(--color-turquoise);
   color: white;
   border: none;
   padding: 10px 24px;

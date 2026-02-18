@@ -13,11 +13,20 @@
   -moz-osx-font-smoothing: grayscale;
 
   --color-sky-blue: #7dd3fc;
-  --color-dark-sky-blue: #06b6d4;
+  --color-transparent-light-blue: #e6f7fb;
+  --color-turquoise-hover: #0891b2;
   --color-darker-sky-blue: #0284c7;
+  --color-turquoise: #12b5d0;
+  --color-dark-turquoise: #0f5f78;
+  --color-very-dark-turquoise: #003344;
   --color-like-black: #0f172a;
-  --color-like-red:#dc2626;
+  --color-like-red: #dc2626;
   --color-gray: #6b7280;
+  --color-semi-light-gray: #e2e8f0;
+  --color-very-light-gray: #f1f4f6;
+  --color-light-gray: #94a3b8;
+  --color-dark-gray: #475569;
+  --color-dirty-white: #f8fafc;
 }
 
 a {

@@ -1,11 +1,11 @@
-.dashboard{
-    background-color: #f8fafc;
+.dashboard {
+  background-color: var(--color-dirty-white);
 }
-.dashboard-header{
-        padding-top: 77px;
-    font-size: 7px;
-    display: flex;
-    justify-content: end;
-    margin-right: 4vh;
-    padding-bottom: 15px;
+.dashboard-header {
+  padding-top: 77px;
+  font-size: 7px;
+  display: flex;
+  justify-content: end;
+  margin-right: 4vh;
+  padding-bottom: 15px;
 }

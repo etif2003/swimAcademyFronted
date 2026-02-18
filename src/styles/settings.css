@@ -38,7 +38,7 @@
 
 .form-group label {
   font-size: 14px;
-  color: #475569;
+  color: var(--color-dark-gray);
 }
 
 /* שדות קלט */
@@ -46,7 +46,7 @@
   height: 44px;
   padding: 0 14px;
   border-radius: 10px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--color-semi-light-gray);
   font-size: 14px;
   transition:
     border-color 0.2s,
@@ -54,13 +54,7 @@
 }
 
 .form-group input::placeholder {
-  color: #94a3b8;
-}
-
-.form-group input:focus {
-  outline: none;
-  border-color: #38bdf8;
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+  color: var(--color-light-gray);
 }
 
 /* הודעות */
@@ -70,7 +64,7 @@
 }
 
 .success-text {
-  color: #16a34a;
+  color: green;
   font-size: 14px;
 }
 
@@ -81,7 +75,7 @@
   padding: 0 22px;
   border-radius: 10px;
   border: none;
-  background: #12b5d0;
+  background: var(--color-turquoise);
   color: white;
   font-size: 14px;
   font-weight: 500;
@@ -92,7 +86,7 @@
 }
 
 .settings-card button[type="submit"]:hover {
-  background: #12b5d0;
+  background: var(--color-turquoise);
 }
 
 .settings-card button[type="submit"]:disabled {
@@ -104,7 +98,7 @@
 .settings-divider {
   margin: 28px 0;
   height: 1px;
-  background: #e5e7eb;
+  background: var(--color-semi-light-gray);
 }
 
 /* כפתור התנתקות */
@@ -130,11 +124,11 @@
   border-radius: 10px;
 
   background-color: #f9fafb; /* 👈 אפור מאוד בהיר */
-  border: 1px solid #e5e7eb; /* 👈 בורדר עדין */
+  border: 1px solid var(--color-semi-light-gray); /* 👈 בורדר עדין */
 
   font-size: 14px;
   text-align: right;
-  color: #111827;
+  color: var(--color-like-black);
 
   transition:
     background-color 0.2s,
@@ -143,8 +137,9 @@
 
 .form-group input:focus {
   outline: none;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
   background-color: white; /* נהיה לבן בפוקוס */
-  border-color: #12b5d0; /* צבע המותג */
+  border-color: var(--color-turquoise); /* צבע המותג */
 }
 /* שורה של 2 שדות */
 .password-row {

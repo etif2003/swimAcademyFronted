@@ -116,7 +116,7 @@
   gap: 6px;
   padding: 6px 12px;
   background: #e0f7fa;
-  color: #0e7490;
+  color: var(--color-dark-turquoise);
   border-radius: 50px;
   font-size: 14px;
   font-weight: 500;

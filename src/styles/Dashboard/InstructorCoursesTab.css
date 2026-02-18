@@ -16,8 +16,8 @@
 
 /* Create Button */
 .create-btn {
-  background: #23b5c3;
-  color: #fff;
+  background: var(--color-turquoise);
+  color: white;
   border: none;
   padding: 10px 18px;
   border-radius: 12px;
@@ -59,7 +59,7 @@
   margin: 0 0 6px 0;
   font-size: 18px;
   font-weight: 600;
-  color: #1f2d3d;
+  color: var(--color-dark-gray);
 }
 
 .instructor-course-meta {
@@ -70,12 +70,12 @@
 .instructor-course-price {
   font-size: 14px;
   margin-top: 6px;
-  color: #1f2d3d;
+  color: var(--color-dark-gray);
 }
 
 .instructor-course-registrations {
   font-size: 14px;
-  color: #23b5c3;
+  color: var(--color-turquoise);
   margin-top: 6px;
   font-weight: 500;
 }
@@ -100,9 +100,9 @@
 
 /* Edit Button */
 .edit-btn {
-  border: 1px solid #23b5c3;
-  background: #fff;
-  color: #23b5c3;
+  border: 1px solid var(--color-turquoise);
+  background: white;
+  color: var(--color-turquoise);
   padding: 6px 14px;
   border-radius: 12px;
   font-size: 14px;
@@ -111,14 +111,14 @@
 }
 
 .edit-btn:hover {
-  background: #23b5c3;
-  color: #fff;
+  background: var(--color-turquoise);
+  color: white;
 }
 
 /* Students Link */
 .students-link {
   font-size: 14px;
-  color: #1f2d3d;
+  color: var(--color-dark-gray);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -127,7 +127,7 @@
 }
 
 .students-link:hover {
-  color: #23b5c3;
+  color: var(--color-turquoise);
 }
 
 /* ===== States ===== */

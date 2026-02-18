@@ -1,5 +1,5 @@
 .singleInstructorPage {
-  background: #fff;
+  background: white;
   color: var(--color-like-black);
 }
 
@@ -32,73 +32,11 @@
   padding-top: 2px;
 }
 
-/* שני כרטיסי הניווט */
-.singleInstructorNavRow {
-  margin-top: 22px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
-
-.singleInstructorNavCard {
-  background: #fff;
-  border: 1px solid #e6eef6;
-  border-radius: 18px;
-  padding: 16px;
-  text-decoration: none;
-  color: var(--color-like-black);
-
-  display: flex;
-  align-items: center;
-  gap: 14px;
-
-  box-shadow: 0 10px 24px rgba(2, 18, 40, 0.05);
-}
-
-.singleInstructorNavCard:hover {
-  border-color: #cfe7ef;
-  transform: translateY(-1px);
-  transition: 160ms ease;
-}
-
-.singleInstructorNavArrow {
-  color: #94a3b8;
-  font-size: 23px;
-}
-
-.singleInstructorNavText {
-  flex: 1;
-}
-
-
-.singleInstructorNavSub {
-  margin-top: 4px;
-  color: #64748b;
-  font-size: 13px;
-}
-
-.singleInstructorNavIcon {
-  width: 42px;
-  height: 42px;
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  background: #f0fbfe;
-  border: 1px solid #d8f4fa;
-  color: #4FC3F7;
-}
-
-
-
 /* רספונסיביות */
 @media (max-width: 980px) {
   .singleInstructorGrid {
     grid-template-columns: 1fr;
     gap: 20px;
-  }
-
-  .singleInstructorNavRow {
-    grid-template-columns: 1fr;
   }
 
   .singleInstructorMain {

@@ -8,7 +8,7 @@
   text-decoration: none;
   color: inherit;
   transition: all 0.25s ease;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--color-semi-light-gray);
 }
 
 .creator-card:hover {
@@ -27,7 +27,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #0ea5b7;
+  color: var(--color-turquoise);
   font-weight: 600;
 }
 
@@ -56,10 +56,10 @@
 }
 
 .creator-text span {
-  color: #64748b;
+  color: var(--color-gray);
   font-size: 14px;
 }
 
 .creator-arrow {
-  color: #94a3b8;
+  color: var(--color-light-gray);
 }

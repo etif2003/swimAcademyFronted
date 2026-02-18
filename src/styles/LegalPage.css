@@ -24,7 +24,7 @@
   font-size: 40px;
   line-height: 1.1;
 
-  color: #0f172a;
+  color: var(--color-like-black);
 
   /* RTL: מיושר לימין */
   text-align: right;
@@ -39,7 +39,7 @@
 .legal-section-title {
   margin: 0 0 10px;
   font-size: 18px;
-  color: #0f172a;
+  color:  var(--color-like-black);
 
   display: flex;
   gap: 8px;

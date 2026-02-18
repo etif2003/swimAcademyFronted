@@ -1,5 +1,5 @@
 .contact {
-    background: #fff;
+    background: white;
     padding: 64px 0 90px;
 }
 
@@ -24,7 +24,7 @@
 
 /* cards */
 .contact-card {
-    background: #fff;
+    background: white;
     border-radius: 18px;
     border: 1px solid rgba(15, 23, 42, 0.10);
     box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
@@ -57,8 +57,8 @@
     width: 38px;
     height: 38px;
     border-radius: 12px;
-    background: var(--color-dark-sky-blue);
-    color: #fff;
+    background: var(--color-turquoise);
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -100,8 +100,8 @@
     width: 40px;
     height: 40px;
     border-radius: 14px;
-    background: var(--color-dark-sky-blue);
-    color: #fff;
+    background: var(--color-turquoise);
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -124,7 +124,7 @@
 
 /* form */
 .contact-form {
-    background: #fff;
+    background: white;
     border-radius: 18px;
     border: 1px solid rgba(15, 23, 42, 0.10);
     box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
@@ -158,7 +158,7 @@
     padding: 12px 12px;
     font-size: 13.5px;
     outline: none;
-    background: #fff;
+    background: white;
 }
 
 .field__textarea {
@@ -177,8 +177,8 @@
     border: none;
     border-radius: 12px;
     padding: 14px 14px;
-    background: var(--color-dark-sky-blue);
-    color: #fff;
+    background: var(--color-turquoise);
+    color: white;
     cursor: pointer;
     display: flex;
     align-items: center;

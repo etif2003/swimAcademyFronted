@@ -1,5 +1,5 @@
 .contactCard {
-    background: #fff;
+    background: white;
     border: 1px solid #e6eef6;
     border-radius: 18px;
     box-shadow: 0 12px 30px rgba(2, 18, 40, 0.08);
@@ -12,7 +12,7 @@
 }
 
 .contactCard__meta {
-    color: #64748b;
+    color: var(--color-gray);
     font-weight: 700;
     font-size: 14px;
     margin-bottom: 16px;
@@ -43,7 +43,7 @@
 .contactCard__outline {
     width: 100%;
     margin-top: 10px;
-    background: #fff;
+    background: white;
     color: var(--color-like-black);
     border: 2px solid #0f3c5a;
     padding: 12px 14px;
@@ -75,7 +75,7 @@
 
 .contactCard__emailDisabled {
     margin-top: 14px;
-    color: #94a3b8;
+    color: var(--color-light-gray);
 }
 
 .contactCard__primary:disabled,

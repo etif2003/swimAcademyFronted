@@ -33,7 +33,7 @@
 }
 
 .role-card {
-  border: 2px solid #e5e7eb;
+  border: 2px solid var(--color-semi-light-gray);
   border-radius: 14px;
   padding: 16px 8px;
   background: white;
@@ -58,12 +58,12 @@
 }
 
 .role-card.active {
-  border-color: var(--color-dark-sky-blue);
+  border-color: var(--color-turquoise);
   background: #ecfeff;
 }
 
 .role-card.active .role-icon {
-  color: var(--color-dark-sky-blue);
+  color: var(--color-turquoise);
 }
 
 .role-card:focus,
@@ -128,7 +128,6 @@
 }
 
 .terms a {
-  color: #2563eb;
   text-decoration: none;
 }
 

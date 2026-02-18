@@ -1,5 +1,5 @@
 .singleSchoolPage {
-  background: #fff;
+  background: white;
   color: var(--color-like-black);
 }
 
@@ -41,7 +41,7 @@
 }
 
 .singleSchoolNavCard {
-  background: #fff;
+  background: white;
   border: 1px solid #e6eef6;
   border-radius: 18px;
   padding: 16px;
@@ -62,7 +62,7 @@
 }
 
 .singleSchoolNavArrow {
-  color: #94a3b8;
+  color: var(--color-light-gray);
   font-size: 23px;
 }
 
@@ -73,7 +73,7 @@
 
 .singleSchoolNavSub {
   margin-top: 4px;
-  color: #64748b;
+  color: var(--color-gray);
   font-size: 13px;
 }
 

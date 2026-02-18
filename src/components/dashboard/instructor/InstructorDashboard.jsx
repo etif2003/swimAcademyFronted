@@ -10,17 +10,7 @@ export default function InstructorDashboard() {
 
   const tabs = DASHBOARD_TABS_BY_ROLE.instructor;
 
-  const instructor = {
-    fullName: "אורי לוי",
-    phone: "050-1234567",
-    workArea: "מרכז",
-    experienceYears: 6,
-    hourlyRate: 120,
-    certificates: ["מאמן שחייה מוסמך", "עזרה ראשונה"],
-    image:
-      "https://ui-avatars.com/api/?name=Instructor&background=0BBBD6&color=fff&size=200",
-    status: "Active",
-  };
+
 
   return (
     <>
@@ -31,7 +21,7 @@ export default function InstructorDashboard() {
       />
 
       {activeTab === "profile" && (
-        <InstructorProfileCard instructor={instructor} />
+        <InstructorProfileCard/>
       )}
 
             {activeTab === "courses" && <InstructorCoursesTab />}

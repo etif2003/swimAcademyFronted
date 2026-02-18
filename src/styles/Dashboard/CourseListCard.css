@@ -1,0 +1,81 @@
+.course-card {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+}
+
+.course-card:hover {
+  transform: translateY(-2px);
+}
+
+/* ---------------- Actions (Left side) ---------------- */
+
+.course-actions {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  min-width: 160px;
+}
+.show-students-btn svg {
+    margin-left: 7PX;
+}
+
+.course-actions button {
+    color: var(--color-like-black);
+    font-weight: 400;
+  background: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+/* .course-actions button:hover {
+  background-color: #e9ecef;
+} */
+
+.edit-btn {
+    border-color: var(--color-dark-turquoise);  
+    border-color: var(--color-dark-turquoise);}
+
+
+/* ---------------- Course Info (Center) ---------------- */
+
+.course-info {
+  flex: 1;
+  text-align: right;
+  padding: 0 50px;
+}
+
+.course-info h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 600;
+ color: var(--color-dark-gray);
+}
+
+.course-info div {
+  font-size: 14px;
+      color: var(--color-dark-gray);
+  margin-bottom: 4px;
+}
+
+
+/* נרשמים */
+.course-info div:last-child {
+      color: var(--color-turquoise);
+  font-weight: 500;
+}
+
+/* ---------------- Image (Right side) ---------------- */
+
+.course-card img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 16px;
+}

@@ -10,7 +10,6 @@
   align-items: center;
 }
 
-
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -25,11 +24,10 @@
 .hero-content {
   position: relative;
   max-width: 875px;
-padding-right: 12%;
-  color: #fff;
+  padding-right: 12%;
+  color: white;
   text-align: right;
 }
-
 
 .hero-badge {
   display: inline-block;
@@ -75,8 +73,8 @@ padding-right: 12%;
 }
 
 .hero-btn.primary {
-  background: linear-gradient(135deg, #22d3ee, var(--color-dark-sky-blue));
-  color: #003344;
+  background: linear-gradient(135deg, #22d3ee, var(--color-turquoise));
+  color: var(--color-very-dark-turquoise);
 }
 
 .hero-btn.primary:hover {
@@ -85,9 +83,8 @@ padding-right: 12%;
 
 .hero-btn.outline {
   border: 1px solid rgba(255, 255, 255, 0.4);
-  color: #fff;
+  color: white;
 }
-
 
 .hero-btn.outline:hover {
   background: rgba(255, 255, 255, 0.1);
@@ -130,8 +127,6 @@ padding-right: 12%;
   height: 120px;
   display: block;
 }
-
-
 
 @media (max-width: 768px) {
   .hero {

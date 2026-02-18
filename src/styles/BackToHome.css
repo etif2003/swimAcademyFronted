@@ -9,7 +9,7 @@
 
   font-size: 14px;
   font-weight: 500;
-  color: #0ea5b7;
+  color: var(--color-turquoise);
 
   text-decoration: none;
   background: rgba(255, 255, 255, 0.9);
@@ -23,7 +23,7 @@
 
 .back-to-home:hover {
     background: white;
-    color: #0891b2;
+    color: var(--color-turquoise-hover);
 }
 
 /* מובייל */

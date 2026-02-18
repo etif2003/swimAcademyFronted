@@ -2,7 +2,7 @@
   position: relative;
   overflow: hidden;
   padding: 90px 0 120px;
-  color: #fff;
+  color: white;
 }
 
 .page-hero__bg{
@@ -11,7 +11,7 @@
   background: linear-gradient(
     105deg,
     #0b6e83 0%,
-    var(--color-dark-sky-blue) 55%,
+    var(--color-turquoise) 55%,
     #22c1dc 100%
   );
 }
