@@ -177,8 +177,7 @@
     border: none;
     border-radius: 12px;
     padding: 14px 14px;
-    background: #0b4b67;
-    /* דומה לכפתור בסקרינשוט */
+    background: var(--color-dark-sky-blue);
     color: #fff;
     cursor: pointer;
     display: flex;

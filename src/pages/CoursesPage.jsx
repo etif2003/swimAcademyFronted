@@ -10,28 +10,6 @@ import { LEVEL_OPTIONS } from "../constants/levels.js";
 import { TARGET_AUDIENCE_OPTIONS } from "../constants/target_audience.js";
 import { CATEGORY_OPTIONS } from "../constants/categories.js";
 
-// const LEVEL_OPTIONS = [
-//   { value: "All", label: "כל הרמות" },
-//   { value: "Beginner", label: "מתחילים" },
-//   { value: "Advanced", label: "מתקדמים" },
-//   { value: "Professional", label: "מקצועי" },
-// ];
-
-// const TARGET_AUDIENCE_OPTIONS = [
-//   { value: "All", label: "כל הקהלים" },
-//   { value: "Children", label: "ילדים" },
-//   { value: "Teens", label: "נוער" },
-//   { value: "Adults", label: "מבוגרים" },
-//   { value: "Seniors", label: "גיל הזהב" },
-// ];
-
-// const CATEGORY_OPTIONS = [
-//   { value: "All", label: "כל הקטגוריות" },
-//   { value: "Learning", label: "למידה" },
-//   { value: "Training", label: "הכשרה" },
-//   { value: "Therapy", label: "טיפולי" },
-// ];
-
 export default function CoursesPage() {
   const [level, setLevel] = useState("");
   const [audience, setAudience] = useState("");
