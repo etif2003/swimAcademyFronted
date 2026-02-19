@@ -160,7 +160,7 @@ export default function InstructorCoursesTab() {
       setCourses(data);
     } catch (err) {
       console.error(err);
-      setError("שגיאה בטעינת הקורסים");
+      setError("אין קורסים להצגה");
     } finally {
       setLoading(false);
     }

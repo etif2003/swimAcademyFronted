@@ -6,8 +6,6 @@ import { validateCourseForm } from "../../../../utils/validators/validateCourseF
 import { createCourse, updateCourse } from "../../../../api/courses-functions";
 import "../../../../styles/success.css";
 
-
-
 import BaseModal from "../../ModalForm/BaseModal";
 import FormField from "../../ModalForm/FormField";
 import FormTextarea from "../../ModalForm/FormTextarea";
@@ -40,8 +38,6 @@ export default function CourseModal({ isOpen, onClose, course, onSuccess }) {
   const [uploadingImage, setUploadingImage] = useState(false);
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
-
-
 
   useEffect(() => {
     if (course) {
@@ -103,54 +99,51 @@ export default function CourseModal({ isOpen, onClose, course, onSuccess }) {
   /* ===== Submit ===== */
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const validationErrors = validateCourseForm(formData);
+    const validationErrors = validateCourseForm(formData);
 
-  if (Object.keys(validationErrors).length > 0) {
-    setErrors(validationErrors);
-    return;
-  }
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
 
-  setErrors({});
+    setErrors({});
 
-  const payload = {
-    ...formData,
-    price: Number(formData.price),
-    maxParticipants: formData.maxParticipants
-      ? Number(formData.maxParticipants)
-      : undefined,
-    durationWeeks: formData.durationWeeks
-      ? Number(formData.durationWeeks)
-      : undefined,
-    sessionsCount: formData.sessionsCount
-      ? Number(formData.sessionsCount)
-      : undefined,
-    createdBy: user?.id,
-    createdByModel: user?.role,
+    const payload = {
+      ...formData,
+      price: Number(formData.price),
+      maxParticipants: formData.maxParticipants
+        ? Number(formData.maxParticipants)
+        : undefined,
+      durationWeeks: formData.durationWeeks
+        ? Number(formData.durationWeeks)
+        : undefined,
+      sessionsCount: formData.sessionsCount
+        ? Number(formData.sessionsCount)
+        : undefined,
+    };
+
+    try {
+      const data = isEdit
+        ? await updateCourse(course._id, payload)
+        : await createCourse(payload);
+
+      setSuccessMessage(
+        isEdit ? "הקורס עודכן בהצלחה 🎉" : "הקורס נוצר בהצלחה 🎉",
+      );
+
+      onSuccess?.(data);
+      // נסגור את המודל אחרי 1.5 שניות
+      setTimeout(() => {
+        setSuccessMessage("");
+        onClose();
+      }, 1500);
+    } catch (err) {
+      console.error(err);
+      alert(err.message || "שגיאה בשמירה");
+    }
   };
-
-  try {
-    const data = isEdit
-      ? await updateCourse(course._id, payload)
-      : await createCourse(payload);
-
-        setSuccessMessage(
-    isEdit ? "הקורס עודכן בהצלחה 🎉" : "הקורס נוצר בהצלחה 🎉"
-  );
-
-    onSuccess?.(data);
-  // נסגור את המודל אחרי 1.5 שניות
-  setTimeout(() => {
-    setSuccessMessage("");
-    onClose();
-  }, 1500);
-  } catch (err) {
-    console.error(err);
-    alert(err.message || "שגיאה בשמירה");
-  }
-};
-
 
   /* ===== Options ===== */
 
@@ -298,13 +291,9 @@ export default function CourseModal({ isOpen, onClose, course, onSuccess }) {
           />
         </div>
 
-
         {successMessage && (
-  <div className="success-message">
-    {successMessage}
-  </div>
-)}
-
+          <div className="success-message">{successMessage}</div>
+        )}
 
         <div className="form-actions">
           <button type="button" className="btn-secondary" onClick={onClose}>

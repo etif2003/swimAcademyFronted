@@ -1,10 +1,8 @@
+import { getAuthHeaders } from "./get-auth";
+
 const BASE_URL = "http://localhost:3000/api/courses";
 
 
-const getAuthHeaders = () => ({
-  "Content-Type": "application/json",
-  Authorization: `Bearer ${localStorage.getItem("token")}`,
-});
 
 export const handleCourses = async () => {
   const response = await fetch(BASE_URL);

@@ -8,11 +8,11 @@ export default function CourseListCard({
   showActions,
 }) {
   return (
-    <div className="course-card">
+    <div className="course-list-card">
       {showActions && (
-        <div className="course-actions">
+        <div className="course-list-card-actions">
           {onEdit && (
-            <button className="edit-btn" onClick={() => onEdit(course)}>
+            <button className="edit-course-list-card-btn" onClick={() => onEdit(course)}>
               עריכה
             </button>
           )}
@@ -29,7 +29,7 @@ export default function CourseListCard({
         </div>
       )}
 
-      <div className="course-info">
+      <div className="course-list-card-info">
         <h3>{course.title}</h3>
 
         <div>

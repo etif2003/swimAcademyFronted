@@ -1,11 +1,22 @@
+import { useState } from "react";
+import RegistrationsModal from "../registrations/RegistrationsModal";
 import CourseListCard from "./CourseListCard";
 
 export default function CoursesList({
   courses,
   onEdit,
-  onViewStudents,
-  showActions = false
+  showActions = false,
 }) {
+  const [selectedCourse, setSelectedCourse] = useState(null);
+
+  const handleViewStudents = (course) => {
+    setSelectedCourse(course);
+  };
+
+  const closeModal = () => {
+    setSelectedCourse(null);
+  };
+
   if (!courses || courses.length === 0) {
     return <p>אין קורסים להצגה</p>;
   }
@@ -17,10 +28,17 @@ export default function CoursesList({
           key={course._id}
           course={course}
           onEdit={onEdit}
-          onViewStudents={onViewStudents}
+          onViewStudents={handleViewStudents}
           showActions={showActions}
         />
       ))}
+
+      <RegistrationsModal
+        isOpen={!!selectedCourse}
+        onClose={closeModal}
+        courseId={selectedCourse?._id}
+        courseTitle={selectedCourse?.title}
+      />
     </>
   );
 }
