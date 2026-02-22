@@ -22,3 +22,20 @@ export const getRegistrationsByCourse = async (courseId) => {
 
   return response.json();
 };
+
+
+export const getMyRegistrations = async (userId) => {
+  const response = await fetch(
+    `${BASE_URL}/by-user/${userId}`,
+    {
+      method: "GET",
+      headers: getAuthHeaders(),
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("שגיאה בשליפת ההרשמות");
+  }
+
+  return response.json();
+};

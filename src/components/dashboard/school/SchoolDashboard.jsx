@@ -4,26 +4,14 @@ import { DASHBOARD_TABS_BY_ROLE } from "../dashboardTabs.config";
 
 import SchoolProfileCard from "./SchoolProfileCard";
 import ChangePassword from "../ChangePassword";
+import SchoolCoursesTab from "./SchoolCoursesTab";
 
 export default function SchoolDashboard() {
   const [activeTab, setActiveTab] = useState("profile");
 
   const tabs = DASHBOARD_TABS_BY_ROLE.school;
 
-  const school = {
-    name: "בית ספר לשחייה גלים",
-    description: "בית ספר מקצועי ללימוד שחייה לכל הגילאים",
-    area: "מרכז",
-    location: {
-      city: "תל אביב",
-      address: "רחוב הים 10",
-    },
-    contact: {
-      name: "דנה כהן",
-      phone: "03-1234567",
-      email: "info@swimschool.co.il",
-    },
-  };
+  
 
   return (
     <>
@@ -36,14 +24,12 @@ export default function SchoolDashboard() {
 
       {/* CONTENT */}
       {activeTab === "profile" && (
-        <SchoolProfileCard /*school={school}*/ />
+        <SchoolProfileCard />
       )}
 
-      {activeTab === "courses" && (
-        <div className="profile-card">
-          קורסים של בית הספר
-        </div>
-      )}
+   {activeTab === "courses" && (
+  <SchoolCoursesTab />
+)}
 
       {activeTab === "instructors" && (
         <div className="profile-card">

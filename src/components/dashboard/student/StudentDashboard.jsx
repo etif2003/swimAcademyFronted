@@ -3,20 +3,12 @@ import DashboardTabs from "../DashboardTabs";
 import { DASHBOARD_TABS_BY_ROLE } from "../dashboardTabs.config";
 import StudentProfileCard from "./StudentProfileCard";
 import ChangePassword from "../ChangePassword";
+import StudentCoursesTab from "./StudentCoursesTab";
 
 export default function StudentDashboard() {
   const [activeTab, setActiveTab] = useState("profile");
 
   const tabs = DASHBOARD_TABS_BY_ROLE.student;
-
-  // mock data – יוחלף ב־API
-  const student = {
-    fullName: "נועה כהן",
-    email: "noa@email.com",
-    phone: "052-9876543",
-    image:
-      "https://ui-avatars.com/api/?name=Student&background=6366F1&color=fff&size=200",
-  };
 
   return (
     <>
@@ -26,20 +18,9 @@ export default function StudentDashboard() {
         onChange={setActiveTab}
       />
 
-      {activeTab === "profile" && (
-        <StudentProfileCard student={student} />
-      )}
-
-      {activeTab === "courses" && (
-        <div className="profile-card">
-          הקורסים שלי
-        </div>
-      )}
-
-        {activeTab === "settings" && (
-                  <ChangePassword/>       
-              
-            )}
+      {activeTab === "profile" && <StudentProfileCard />}
+      {activeTab === "courses" && <StudentCoursesTab />}
+      {activeTab === "settings" && <ChangePassword />}
     </>
   );
 }

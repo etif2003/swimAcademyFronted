@@ -5,14 +5,23 @@ export default function CourseListCard({
   course,
   onEdit,
   onViewStudents,
+  onCardClick,        // חדש
   showActions,
 }) {
   return (
-    <div className="course-list-card">
+    <div
+      className="course-list-card"
+      onClick={!showActions ? () => onCardClick?.(course) : undefined}
+      style={!showActions ? { cursor: "pointer" } : {}}
+    >
+
       {showActions && (
         <div className="course-list-card-actions">
           {onEdit && (
-            <button className="edit-course-list-card-btn" onClick={() => onEdit(course)}>
+            <button
+              className="edit-course-list-card-btn"
+              onClick={() => onEdit(course)}
+            >
               עריכה
             </button>
           )}
@@ -23,7 +32,7 @@ export default function CourseListCard({
               onClick={() => onViewStudents(course)}
             >
               <Users size={16} />
-              <span>צפייה בנרשמים</span>{" "}
+              <span>צפייה בנרשמים</span>
             </button>
           )}
         </div>
@@ -36,7 +45,11 @@ export default function CourseListCard({
           {course.targetAudience} • {course.category} • ₪{course.price}
         </div>
 
-        <div>{course.currentParticipants || 0} נרשמים</div>
+        {showActions && (
+          <div>
+            {course.currentParticipants || 0} נרשמים
+          </div>
+        )}
       </div>
 
       <img

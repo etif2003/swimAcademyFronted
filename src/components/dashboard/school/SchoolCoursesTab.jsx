@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import "../../../styles/Dashboard/InstructorCoursesTab.css";
+
 import { fetchMyCourses } from "../../../api/courses-functions";
 import CourseModal from "../course/CourseForm/CourseModal";
 import CoursesList from "../course/CoursesList";
 
-export default function InstructorCoursesTab() {
+export default function SchoolCoursesTab() {
   const [courses, setCourses] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState(null);
@@ -52,7 +53,6 @@ export default function InstructorCoursesTab() {
 
   const handleViewStudents = (course) => {
     console.log("צפייה בנרשמים עבור קורס:", course._id);
-    // כאן בעתיד תוכל לנווט לעמוד נרשמים
   };
 
   return (

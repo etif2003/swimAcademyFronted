@@ -5,6 +5,8 @@ import CourseListCard from "./CourseListCard";
 export default function CoursesList({
   courses,
   onEdit,
+  onViewStudents,
+  onCardClick, 
   showActions = false,
 }) {
   const [selectedCourse, setSelectedCourse] = useState(null);
@@ -30,6 +32,8 @@ export default function CoursesList({
           onEdit={onEdit}
           onViewStudents={handleViewStudents}
           showActions={showActions}
+            onCardClick={onCardClick}   // חדש
+
         />
       ))}
 
