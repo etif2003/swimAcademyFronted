@@ -102,7 +102,7 @@ export default function SingleCoursePage() {
 
             {/* LEFT */}
             <div className="singleCourseSide">
-              <ContactActionCard type="course" price={course.price} />
+              <ContactActionCard type="course" price={course.price} courseId={course._id} />
             </div>
           </div>
         </div>

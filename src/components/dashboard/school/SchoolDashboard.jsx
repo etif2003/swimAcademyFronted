@@ -1,15 +1,18 @@
 import { useState } from "react";
 import DashboardTabs from "../DashboardTabs";
 import { DASHBOARD_TABS_BY_ROLE } from "../dashboardTabs.config";
-
 import SchoolProfileCard from "./SchoolProfileCard";
 import ChangePassword from "../ChangePassword";
 import SchoolCoursesTab from "./SchoolCoursesTab";
+import SchoolInstructorsTab from "./SchoolInstructorsTab";
+
 
 export default function SchoolDashboard() {
   const [activeTab, setActiveTab] = useState("profile");
 
+
   const tabs = DASHBOARD_TABS_BY_ROLE.school;
+
 
   
 
@@ -23,24 +26,15 @@ export default function SchoolDashboard() {
       />
 
       {/* CONTENT */}
-      {activeTab === "profile" && (
-        <SchoolProfileCard />
-      )}
+      {activeTab === "profile" && <SchoolProfileCard />}
 
-   {activeTab === "courses" && (
-  <SchoolCoursesTab />
-)}
+      {activeTab === "courses" && <SchoolCoursesTab />}
 
       {activeTab === "instructors" && (
-        <div className="profile-card">
-          מדריכים של בית הספר
-        </div>
+        <SchoolInstructorsTab />
       )}
 
-       {activeTab === "settings" && (
-                 <ChangePassword/>       
-             
-           )}
+      {activeTab === "settings" && <ChangePassword />}
     </>
   );
 }

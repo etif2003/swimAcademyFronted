@@ -39,3 +39,26 @@ export const getMyRegistrations = async (userId) => {
 
   return response.json();
 };
+
+
+// =======================
+// CREATE REGISTRATION
+// =======================
+export const createRegistration = async ({ userId, courseId }) => {
+  const response = await fetch(BASE_URL, {
+    method: "POST",
+    headers: getAuthHeaders(),
+    body: JSON.stringify({
+      userId,
+      courseId,
+    }),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    console.error("Create registration error:", errorData);
+    throw new Error(errorData.message || "שגיאה בהרשמה לקורס");
+  }
+
+  return response.json();
+};

@@ -1,0 +1,93 @@
+.instructor-list-card {
+  background: white;
+  border-radius: 14px;
+  padding: 14px 18px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.instructor-list-card:hover {
+box-shadow: 0 4px 14px var(--color-semi-light-gray);
+  transform: translateY(-1px);
+}
+
+/* תמונה עגולה */
+.instructor-list-card-image-wrapper {
+  flex-shrink: 0;
+}
+
+.instructor-list-card-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* תוכן */
+.instructor-list-card-content {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.instructor-list-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.instructor-list-card-info h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color:var(--color-dark-gray);
+}
+
+.instructor-list-card-info p {
+  margin: 0;
+  font-size: 13px;
+color:var(--color-dark-gray);}
+
+/* כפתורים */
+.instructor-list-card-button {
+  padding: 6px 14px;
+  border-radius: 18px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+/* Primary (שייך) */
+.instructor-list-card-button.primary {
+  background-color: transparent;
+  border-color: var(--color-dark-turquoise);
+  color: var(--color-dark-turquoise);
+}
+
+.instructor-list-card-button.primary:hover {
+  background-color: var(--color-dark-turquoise);
+  color: white;
+}
+
+/* Danger (בטל שיוך) */
+.instructor-list-card-button.danger {
+  background-color: transparent;
+  border-color: red;
+  color: red;
+}
+
+.instructor-list-card-button.danger:hover {
+  background-color: red;
+  color: white;
+}
+
+.instructor-list-card-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
