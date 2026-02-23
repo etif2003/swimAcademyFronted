@@ -4,13 +4,12 @@ import { DASHBOARD_TABS_BY_ROLE } from "../dashboardTabs.config";
 import InstructorProfileCard from "./InstructorProfileCard";
 import ChangePassword from "../ChangePassword";
 import InstructorCoursesTab from "./InstructorCoursesTab";
+import InstructorSchoolsTab from "./InstructorSchoolsTab";
 
 export default function InstructorDashboard() {
   const [activeTab, setActiveTab] = useState("profile");
 
   const tabs = DASHBOARD_TABS_BY_ROLE.instructor;
-
-
 
   return (
     <>
@@ -20,17 +19,10 @@ export default function InstructorDashboard() {
         onChange={setActiveTab}
       />
 
-      {activeTab === "profile" && (
-        <InstructorProfileCard/>
-      )}
-
-            {activeTab === "courses" && <InstructorCoursesTab />}
-
-
+      {activeTab === "profile" && <InstructorProfileCard />}
+      {activeTab === "courses" && <InstructorCoursesTab />}
+      {activeTab === "schools" && <InstructorSchoolsTab />}
       {activeTab === "settings" && <ChangePassword />}
-
-
-      
     </>
   );
 }

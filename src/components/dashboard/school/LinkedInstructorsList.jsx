@@ -64,7 +64,16 @@ export default function LinkedInstructorsList({ schoolId }) {
     return <p>אין מדריכים משויכים לבית הספר</p>;
   }
 
-  return (
+
+   const activeInstructors = linked.filter(
+    (item) => item.status === "Active"
+  );
+
+  const inactiveInstructors = linked.filter(
+    (item) => item.status === "Inactive"
+  );
+
+   return (
     <>
       {successMessage && (
         <div className="success-toast">{successMessage}</div>
@@ -73,14 +82,35 @@ export default function LinkedInstructorsList({ schoolId }) {
         <div className="error-toast">{errorMessage}</div>
       )}
 
-      {linked.map((link) => (
+      {/* ===== ACTIVE ===== */}
+      <h3>מדריכים פעילים</h3>
+      {activeInstructors.length === 0 && (
+        <p>אין מדריכים פעילים</p>
+      )}
+
+      {activeInstructors.map((link) => (
         <InstructorListCard
           key={link._id}
-          instructor={link.instructor} // מגיע מה-populate
+          instructor={link.instructor}
           buttonLabel="בטל שיוך"
-          onButtonClick={() =>
-            handleUnlink(link)
-          }
+          onButtonClick={() => handleUnlink(link)}
+          loading={removingId === link._id}
+          buttonVariant="danger"
+        />
+      ))}
+
+      {/* ===== INACTIVE ===== */}
+      <h3>מדריכים ממתינים לאישור שיוך</h3>
+      {inactiveInstructors.length === 0 && (
+        <p>אין מדריכים ממתינים</p>
+      )}
+
+      {inactiveInstructors.map((link) => (
+        <InstructorListCard
+           key={link._id}
+          instructor={link.instructor}
+          buttonLabel="בטל שיוך"
+          onButtonClick={() => handleUnlink(link)}
           loading={removingId === link._id}
           buttonVariant="danger"
         />
