@@ -3,7 +3,7 @@ import "../../../styles/UserProfile.css";
 import "../../../styles/validations-errors.css";
 import "../../../styles/success.css";
 import { AREAS } from "../../../constants/areas";
-import { Edit2,Trash2 } from "lucide-react";
+import { Edit2, Trash2 } from "lucide-react";
 import {
   fetchSchoolByOwner,
   createSchool,
@@ -13,6 +13,9 @@ import { useAuth } from "../../../context/AuthContext";
 import { validateSchoolForm } from "../../../utils/validators/validateSchoolForm";
 import { useNavigate } from "react-router";
 import { uploadImage } from "../../../api/upload";
+
+const DEFAULT_IMAGE =
+  "https://res.cloudinary.com/drtpfecyk/image/upload/v1772360676/defaultSchoolImage_inddbe.png";
 
 export default function SchoolProfileCard() {
   const navigate = useNavigate();
@@ -157,7 +160,7 @@ export default function SchoolProfileCard() {
         address: form.address,
       },
       logo: form.logo,
-      image: form.image,
+      image: form.image || DEFAULT_IMAGE,
       contactName: form.contactName,
       contactPhone: form.contactPhone,
       contactEmail: form.contactEmail,
@@ -259,11 +262,11 @@ export default function SchoolProfileCard() {
                 onChange={(e) => update("area", e.target.value)}
               >
                 <option value="">בחר אזור</option>
-               {AREAS.map((area) => (
-                <option key={area.value} value={area.value}>
-                  {area.label}
-                </option>
-              ))}
+                {AREAS.map((area) => (
+                  <option key={area.value} value={area.value}>
+                    {area.label}
+                  </option>
+                ))}
               </select>
               {errors.area && (
                 <span className="field-error">{errors.area}</span>

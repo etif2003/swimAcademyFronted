@@ -12,6 +12,9 @@ import FormTextarea from "../../ModalForm/FormTextarea";
 import FormSelect from "../../ModalForm/FormSelect";
 import FormImageUpload from "../../ModalForm/FormImageUpload";
 
+const DEFAULT_IMAGE =
+  "https://res.cloudinary.com/drtpfecyk/image/upload/v1772357067/defaultCourseImage_otcxht.png";
+
 const initialState = {
   title: "",
   description: "",
@@ -112,6 +115,7 @@ export default function CourseModal({ isOpen, onClose, course, onSuccess }) {
 
     const payload = {
       ...formData,
+      image: formData.image || DEFAULT_IMAGE,
       price: Number(formData.price),
       maxParticipants: formData.maxParticipants
         ? Number(formData.maxParticipants)

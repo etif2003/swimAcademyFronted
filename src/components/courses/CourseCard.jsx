@@ -4,19 +4,18 @@ import "../../styles/CourseCard.css";
 import { LEVEL_MAP } from "../../constants/levels";
 import { TARGET_AUDIENCE_OPTIONS } from "../../constants/target_audience";
 
-
 const CourseCard = ({ course }) => {
   const levelMeta = course?.level ? LEVEL_MAP[course.level] : null;
 
   const audienceLabel = TARGET_AUDIENCE_OPTIONS.find(
-    (o) => o.value === course?.targetAudience
+    (o) => o.value === course?.targetAudience,
   )?.label;
 
   return (
     <Link to={`/course/${course._id}`} className="course-card">
       <div className="course-card-image">
         <img
-          src={course.image || "/placeholder-course.jpg"}
+          src={course.image} //|| "https://res.cloudinary.com/drtpfecyk/image/upload/v1772357067/defaultCourseImage_otcxht.png"}
           alt={course.title || "קורס שחייה"}
         />
 
