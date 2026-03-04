@@ -1,11 +1,19 @@
 import { getAuthHeaders } from "./get-auth";
 
 const BASE_URL = "http://localhost:3000/api/courses";
+export const handleCourses = async (
+  creatorId = null,
+  creatorType = "School",
+) => {
+  const url = creatorId
+    ? `${BASE_URL}/by-creator/type/${creatorType}/id/${creatorId}`
+    : BASE_URL;
+  const response = await fetch(url);
 
+  if (!response.ok) {
+    throw new Error("Network response was not ok");
+  }
 
-
-export const handleCourses = async () => {
-  const response = await fetch(BASE_URL);
   const data = await response.json();
   return data.map((course) => {
     return { ...course };
@@ -24,13 +32,10 @@ export const fetchMyCourses = async () => {
     headers: getAuthHeaders(),
   });
 
-  if (!response.ok)
-    throw new Error("Failed to fetch courses");
+  if (!response.ok) throw new Error("Failed to fetch courses");
 
   return response.json();
 };
-
-
 
 export const createCourse = async (courseData) => {
   const response = await fetch(BASE_URL, {
@@ -47,7 +52,6 @@ export const createCourse = async (courseData) => {
 
   return response.json();
 };
-
 
 export const updateCourse = async (id, courseData) => {
   const response = await fetch(`${BASE_URL}/${id}`, {

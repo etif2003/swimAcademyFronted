@@ -5,45 +5,72 @@ import FilterDropdown from "../components/FilterDropdown.jsx";
 import CardsGrid from "../components/CardsGrid";
 import { useInstructors } from "../hooks/Instructor/useInstructors.js";
 import PageState from "../components/PageState.jsx";
+import { useParams } from "react-router";
+import { useInstructorSchool } from "../hooks/Instructor/useInstructorSchool.js";
+import { AREAS } from "../constants/areas.js";
 
-const getAreaOptionsFromInstructors = (instructors) => {
-  const workAreas = instructors
-    .map((instructors) => instructors.workArea)
-    .filter(Boolean); // מסיר undefined / null
+// const getAreaOptionsFromInstructors = (instructors) => {
+//   const workAreas = instructors
+//     .map((instructors) => instructors.workArea)
+//     .filter(Boolean); // מסיר undefined / null
 
-  const uniqueWorkAreas = Array.from(new Set(workAreas));
+//   const uniqueWorkAreas = Array.from(new Set(workAreas));
 
-  return [
-    { value: "", label: "כל האזורים" },
-    ...uniqueWorkAreas.map((workArea) => ({
-      value: workArea,
-      label: workArea,
-    })),
-  ];
-};
+//   return [
+//     { value: "", label: "כל האזורים" },
+//     ...uniqueWorkAreas.map((workArea) => ({
+//       value: workArea,
+//       label: workArea,
+//     })),
+//   ];
+// };
+
+const areaOptions = [{ value: "All", label: "כל האזורים" }, ...AREAS];
 
 export default function InstructorPage() {
   const [workArea, setWorkArea] = useState("");
   const [search, setSearch] = useState("");
   const [openFilter, setOpenFilter] = useState(null);
 
-  const {
-    data: instructors = [],
-    isLoading,
-    isError,
-  } = useInstructors();
+  const { schoolId } = useParams();
+
+  const instructorSchool = useInstructorSchool(schoolId, {
+    enabled: !!schoolId,
+  });
+  const allInstructors = useInstructors({ enabled: !schoolId });
+
+  // בוחרים את הנתונים לפי מה שזמין
+  const instructors =
+    (schoolId ? instructorSchool.data : allInstructors.data) || [];
+  const isLoading = schoolId
+    ? instructorSchool.isLoading
+    : allInstructors.isLoading;
+  const isError = schoolId ? instructorSchool.isError : allInstructors.isError;
+
+  // const {
+  //   data: instructors = [],
+  //   isLoading,
+  //   isError,
+  // } = schoolId ? useInstructorSchool(schoolId) : useInstructors(schoolId);
 
   if (isLoading) return <PageState kind="instructors" state="loading" />;
-  if (isError) return <PageState kind="instructors" state="error" onRetry={() => window.location.reload()} />;
+  if (isError)
+    return (
+      <PageState
+        kind="instructors"
+        state="error"
+        onRetry={() => window.location.reload()}
+      />
+    );
 
-  const WORKAREA_OPTIONS = getAreaOptionsFromInstructors(instructors);
+  // const WORKAREA_OPTIONS = getAreaOptionsFromInstructors(instructors);
 
-  const filteredInstructors = instructors.filter(instructor => {
+  const filteredInstructors = instructors.filter((instructor) => {
+    const name = instructor.fullName || "";
+    const matchSearch = name.toLowerCase().includes(search.toLowerCase());
+
     const matchWorkArea =
-      !workArea || instructor.workArea === workArea;
-
-    const matchSearch =
-      instructor.fullName.toLowerCase().includes(search.toLowerCase());
+      !workArea || workArea === "All" || instructor.workArea === workArea;
 
     return matchWorkArea && matchSearch;
   });
@@ -67,7 +94,7 @@ export default function InstructorPage() {
       <section className="listing-filters">
         <FilterDropdown
           label="כל האזורים"
-          options={WORKAREA_OPTIONS}
+          options={areaOptions /*WORKAREA_OPTIONS*/}
           value={workArea}
           isOpen={openFilter === "workArea"}
           onToggle={() =>
@@ -102,7 +129,8 @@ export default function InstructorPage() {
               <InstructorCard key={instructor._id} instructor={instructor} />
             )}
           />
-        </section>)}
+        </section>
+      )}
     </div>
   );
 }

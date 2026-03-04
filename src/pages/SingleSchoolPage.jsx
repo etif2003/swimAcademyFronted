@@ -62,7 +62,6 @@ export default function SingleSchoolPage() {
                   subtitle="הכירו את הצוות שלנו"
                   icon={<Users />}
                 />
-
                 <SchoolNavSection
                   to={`/school/${school._id}/courses`}
                   title="קורסים של בית הספר"

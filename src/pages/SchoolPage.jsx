@@ -5,20 +5,23 @@ import CardsGrid from "../components/CardsGrid.jsx";
 import SchoolCard from "../components/schools/SchoolCard.jsx";
 import { useSchools } from "../hooks/School/useSchools.js";
 import PageState from "../components/PageState.jsx";
+import { AREAS } from "../constants/areas.js";
 
-const getAreaOptionsFromSchools = (schools) => {
-  const areas = schools.map((school) => school.location?.city).filter(Boolean); // מסיר undefined / null
+// const getAreaOptionsFromSchools = (schools) => {
+//   const areas = schools.map((school) => school.location?.city).filter(Boolean); // מסיר undefined / null
 
-  const uniqueAreas = Array.from(new Set(areas));
+//   const uniqueAreas = Array.from(new Set(areas));
 
-  return [
-    { value: "", label: "כל האזורים" },
-    ...uniqueAreas.map((city) => ({
-      value: city,
-      label: city,
-    })),
-  ];
-};
+//   return [
+//     { value: "", label: "כל האזורים" },
+//     ...uniqueAreas.map((city) => ({
+//       value: city,
+//       label: city,
+//     })),
+//   ];
+// };
+
+const areaOptions = [{ value: "All", label: "כל האזורים" }, ...AREAS];
 
 export default function SchoolPage() {
   const [area, setArea] = useState("");
@@ -30,10 +33,10 @@ export default function SchoolPage() {
   if (isLoading) return <PageState kind="schools" state="loading" />;
   if (isError) return <PageState kind="schools" state="error" onRetry={() => window.location.reload()} />;
 
-  const AREA_OPTIONS = getAreaOptionsFromSchools(schools);
+  // const AREA_OPTIONS = getAreaOptionsFromSchools(schools);
 
   const filteredSchools = schools.filter((school) => {
-    const matchArea = !area || school.location?.city === area;
+    const matchArea = !area || area==="All" || school.location?.city === area;
 
     const matchSearch = school.name
       .toLowerCase()
@@ -61,7 +64,7 @@ export default function SchoolPage() {
       <section className="listing-filters">
         <FilterDropdown
           label="כל האזורים"
-          options={AREA_OPTIONS}
+          options={areaOptions/*AREA_OPTIONS*/}
           value={area}
           isOpen={openFilter === "area"}
           onToggle={() => setOpenFilter(openFilter === "area" ? null : "area")}

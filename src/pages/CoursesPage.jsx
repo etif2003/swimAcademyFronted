@@ -9,6 +9,7 @@ import PageState from "../components/PageState.jsx";
 import { LEVEL_OPTIONS } from "../constants/levels.js";
 import { TARGET_AUDIENCE_OPTIONS } from "../constants/target_audience.js";
 import { CATEGORY_OPTIONS } from "../constants/categories.js";
+import { useParams } from "react-router";
 
 export default function CoursesPage() {
   const [level, setLevel] = useState("");
@@ -17,15 +18,49 @@ export default function CoursesPage() {
   const [search, setSearch] = useState("");
   const [openFilter, setOpenFilter] = useState(null);
 
-  const { data: courses = [], isLoading, isError } = useCourses();
+  const { schoolId, instructorId } = useParams();
+
+  let creatorId = null;
+  let creatorType = null;
+
+  if (schoolId) {
+    creatorId = schoolId;
+    creatorType = "School";
+  } else if (instructorId) {
+    creatorId = instructorId;
+    creatorType = "Instructor";
+  }
+
+  const {
+    data: courses = [],
+    isLoading,
+    isError,
+  } = useCourses(creatorId, creatorType);
 
   if (isLoading) return <PageState kind="courses" state="loading" />;
-  if (isError) return <PageState kind="courses" state="error" onRetry={() => window.location.reload()} />;
+  if (isError)
+    return (
+      <PageState
+        kind="courses"
+        state="error"
+        onRetry={() => window.location.reload()}
+      />
+    );
 
   const filteredCourses = courses.filter((course) => {
-    const matchLevel = !level || course.level === level;
-    const matchAudience = !audience || course.targetAudience === audience;
-    const matchCategory = !category || course.category === category;
+    const matchLevel =
+      !level || level === "All" || course.level === level || !course.level;
+    const matchAudience =
+      !audience ||
+      audience === "All" ||
+      course.targetAudience === audience ||
+      !course.targetAudience;
+    const matchCategory =
+      !category ||
+      category === "All" ||
+      course.category === category ||
+      !course.category;
+
     const matchSearch = course.title
       .toLowerCase()
       .includes(search.toLowerCase());
@@ -109,7 +144,8 @@ export default function CoursesPage() {
               <CourseCard key={course._id} course={course} />
             )}
           />
-        </section>)}
+        </section>
+      )}
     </div>
   );
 }

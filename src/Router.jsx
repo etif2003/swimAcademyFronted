@@ -65,6 +65,15 @@ export const Router = () => {
         },
 
         {
+          path: "/school/:schoolId/courses",
+          element: <CoursesPage />,
+        },
+        
+        {
+          path: "/school/:schoolId/instructors",
+          element: <InstructorPage />,
+        },
+        {
           path: "/about",
           element: <AboutPage />,
         },
