@@ -4,13 +4,16 @@ export const uploadImage = async (file) => {
 
   const token = localStorage.getItem("token");
 
-  const res = await fetch("http://localhost:3000/api/upload", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`, // אם רוצים הגנה
+  const res = await fetch(
+    /*"http://localhost:3000/api/upload"*/ "https://swimacademyserver.onrender.com",
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`, // אם רוצים הגנה
+      },
+      body: formData,
     },
-    body: formData,
-  });
+  );
 
   const data = await res.json();
 

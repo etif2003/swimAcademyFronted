@@ -1,6 +1,7 @@
 import { getAuthHeaders } from "./get-auth";
 
-const BASE_URL = "http://localhost:3000/api/registrations";
+// const BASE_URL = "http://localhost:3000/api/registrations";
+const BASE_URL = "https://swimacademyserver.onrender.com/api/registrations";
 
 // =======================
 // GET REGISTRATIONS BY COURSE

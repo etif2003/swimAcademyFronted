@@ -1,5 +1,5 @@
-const BASE_URL = "http://localhost:3000/api/users";
-
+// const BASE_URL = "http://localhost:3000/api/users";
+const BASE_URL = "https://swimacademyserver.onrender.com/api/users";
 /**
  * הרשמה
  */

@@ -1,6 +1,8 @@
 import { getAuthHeaders } from "./get-auth";
 
-const BASE_URL = "http://localhost:3000/api/courses";
+// const BASE_URL = "http://localhost:3000/api/courses";
+const BASE_URL = "https://swimacademyserver.onrender.com/api/courses";
+
 export const handleCourses = async (
   creatorId = null,
   creatorType = "School",

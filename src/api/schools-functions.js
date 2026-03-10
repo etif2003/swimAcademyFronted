@@ -1,4 +1,5 @@
-const BASE_URL = "http://localhost:3000/api/schools";
+// const BASE_URL = "http://localhost:3000/api/schools";
+const BASE_URL = "https://swimacademyserver.onrender.com/api/schools";
 
 export const handleSchools = async () => {
   const response = await fetch(BASE_URL);
