@@ -10,11 +10,13 @@ import { LEVEL_OPTIONS } from "../constants/levels.js";
 import { TARGET_AUDIENCE_OPTIONS } from "../constants/target_audience.js";
 import { CATEGORY_OPTIONS } from "../constants/categories.js";
 import { useParams } from "react-router";
+import { AREAS } from "../constants/areas.js";
 
 export default function CoursesPage() {
   const [level, setLevel] = useState("");
   const [audience, setAudience] = useState("");
   const [category, setCategory] = useState("");
+  const [area, setArea] = useState("");
   const [search, setSearch] = useState("");
   const [openFilter, setOpenFilter] = useState(null);
 
@@ -47,6 +49,8 @@ export default function CoursesPage() {
       />
     );
 
+  const AREA_OPTIONS = [{ value: "All", label: "כל האזורים" }, ...AREAS];
+
   const filteredCourses = courses.filter((course) => {
     const matchLevel =
       !level || level === "All" || course.level === level || !course.level;
@@ -60,12 +64,16 @@ export default function CoursesPage() {
       category === "All" ||
       course.category === category ||
       !course.category;
+    const matchArea =
+      !area || area === "All" || course.area === area || !course.area;
 
     const matchSearch = course.title
       .toLowerCase()
       .includes(search.toLowerCase());
 
-    return matchLevel && matchAudience && matchCategory && matchSearch;
+    return (
+      matchLevel && matchAudience && matchCategory && matchArea && matchSearch
+    );
   });
 
   return (
@@ -116,6 +124,15 @@ export default function CoursesPage() {
             setOpenFilter(openFilter === "category" ? null : "category")
           }
           onChange={setCategory}
+        />
+
+        <FilterDropdown
+          label="כל האזורים"
+          options={AREA_OPTIONS}
+          value={area}
+          isOpen={openFilter === "area"}
+          onToggle={() => setOpenFilter(openFilter === "area" ? null : "area")}
+          onChange={setArea}
         />
 
         <input
