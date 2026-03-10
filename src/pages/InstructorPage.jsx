@@ -7,7 +7,7 @@ import { useInstructors } from "../hooks/Instructor/useInstructors.js";
 import PageState from "../components/PageState.jsx";
 import { useParams } from "react-router";
 import { useInstructorSchool } from "../hooks/Instructor/useInstructorSchool.js";
-import { AREAS } from "../constants/areas.js";
+import { AREAS,AREA_LABELS } from "../constants/areas.js";
 
 // const getAreaOptionsFromInstructors = (instructors) => {
 //   const workAreas = instructors
@@ -24,8 +24,14 @@ import { AREAS } from "../constants/areas.js";
 //     })),
 //   ];
 // };
-
-const areaOptions = [{ value: "All", label: "כל האזורים" }, ...AREAS];
+const areaOptions = [
+  { value: "כל האזורים", label: "כל האזורים" },
+  ...AREAS.map(area => ({
+    value: area.label,
+    label: area.label
+  }))
+];
+// const areaOptions = [{ value: "All", label: "כל האזורים" }, ...AREAS];
 
 export default function InstructorPage() {
   const [workArea, setWorkArea] = useState("");
@@ -70,7 +76,7 @@ export default function InstructorPage() {
     const matchSearch = name.toLowerCase().includes(search.toLowerCase());
 
     const matchWorkArea =
-      !workArea || workArea === "All" || instructor.workArea === workArea;
+      !workArea || workArea ===  "כל האזורים" || instructor.workArea === workArea;
 
     return matchWorkArea && matchSearch;
   });

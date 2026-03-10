@@ -6,3 +6,4 @@ export const AREAS = [
   { value: "Jerusalem", label: "ירושלים" },
 ];
 export const AREA_VALUES = AREAS.map(a => a.value);
+export const AREA_LABELS = AREAS.map(a => a.label);

@@ -28,9 +28,9 @@ export default function Footer() {
             </p>
 
             <div className="social-icons">
-              <a href="#"><Facebook size={20} /></a>
-              <a href="#"><Instagram size={20} /></a>
-              <a href="#"><Youtube size={20} /></a>
+              <a href="/"><Facebook size={20} /></a>
+              <a href="/"><Instagram size={20} /></a>
+              <a href="/"><Youtube size={20} /></a>
             </div>
           </div>
 

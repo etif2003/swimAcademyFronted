@@ -36,7 +36,7 @@ export default function SchoolPage() {
   // const AREA_OPTIONS = getAreaOptionsFromSchools(schools);
 
   const filteredSchools = schools.filter((school) => {
-    const matchArea = !area || area==="All" || school.location?.city === area;
+    const matchArea = !area || area==="All" || school.area === area;
 
     const matchSearch = school.name
       .toLowerCase()

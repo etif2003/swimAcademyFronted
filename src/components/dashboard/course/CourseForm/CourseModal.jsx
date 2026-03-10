@@ -11,6 +11,9 @@ import FormField from "../../ModalForm/FormField";
 import FormTextarea from "../../ModalForm/FormTextarea";
 import FormSelect from "../../ModalForm/FormSelect";
 import FormImageUpload from "../../ModalForm/FormImageUpload";
+import { CATEGORY_OPTIONS } from "../../../../constants/categories";
+import { TARGET_AUDIENCE_OPTIONS } from "../../../../constants/target_audience";
+import { LEVEL_OPTIONS } from "../../../../constants/levels";
 
 const DEFAULT_IMAGE =
   "https://res.cloudinary.com/drtpfecyk/image/upload/v1772357067/defaultCourseImage_otcxht.png";
@@ -149,29 +152,7 @@ export default function CourseModal({ isOpen, onClose, course, onSuccess }) {
     }
   };
 
-  /* ===== Options ===== */
 
-  const categoryOptions = [
-    { label: "כל הקטגוריות", value: "All" },
-    { label: "למידה", value: "Learning" },
-    { label: "הכשרה", value: "Training" },
-    { label: "טיפולי", value: "Therapy" },
-  ];
-
-  const audienceOptions = [
-    { label: "כל הקהלים", value: "All" },
-    { label: "ילדים", value: "Children" },
-    { label: "נוער", value: "Teens" },
-    { label: "מבוגרים", value: "Adults" },
-    { label: "גיל הזהב", value: "Seniors" },
-  ];
-
-  const levelOptions = [
-    { label: "כל הרמות", value: "All" },
-    { label: "מתחילים", value: "Beginner" },
-    { label: "מתקדמים", value: "Advanced" },
-    { label: "מקצועי", value: "Professional" },
-  ];
 
   const areaOptions = AREAS;
 
@@ -203,7 +184,7 @@ export default function CourseModal({ isOpen, onClose, course, onSuccess }) {
         <div className="form-row three">
           <FormSelect
             label="קטגוריה"
-            options={categoryOptions}
+            options={CATEGORY_OPTIONS}
             value={formData.category}
             onChange={(v) => update("category", v)}
             error={errors.category}
@@ -211,7 +192,7 @@ export default function CourseModal({ isOpen, onClose, course, onSuccess }) {
 
           <FormSelect
             label="קהל יעד"
-            options={audienceOptions}
+            options={TARGET_AUDIENCE_OPTIONS}
             value={formData.targetAudience}
             onChange={(v) => update("targetAudience", v)}
             error={errors.targetAudience}
@@ -219,7 +200,7 @@ export default function CourseModal({ isOpen, onClose, course, onSuccess }) {
 
           <FormSelect
             label="רמה"
-            options={levelOptions}
+            options={LEVEL_OPTIONS}
             value={formData.level}
             onChange={(v) => update("level", v)}
             error={errors.level}

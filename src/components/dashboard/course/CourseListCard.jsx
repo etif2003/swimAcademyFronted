@@ -1,3 +1,6 @@
+import { CATEGORY_OPTIONS } from "../../../constants/categories";
+import { LEVEL_OPTIONS } from "../../../constants/levels";
+import { TARGET_AUDIENCE_OPTIONS } from "../../../constants/target_audience";
 import "../../../styles/Dashboard/CourseListCard.css";
 import { Users } from "lucide-react";
 
@@ -8,6 +11,20 @@ export default function CourseListCard({
   onCardClick,        // חדש
   showActions,
 }) {
+
+
+  const targetAudienceLabel = TARGET_AUDIENCE_OPTIONS.find(
+  a => a.value === course.targetAudience
+)?.label;
+
+const categoryLabel = CATEGORY_OPTIONS.find(
+  c => c.value === course.category
+)?.label;
+
+const levelLabel = LEVEL_OPTIONS.find(
+  c => c.value === course.level
+)?.label;
+
   return (
     <div
       className="course-list-card"
@@ -42,7 +59,7 @@ export default function CourseListCard({
         <h3>{course.title}</h3>
 
         <div>
-          {course.targetAudience} • {course.category} • ₪{course.price}
+          {targetAudienceLabel} • {levelLabel} • {categoryLabel} • ₪{course.price}
         </div>
 
         {showActions && (
