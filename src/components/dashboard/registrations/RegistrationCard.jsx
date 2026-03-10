@@ -1,15 +1,38 @@
 import { Mail, Phone } from "lucide-react";
+import { useState } from "react";
+import { updateRegistrationStatus } from "../../../api/registrations-functions";
 
 export default function RegistrationCard({ registration }) {
-  const { student, status, createdAt } = registration;
+  const { student, createdAt, _id } = registration;
+
+
+   const [status, setStatus] = useState(registration.status);
+
+  const handleStatusChange = async (e) => {
+    const newStatus = e.target.value;
+
+    try {
+      await updateRegistrationStatus(_id, newStatus);
+      setStatus(newStatus);
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   return (
     <div className="registration-item">
 
       <div className="registration-left">
-        <span className={`registration-status ${status.toLowerCase()}`}>
-          {translateStatus(status)}
-        </span>
+        
+          <select
+          className={`registration-status ${status.toLowerCase()}`}
+          value={status}
+          onChange={handleStatusChange}
+        >
+          <option value="Pending">ממתין</option>
+          <option value="Paid">מאושר</option>
+          <option value="Cancelled">בוטל</option>
+        </select>
 
         <div className="registration-date">
           {new Date(createdAt).toLocaleDateString("he-IL")}

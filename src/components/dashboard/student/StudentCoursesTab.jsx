@@ -24,9 +24,10 @@ export default function StudentCoursesTab() {
         const registrations = await getMyRegistrations(user.id);
 
         // נוציא רק את הקורסים
-        const coursesOnly = registrations.map(
-          (reg) => reg.course
-        );
+       const coursesOnly = registrations.map((reg) => ({
+  ...reg.course,
+  registrationStatus: reg.status,
+}));
 
         setCourses(coursesOnly);
       } catch (err) {

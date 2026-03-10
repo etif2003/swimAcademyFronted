@@ -67,7 +67,7 @@ color: var(--color-dark-gray);}
 
 /* סטטוסים */
 .registration-status {
-  padding: 6px 14px;
+  padding: 6px 6px;
   border-radius: 999px;
   font-size: 13px;
   font-weight: 500;
@@ -92,6 +92,11 @@ background-color: mistyrose;
     color: red;
 }
 
+
+.registration-status option {
+  background-color: white;
+  color: black;
+}
 /* פוטר */
 .registrations-empty {
   text-align: center;

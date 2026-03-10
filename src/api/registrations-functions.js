@@ -63,3 +63,26 @@ export const createRegistration = async ({ userId, courseId }) => {
 
   return response.json();
 };
+
+
+// =======================
+// UPDATE REGISTRATION STATUS
+// =======================
+export const updateRegistrationStatus = async (registrationId, status) => {
+  const response = await fetch(
+    `${BASE_URL}/${registrationId}/status`,
+    {
+      method: "PUT",
+      headers: getAuthHeaders(),
+      body: JSON.stringify({ status }),
+    }
+  );
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    console.error("Update registration status error:", errorData);
+    throw new Error(errorData.message || "שגיאה בעדכון סטטוס הרשמה");
+  }
+
+  return response.json();
+};
