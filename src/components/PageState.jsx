@@ -2,38 +2,48 @@ import React from "react";
 import "../styles/PageState.css";
 
 const LABELS = {
-  courses: { plural: "קורסים" },
-  instructors: { plural: "מדריכים" },
-  schools: { plural: "בתי ספר" },
+  courses: { name: "קורסים" },
+  instructors: { name: "מדריכים" },
+  schools: { name: "בתי ספר" },
+  course: { name: "קורס" },
+  instructor: { name: "מדריך/ה" },
+  school: { name: "בית ספר" },
+  profile: { name: "פרופיל" },
 };
 
 export default function PageState({
-  kind,            // "courses" | "instructors" | "schools"
-  state,                       // "loading" | "error" | "empty"
+  kind, // "courses" | "instructors" | "schools"
+  state, // "loading" | "error" | "empty" | "notFound"
   title,
   description,
   onRetry,
   compact = false,
 }) {
-  const { plural } = (kind && LABELS[kind]) || { plural: "פריטים" };
+  const { name } = (kind && LABELS[kind]) || { name: "פריטים" };
 
   const text = (() => {
     if (state === "loading") {
       return {
-        title: title || `טוען ${plural}…`,
+        title: title || `טוען ${name}…`,
         description: description || "עוד רגע וזה כאן.",
       };
     }
     if (state === "error") {
       return {
-        title: title || `שגיאה בטעינת ${plural}`,
+        title: title || `שגיאה בטעינת ${name}`,
         description:
           description || "נראה שיש בעיה זמנית. נסו שוב בעוד כמה רגעים.",
       };
     }
+    if (state === "notFound") {
+      return {
+        title: title || `${name} לא נמצא`,
+        description: description || "ייתכן שהקישור אינו תקין או שהפריט הוסר.",
+      };
+    }
     return {
-      title: title || `אין ${plural} להצגה`,
-      description: description || `ברגע שיהיו ${plural} — הם יופיעו כאן.`,
+      title: title || `אין ${name} להצגה`,
+      description: description || `ברגע שיהיו ${name} — הם יופיעו כאן.`,
     };
   })();
 
@@ -46,7 +56,15 @@ export default function PageState({
     >
       <div className="page-state__card">
         <div className="page-state__icon">
-          {state === "loading" ? <Spinner /> : state === "error" ? <ErrorIcon /> : <EmptyIcon />}
+          {state === "loading" ? (
+            <Spinner />
+          ) : state === "error" ? (
+            <ErrorIcon />
+          ) : state === "notFound" ? (
+            <NotFoundIcon />
+          ) : (
+            <EmptyIcon />
+          )}
         </div>
 
         <div className="page-state__content">
@@ -55,6 +73,7 @@ export default function PageState({
 
           {state === "loading" ? (
             <div className="page-state__skeleton">
+              {kind === "profile" && <div className="sk-circle" />}
               <div className="sk-line w-80" />
               <div className="sk-line w-60" />
               <div className="sk-line w-70" />
@@ -63,10 +82,18 @@ export default function PageState({
 
           {state === "error" && onRetry ? (
             <div className="page-state__actions">
-              <button className="btn btn-primary" type="button" onClick={onRetry}>
+              <button
+                className="btn btn-primary"
+                type="button"
+                onClick={onRetry}
+              >
                 נסה שוב
               </button>
-              <button className="btn btn-ghost" type="button" onClick={() => window.location.reload()}>
+              <button
+                className="btn btn-ghost"
+                type="button"
+                onClick={() => window.location.reload()}
+              >
                 רענן עמוד
               </button>
             </div>
@@ -87,6 +114,10 @@ function ErrorIcon() {
       !
     </div>
   );
+}
+
+function NotFoundIcon() {
+  return <div className="state-icon state-icon--empty">?</div>;
 }
 
 function EmptyIcon() {

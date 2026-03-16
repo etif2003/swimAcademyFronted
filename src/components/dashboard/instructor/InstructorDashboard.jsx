@@ -5,6 +5,7 @@ import InstructorProfileCard from "./InstructorProfileCard";
 import ChangePassword from "../ChangePassword";
 import InstructorCoursesTab from "./InstructorCoursesTab";
 import InstructorSchoolsTab from "./InstructorSchoolsTab";
+import StudentCoursesTab from "../student/StudentCoursesTab";
 
 export default function InstructorDashboard() {
   const [activeTab, setActiveTab] = useState("profile");
@@ -21,6 +22,7 @@ export default function InstructorDashboard() {
 
       {activeTab === "profile" && <InstructorProfileCard />}
       {activeTab === "courses" && <InstructorCoursesTab />}
+      {activeTab === "my-courses" && <StudentCoursesTab />}
       {activeTab === "schools" && <InstructorSchoolsTab />}
       {activeTab === "settings" && <ChangePassword />}
     </>

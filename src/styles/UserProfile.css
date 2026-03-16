@@ -198,7 +198,7 @@
 .profile-actions {
   margin-top: 32px;
   padding-top: 25px;
-  text-align: right;
+  text-align: left;
   border-top: 1px solid var(--color-semi-light-gray);
 }
 

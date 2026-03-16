@@ -4,10 +4,7 @@ import "../../styles/InstructorCard.css";
 
 const InstructorCard = ({ instructor }) => {
   return (
-    <Link
-      to={`/instructor/${instructor._id}`}
-      className="instructor-card"
-    >
+    <Link to={`/instructor/${instructor._id}`} className="instructor-card">
       {/* TOP */}
       <div className="instructor-top">
         <div className="instructor-header">
@@ -40,13 +37,15 @@ const InstructorCard = ({ instructor }) => {
       </div>
 
       <div className="instructor-footer">
-        <div className="instructor-cta">
-          צפייה בפרופיל
-        </div>
+        <div className="instructor-cta">צפייה בפרופיל</div>
 
-        <div className="instructor-price">
-          <span> / שיעור </span>₪{instructor.hourlyRate}
-        </div>
+        {instructor.hourlyRate ? (
+          <div className="instructor-price">
+            <span> / שיעור </span>₪{instructor.hourlyRate}
+          </div>
+        ) : (
+          "לא צוין מחיר"
+        )}
       </div>
     </Link>
   );

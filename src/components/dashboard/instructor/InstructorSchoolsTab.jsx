@@ -7,6 +7,7 @@ import {
   unlinkInstructorFromSchool,
 } from "../../../api/schoolInstructor-functions";
 import "../../../styles/Dashboard/InstructorSchoolsTab.css";
+import "../../../styles/PageState.css";
 
 
 export default function InstructorSchoolsTab() {
@@ -58,7 +59,7 @@ export default function InstructorSchoolsTab() {
     setActiveSchools((prev) => prev.filter((i) => i._id !== id));
   };
 
-  if (loading) return <p>טוען...</p>;
+  if (loading) return <div className="spinner" aria-hidden="true" />;
 
   return (
     <div className="instructor-schools-container" dir="rtl">

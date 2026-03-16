@@ -3,8 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import "../styles/LoginForm.css";
 import { login } from "../api/auth";
 import { Mail, Lock, ArrowLeft } from "lucide-react";
+import { useAuth } from "../context/AuthContext"; // או איפה שהקובץ נמצא
 
 const LoginForm = () => {
+  const { setUser } = useAuth(); // שליפת פונקציית העדכון
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -53,8 +55,15 @@ const LoginForm = () => {
     try {
       const data = await login(formData);
 
-      // שמירת טוקן
+      // 1. שמירה ב-localStorage (בשביל הריפרש הבא)
       localStorage.setItem("token", data.token);
+
+      // 2. עדכון ה-State של ה-AuthContext (בשביל עדכון מיידי במסך!)
+      setUser({
+        id: data._id,
+        fullName: data.fullName,
+        role: data.role,
+      });
 
       // שמירת משתמש
       localStorage.setItem(

@@ -7,10 +7,11 @@
   align-items: center;
   transition: all 0.2s ease;
   cursor: pointer;
+  margin-bottom: 15px;
 }
 
 .instructor-list-card:hover {
-box-shadow: 0 4px 14px var(--color-semi-light-gray);
+  box-shadow: 0 4px 14px var(--color-semi-light-gray);
   transform: translateY(-1px);
 }
 
@@ -44,13 +45,14 @@ box-shadow: 0 4px 14px var(--color-semi-light-gray);
   margin: 0;
   font-size: 16px;
   font-weight: 600;
-  color:var(--color-dark-gray);
+  color: var(--color-dark-gray);
 }
 
 .instructor-list-card-info p {
   margin: 0;
   font-size: 13px;
-color:var(--color-dark-gray);}
+  color: var(--color-dark-gray);
+}
 
 /* כפתורים */
 .instructor-list-card-button {

@@ -13,6 +13,7 @@ import { useAuth } from "../../../context/AuthContext";
 import { validateSchoolForm } from "../../../utils/validators/validateSchoolForm";
 import { useNavigate } from "react-router";
 import { uploadImage } from "../../../api/upload";
+import PageState from "../../PageState";
 
 const DEFAULT_IMAGE =
   "https://res.cloudinary.com/drtpfecyk/image/upload/v1772360676/defaultSchoolImage_inddbe.png";
@@ -182,7 +183,18 @@ export default function SchoolProfileCard() {
     }
   };
 
-  if (loading) return <p>...טוען פרופיל</p>;
+   if (loading) {
+      return (
+        <PageState 
+          kind="profile" 
+          state="loading" 
+          title="טוען פרופיל..." 
+          description="מיד תוכל לצפות בפרטים שלך"
+        />
+      );
+    }
+  
+
 
   return (
     <div className="profile-wrapper">

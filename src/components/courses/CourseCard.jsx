@@ -29,10 +29,6 @@ const CourseCard = ({ course }) => {
       <div className="course-card-content">
         <h3 className="course-title">{course.title}</h3>
 
-        {audienceLabel && course.targetAudience !== "All" && (
-          <p className="course-target-audience">מיועד ל{audienceLabel}</p>
-        )}
-
         <div className="course-meta">
           {course.location?.city && (
             <div className="course-meta-item">
@@ -56,11 +52,19 @@ const CourseCard = ({ course }) => {
           ) : null}
         </div>
 
+        {audienceLabel && course.targetAudience !== "All" && (
+          <p className="course-target-audience">מיועד ל{audienceLabel}</p>
+        )}
+
         <div className="course-footer">
-          <div className="course-price">
-            ₪{course.price}
-            <span> / שיעור</span>
-          </div>
+          {course.price ? (
+            <div className="course-price">
+              ₪{course.price}
+              <span> / שיעור</span>
+            </div>
+          ) : (
+            "לא צוין מחיר"
+          )}
 
           <div className="course-details">
             לפרטים

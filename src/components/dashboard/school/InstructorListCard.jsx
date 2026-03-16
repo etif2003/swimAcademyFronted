@@ -1,6 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import "../../../styles/Dashboard/InstructorListCard.css";
 import { Phone } from "lucide-react";
+import "../../../styles/PageState.css";
+
+
 export default function InstructorListCard({
   instructor,
   buttonLabel,
@@ -51,7 +54,11 @@ export default function InstructorListCard({
             onClick={handleButtonClick}
             disabled={loading}
           >
-            {loading ? "טוען..." : buttonLabel}
+            {loading ? (
+              <div className="spinner" aria-hidden="true" />
+            ) : (
+              buttonLabel
+            )}
           </button>
         )}
       </div>

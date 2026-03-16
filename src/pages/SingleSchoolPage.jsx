@@ -15,21 +15,28 @@ import {
   BookOpen,
 } from "lucide-react";
 import { useSchool } from "../hooks/School/useSchool";
+import PageState from "../components/PageState";
 
 export default function SingleSchoolPage() {
   const { id } = useParams();
 
   const { data: school, isLoading, isError } = useSchool(id);
 
-  if (isLoading) return <div>...טוען בית ספר</div>;
-  if (isError || !school) return <div>בית ספר לא נמצא</div>;
+  if (isLoading) {
+    return <PageState kind="school" state="loading" />;
+  }
+  if (isError) {
+    return (
+      <PageState
+        kind="school"
+        state="error"
+        onRetry={() => window.location.reload()}
+      />
+    );
+  }
 
   if (!school) {
-    return (
-      <div className="singleSchoolPage" dir="rtl">
-        <div className="singleSchoolContainer">בית הספר לא נמצא (id: {id})</div>
-      </div>
-    );
+    return <PageState kind="school" state="notFound" />;
   }
 
   return (

@@ -7,14 +7,30 @@ import InstructorInfoListCard from "../components/Instructors/InstructorInfoList
 
 import { MapPin, Clock } from "lucide-react";
 import { useInstructor } from "../hooks/Instructor/useInstructor";
+import PageState from "../components/PageState";
 
 export default function SingleInstructorPage() {
   const { id } = useParams();
 
   const { data: instructor, isLoading, isError } = useInstructor(id);
 
-  if (isLoading) return <div>...טוען מדריך</div>;
-  if (isError || !instructor) return <div>מדריך לא נמצא</div>;
+  if (isLoading) {
+    return <PageState kind="instructor" state="loading" />;
+  }
+  if (isError) {
+    return (
+      <PageState
+        kind="instructor"
+        state="error"
+        onRetry={() => window.location.reload()}
+      />
+    );
+  }
+
+  if (!instructor) {
+    return <PageState kind="instructor" state="notFound" />;
+  }
+
 
   return (
     <div className="singleInstructorPage" dir="rtl">

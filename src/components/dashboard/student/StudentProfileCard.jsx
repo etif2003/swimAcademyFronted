@@ -13,6 +13,7 @@ import {
 
 import { validateStudentForm } from "../../../utils/validators/validateStudentForm";
 import { useNavigate } from "react-router";
+import PageState from "../../PageState";
 
 export default function StudentProfileCard() {
   const navigate = useNavigate();
@@ -124,8 +125,18 @@ export default function StudentProfileCard() {
     }
   };
 
-  if (loading) return <p>...טוען פרופיל</p>;
+ if (loading) {
+    return (
+      <PageState
+        kind="profile" 
+        state="loading" 
+        title="טוען פרופיל..." 
+        description="מיד תוכל לצפות בפרטים שלך"
+      />
+    );
+  }
 
+ 
   return (
     <div className="profile-wrapper">
       <div className="profile-card">

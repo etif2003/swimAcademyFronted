@@ -13,6 +13,7 @@ import {
 import { useAuth } from "../../../context/AuthContext";
 import { validateInstructorForm } from "../../../utils/validators/validateInstructorForm";
 import { useNavigate } from "react-router";
+import PageState from "../../PageState";
 
 export default function InstructorProfileCard() {
   const navigate = useNavigate();
@@ -161,10 +162,18 @@ export default function InstructorProfileCard() {
     }
   };
 
-  /* ===== RENDER ===== */
+ 
   if (loading) {
-    return <p>...טוען פרופיל</p>;
+    return (
+      <PageState 
+        kind="profile" 
+        state="loading" 
+        title="טוען פרופיל..." 
+        description="מיד תוכל לצפות בפרטים שלך"
+      />
+    );
   }
+
 
   return (
     <div className="profile-wrapper">

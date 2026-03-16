@@ -51,24 +51,21 @@ export default function CourseListCard({
       )}
 
       <div className="course-list-card-info">
-       
-          <h3>{course.title}</h3>
-
-       
+        <h3>{course.title}</h3>
 
         <div>
           {targetAudienceLabel} • {levelLabel} • {categoryLabel} • ₪
           {course.price}
         </div>
 
- {course.registrationStatus && (
+        {course.registrationStatus && (
           <div
             className={`registration-status ${course.registrationStatus.toLowerCase()}`}
           >
             {translateStatus(course.registrationStatus)}
           </div>
         )}
-        
+
         {showActions && <div>{course.currentParticipants || 0} נרשמים</div>}
       </div>
 

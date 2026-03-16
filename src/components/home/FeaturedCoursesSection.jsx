@@ -26,8 +26,7 @@ const itemVariants = {
 export function FeaturedCoursesSection() {
   const { data: courses = [], isLoading, isError, refetch } = useCourses();
 
-  // if (isLoading) return <div>...טוען קורסים</div>;
-  // if (isError) return <div>שגיאה בטעינת קורסים</div>;
+
 
   const popularCourses = [...courses]
     .sort((a, b) => b.currentParticipants - a.currentParticipants)

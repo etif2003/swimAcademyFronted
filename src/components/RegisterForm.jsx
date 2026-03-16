@@ -3,8 +3,10 @@ import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import "../styles/RegisterForm.css";
 import { GraduationCap, Users, School } from "lucide-react";
 import { register } from "../api/auth";
+import { useAuth } from "../context/AuthContext";
 
 const RegisterForm = () => {
+  const { setUser } = useAuth();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
@@ -14,8 +16,8 @@ const RegisterForm = () => {
     roleFromUrl === "instructor"
       ? "instructor"
       : roleFromUrl === "school"
-      ? "school"
-      : "student"
+        ? "school"
+        : "student",
   );
 
   const [formData, setFormData] = useState({
@@ -83,8 +85,8 @@ const RegisterForm = () => {
         role === "student"
           ? "Student"
           : role === "instructor"
-          ? "Instructor"
-          : "School",
+            ? "Instructor"
+            : "School",
     };
 
     try {
@@ -92,13 +94,21 @@ const RegisterForm = () => {
 
       // 🔐 שמירת התחברות
       localStorage.setItem("token", data.token);
+
+      // עדכון ה-State יגרום לכל האפליקציה "להבין" שיש משתמש חדש
+      setUser({
+        id: data._id,
+        fullName: data.fullName,
+        role: data.role,
+      });
+
       localStorage.setItem(
         "user",
         JSON.stringify({
           id: data._id,
           fullName: data.fullName,
           role: data.role,
-        })
+        }),
       );
 
       navigate("/");
@@ -173,9 +183,7 @@ const RegisterForm = () => {
             onChange={handleChange}
             placeholder="email@example.com"
           />
-          {errors.email && (
-            <span className="error-text">{errors.email}</span>
-          )}
+          {errors.email && <span className="error-text">{errors.email}</span>}
         </div>
 
         <div className={`field ${errors.phone ? "error" : ""}`}>
@@ -186,9 +194,7 @@ const RegisterForm = () => {
             onChange={handleChange}
             placeholder="0500000000"
           />
-          {errors.phone && (
-            <span className="error-text">{errors.phone}</span>
-          )}
+          {errors.phone && <span className="error-text">{errors.phone}</span>}
         </div>
 
         <div className={`field ${errors.password ? "error" : ""}`}>

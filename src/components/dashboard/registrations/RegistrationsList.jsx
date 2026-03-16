@@ -1,4 +1,6 @@
 import RegistrationCard from "./RegistrationCard";
+import "../../../styles/PageState.css";
+
 
 export default function RegistrationsList({
   registrations,
@@ -6,7 +8,7 @@ export default function RegistrationsList({
   onClose,
 }) {
   if (loading) {
-    return <div className="registrations-empty">טוען...</div>;
+    return <div className="registrations-empty"><div className="spinner" aria-hidden="true" /></div>;
   }
 
   if (!registrations.length) {

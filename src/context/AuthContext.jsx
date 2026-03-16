@@ -30,7 +30,7 @@ export function AuthProvider({ children }) {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [ ]);
 
   const logout = () => {
     localStorage.removeItem("token");

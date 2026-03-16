@@ -1,6 +1,9 @@
 .dashboard {
   background-color: var(--color-dirty-white);
+  display: flex;
+  flex-direction: column;
 }
+
 .dashboard-header {
   padding-top: 77px;
   font-size: 7px;

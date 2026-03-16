@@ -9,6 +9,7 @@ import { Building2, User, Tag, Users, BarChart3 } from "lucide-react";
 
 import { useCourse } from "../hooks/useCourse";
 import CourseCreatorCard from "../components/courses/CourseCreatorCard";
+import PageState from "../components/PageState";
 
 /* ===== PAGE ===== */
 const TARGET_AUDIENCE_MAP = {
@@ -35,8 +36,22 @@ export default function SingleCoursePage() {
 
   const { data: course, isLoading, isError } = useCourse(id);
 
-  if (isLoading) return <div>...טוען קורס</div>;
-  if (isError || !course) return <div>קורס לא נמצא</div>;
+  if (isLoading) {
+    return <PageState kind="course" state="loading" />;
+  }
+  if (isError) {
+    return (
+      <PageState
+        kind="course"
+        state="error"
+        onRetry={() => window.location.reload()}
+      />
+    );
+  }
+
+  if (!course) {
+    return <PageState kind="course" state="notFound" />;
+  }
 
   const categoriesList = [
     {
@@ -102,7 +117,11 @@ export default function SingleCoursePage() {
 
             {/* LEFT */}
             <div className="singleCourseSide">
-              <ContactActionCard type="course" price={course.price} courseId={course._id} />
+              <ContactActionCard
+                type="course"
+                price={course.price}
+                courseId={course._id}
+              />
             </div>
           </div>
         </div>
