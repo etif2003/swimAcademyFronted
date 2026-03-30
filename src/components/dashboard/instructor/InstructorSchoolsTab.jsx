@@ -8,7 +8,7 @@ import {
 } from "../../../api/schoolInstructor-functions";
 import "../../../styles/Dashboard/InstructorSchoolsTab.css";
 import "../../../styles/PageState.css";
-
+import PageState from "../../PageState";
 
 export default function InstructorSchoolsTab() {
   const [activeSchools, setActiveSchools] = useState([]);
@@ -59,11 +59,18 @@ export default function InstructorSchoolsTab() {
     setActiveSchools((prev) => prev.filter((i) => i._id !== id));
   };
 
-  if (loading) return <div className="spinner" aria-hidden="true" />;
+  if (loading)
+    return (
+      <PageState
+        kind="schools"
+        state="loading"
+        title="טוען בתי ספר..."
+        description="מיד תוכל לצפות בבתי הספר שלך"
+      />
+    );
 
   return (
     <div className="instructor-schools-container" dir="rtl">
-
       {error && <p>{error}</p>}
 
       <SchoolsList

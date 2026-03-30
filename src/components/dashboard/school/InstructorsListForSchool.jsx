@@ -42,7 +42,7 @@ const InstructorsListForSchool = ({ schoolId }) => {
       setSuccessMessage("המדריך נוסף בהצלחה וממתין לאישור");
 
       setInstructors((prev) =>
-        prev.filter((inst) => inst._id !== instructor._id)
+        prev.filter((inst) => inst._id !== instructor._id),
       );
     } catch (err) {
       setErrorMessage(err.message || "שגיאה בהוספת מדריך");
@@ -66,23 +66,26 @@ const InstructorsListForSchool = ({ schoolId }) => {
     };
   }, [successMessage, errorMessage]);
 
-  if (loading) return <p>טוען מדריכים...</p>;
+  if (loading) {
+    return (
+      <PageState
+        kind="instructors"
+        state="loading"
+        title="טוען מדריכים..."
+        description="מיד תוכל לצפות במדריכים שלך"
+      />
+    );
+  }
+
   if (error) return <p>{error}</p>;
 
   return (
     <div className="instructors-to-school-container" dir="rtl">
+      {successMessage && <div className="success-toast">{successMessage}</div>}
 
-      {successMessage && (
-        <div className="success-toast">{successMessage}</div>
-      )}
+      {errorMessage && <div className="error-toast">{errorMessage}</div>}
 
-      {errorMessage && (
-        <div className="error-toast">{errorMessage}</div>
-      )}
-
-      {instructors.length === 0 && (
-        <p>אין מדריכים להצגה</p>
-      )}
+      {instructors.length === 0 && <p>אין מדריכים להצגה</p>}
 
       <div className="instructors-to-school-grid">
         {instructors.map((inst) => (

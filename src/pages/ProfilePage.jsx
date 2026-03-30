@@ -6,16 +6,14 @@ import { useAuth } from "../context/AuthContext";
 export default function ProfilePage() {
   const { user, loading } = useAuth();
 
-  if (loading) {
-    return <div>טוען משתמש...</div>;
-  }
+  if (loading) return <div className="spinner" aria-hidden="true" />;
 
   if (!user) {
     return <div>לא מחובר</div>;
   }
-  console.log(user)
+  console.log(user);
 
-  console.log(user.role)
+  console.log(user.role);
   return (
     <DashboardLayout>
       <ProfileRouter role={user.role} />

@@ -4,6 +4,7 @@ import {
   unlinkInstructorFromSchool,
 } from "../../../api/schoolInstructor-functions";
 import InstructorListCard from "./InstructorListCard";
+import PageState from "../../PageState";
 
 export default function LinkedInstructorsList({ schoolId }) {
   const [linked, setLinked] = useState([]);
@@ -37,9 +38,7 @@ export default function LinkedInstructorsList({ schoolId }) {
 
       setSuccessMessage("השיוך בוטל בהצלחה");
 
-      setLinked((prev) =>
-        prev.filter((item) => item._id !== instructor._id)
-      );
+      setLinked((prev) => prev.filter((item) => item._id !== instructor._id));
     } catch (err) {
       setErrorMessage(err.message);
     } finally {
@@ -58,35 +57,35 @@ export default function LinkedInstructorsList({ schoolId }) {
     return () => clearTimeout(timerRef.current);
   }, [successMessage, errorMessage]);
 
-  if (loading) return <p>טוען מדריכים...</p>;
+  if (loading) {
+    return (
+      <PageState
+        kind="instructors"
+        state="loading"
+        title="טוען מדריכים..."
+        description="מיד תוכל לצפות במדריכים שלך"
+      />
+    );
+  }
 
   if (!linked.length) {
     return <p>אין מדריכים משויכים לבית הספר</p>;
   }
 
-
-   const activeInstructors = linked.filter(
-    (item) => item.status === "Active"
-  );
+  const activeInstructors = linked.filter((item) => item.status === "Active");
 
   const inactiveInstructors = linked.filter(
-    (item) => item.status === "Inactive"
+    (item) => item.status === "Inactive",
   );
 
-   return (
+  return (
     <>
-      {successMessage && (
-        <div className="success-toast">{successMessage}</div>
-      )}
-      {errorMessage && (
-        <div className="error-toast">{errorMessage}</div>
-      )}
+      {successMessage && <div className="success-toast">{successMessage}</div>}
+      {errorMessage && <div className="error-toast">{errorMessage}</div>}
 
       {/* ===== ACTIVE ===== */}
       <h3>מדריכים פעילים</h3>
-      {activeInstructors.length === 0 && (
-        <p>אין מדריכים פעילים</p>
-      )}
+      {activeInstructors.length === 0 && <p>אין מדריכים פעילים</p>}
 
       {activeInstructors.map((link) => (
         <InstructorListCard
@@ -101,13 +100,11 @@ export default function LinkedInstructorsList({ schoolId }) {
 
       {/* ===== INACTIVE ===== */}
       <h3>מדריכים ממתינים לאישור שיוך</h3>
-      {inactiveInstructors.length === 0 && (
-        <p>אין מדריכים ממתינים</p>
-      )}
+      {inactiveInstructors.length === 0 && <p>אין מדריכים ממתינים</p>}
 
       {inactiveInstructors.map((link) => (
         <InstructorListCard
-           key={link._id}
+          key={link._id}
           instructor={link.instructor}
           buttonLabel="בטל שיוך"
           onButtonClick={() => handleUnlink(link)}

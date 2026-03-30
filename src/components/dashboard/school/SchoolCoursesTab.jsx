@@ -4,6 +4,7 @@ import "../../../styles/Dashboard/InstructorCoursesTab.css";
 import { fetchMyCourses } from "../../../api/courses-functions";
 import CourseModal from "../course/CourseForm/CourseModal";
 import CoursesList from "../course/CoursesList";
+import PageState from "../../PageState";
 
 export default function SchoolCoursesTab() {
   const [courses, setCourses] = useState([]);
@@ -23,10 +24,7 @@ export default function SchoolCoursesTab() {
         throw new Error("משתמש לא מחובר");
       }
 
-      const data = await fetchMyCourses(
-        user.role,
-        user._id
-      );
+      const data = await fetchMyCourses(user.role, user._id);
 
       setCourses(data);
     } catch (err) {
@@ -57,7 +55,6 @@ export default function SchoolCoursesTab() {
 
   return (
     <div className="instructor-courses-container" dir="rtl">
-      
       {/* Header */}
       <div className="instructor-courses-header">
         <button className="create-btn" onClick={openCreateModal}>
@@ -66,7 +63,14 @@ export default function SchoolCoursesTab() {
       </div>
 
       {/* States */}
-      {loading && <p>טוען קורסים...</p>}
+      {loading && (
+        <PageState
+          kind="courses"
+          state="loading"
+          title="טוען קורסים..."
+          description="מיד תוכל לצפות בקורסים שלך"
+        />
+      )}
       {error && <p className="error-text">{error}</p>}
 
       {!loading && !error && (
